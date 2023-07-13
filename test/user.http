@@ -1,0 +1,29 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "aymane@example.com",
+  "password": "adhegzrtgrtam",
+  "type": "cs",
+  "documents": "Lorem waa",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/users
+###
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "email": "simo@example.com",
+  "password": "wewe",
+  "type": "cs",
+  "documents": "adham karmadi",
+  "createdAt":"2020-11-14",
+  "updatedAt":"2021-10-15"
+}
+###
+DELETE http://localhost:3000/users/1
+###
+GET http://localhost:3000/users/2
