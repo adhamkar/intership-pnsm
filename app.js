@@ -1,3 +1,4 @@
+/*
 const Sequelize = require("sequelize");
 var express = require("express");
 const app = express();
@@ -25,19 +26,7 @@ const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
     idle: 10000,
   },
 });
-/*
-async function testConnection(){
-  try{
-    await    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  }catch(error){
-    console.error("Unable to connect to the database:", error);
-  }finally{
-    sequelize.close();
-  }
-}
-testConnection()
-*/
+
 
 sequelize
   .authenticate()
@@ -193,5 +182,27 @@ app.delete('/users/:user_id', async (req, res) => {
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
- 
+ */
 
+
+const express = require("express");
+const userRouter = require("./routers/userRouter");
+
+const app = express();
+
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
+
+app.use("/users", userRouter);
+
+// Start the server
+/* 
+app.listen(8080, () => {
+  console.log("Server started on port 8080");
+});
+*/
+
+module.exports = app
