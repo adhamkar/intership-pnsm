@@ -1,0 +1,27 @@
+POST http://localhost:3000/regions
+Content-Type: application/json
+
+{
+  "region": "taroudant",
+  "codeRegion": "thgtr",
+  "email": "sss@gmail.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/regions
+###
+GET http://localhost:3000/regions/2
+###
+DELETE http://localhost:3000/regions/7
+###
+PATCH http://localhost:3000/regions/1
+Content-Type: application/json
+
+{
+  "region": "massa",
+  "codeRegion": "massa123",
+  "email": "massa@gmail.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}

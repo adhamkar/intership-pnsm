@@ -29,7 +29,9 @@ sequelize
 
 // Load the models
 const User = require("./user");
+const Region=require("./region")
 //bdlt User b sequelize
+/* 
 sequelize.sync({ 
   alter: true 
 })
@@ -39,8 +41,11 @@ sequelize.sync({
   .catch((error) => {
     console.log("Failed to synchronize table and model:", error);
   });
+*/
+
 module.exports = {
   User,
+  Region,
   //:require("./user")(sequelize, DataTypes),
   sequelize,
 };
