@@ -1,6 +1,23 @@
 /*
+
+*/
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("./index").sequelize;
+const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
+  dialect: "mssql",
+  host: "ADHAM",
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      trustServerCertificate: true,
+    },
+  },
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+});
 
 const User = sequelize.define(
   "user",
@@ -44,9 +61,10 @@ const User = sequelize.define(
     timestamps: false,
   }
 );
-module.exports = User;
-*/
+module.exports = { User, sequelize };
 
+
+/*
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -101,4 +119,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   return User;
+  module.exports = { User };
 };
+ */
+
+

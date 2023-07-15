@@ -40,6 +40,7 @@ sequelize.sync({
     console.log("Failed to synchronize table and model:", error);
   });
 module.exports = {
-  User:require("./user")(sequelize, DataTypes),
+  User,
+  //:require("./user")(sequelize, DataTypes),
   sequelize,
 };

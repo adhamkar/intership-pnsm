@@ -12,11 +12,11 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/users
 ###
-PATCH http://localhost:3000/users/1
+PATCH http://localhost:3000/users/2
 Content-Type: application/json
 
 {
-  "email": "simo@example.com",
+  "email": "ronaldo@example.com",
   "password": "wewe",
   "type": "cs",
   "documents": "adham karmadi",

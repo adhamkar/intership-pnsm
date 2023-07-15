@@ -1,6 +1,7 @@
 
 const { User } = require("../models/user");
-const sequelize=require('sequelize');
+//const sequelize=require('sequelize');
+
 const getAllUsers = async (req, res) => {
   try {
     
