@@ -187,7 +187,8 @@ app.listen(3000, () => {
 
 const express = require("express");
 const userRouter = require("./routers/userRouter");
-const regionRouter=require("./routers/regionRouter")
+const regionRouter=require("./routers/regionRouter");
+const provinceRouter=require("./routers/provinceRouter")
 const app = express();
 
 app.use(express.json());
@@ -198,6 +199,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 app.use("/regions", regionRouter);
+app.use("/provinces", provinceRouter);
 
 // Start the server
 /* 

@@ -11,7 +11,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/regions
 ###
-GET http://localhost:3000/regions/2
+GET http://localhost:3000/regions/3
 ###
 DELETE http://localhost:3000/regions/7
 ###

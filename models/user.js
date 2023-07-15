@@ -1,6 +1,4 @@
-/*
 
-*/
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
   dialect: "mssql",

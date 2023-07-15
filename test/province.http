@@ -1,0 +1,31 @@
+POST http://localhost:3000/provinces
+Content-Type: application/json
+
+{
+  "region_nom": "ddddd",
+  "province_nom":"jdjdj",
+  "codeRegion": "thdddgtr",
+  "codeProvince":"12rge344",
+  "email": "sss@gmail.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/provinces
+###
+GET http://localhost:3000/provinces/1
+###
+DELETE http://localhost:3000/provinces/3
+###
+PATCH http://localhost:3000/provinces/1
+Content-Type: application/json
+
+{
+ "region_nom": "fffhahaf",
+  "province_nom":"atay",
+  "codeRegion": "thgtr",
+  "codeProvince":"12344",
+  "email": "sss@gmail.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}

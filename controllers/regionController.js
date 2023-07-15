@@ -31,10 +31,6 @@ const createRegion = async (req, res) => {
   }
 };
 
-
- 
-
-
 const getRegionById = async (req, res) => {
   try {
     const { region_id } = req.params;
