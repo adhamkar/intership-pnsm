@@ -1,0 +1,33 @@
+POST http://localhost:3000/planActions
+Content-Type: application/json
+
+{
+  "csr_id": "1234555",
+  "year": "2020",
+  "programme_id": "341124",
+  "submit": true,
+  "ressource_id": "234235",
+  "ressourcesHumain_id": "53254345",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/planActions
+###
+GET http://localhost:3000/planActions/1
+###
+DELETE http://localhost:3000/planActions/1
+###
+PATCH http://localhost:3000/planActions/1
+Content-Type: application/json
+
+{
+   "csr_id": "33444212",
+  "year": "2020",
+  "programme_id": "341124",
+  "submit": true,
+  "ressource_id": "234235",
+  "ressourcesHumain_id": "53254345",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}

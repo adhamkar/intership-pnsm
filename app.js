@@ -191,6 +191,7 @@ const regionRouter=require("./routers/regionRouter");
 const provinceRouter=require("./routers/provinceRouter");
 const populationRouter=require("./routers/populationRouter");
 const pdrRouter=require("./routers/pdrRouter");
+const planActionRouter=require("./routers/planActionRouter");
 
 const app = express();
 
@@ -205,6 +206,7 @@ app.use("/regions", regionRouter);
 app.use("/provinces", provinceRouter);
 app.use("/populations", populationRouter);
 app.use("/pdrs", pdrRouter);
+app.use("/planActions", planActionRouter);
 
 // Start the server
 /* 
