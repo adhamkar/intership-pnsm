@@ -16,41 +16,33 @@ const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
   },
 });
 
-const Province = sequelize.define(
-  "province",
+const Pdr = sequelize.define(
+  "pdr",
   {
-    province_id: {
+    pdr_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    region_nom: {
+    localite: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    province_nom: {
+    pdr: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    codeRegion: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    codeProvince: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
+    csr: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     createdAt: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
       allowNull: false,
     },
     updatedAt: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
       allowNull: true,
     },
@@ -61,9 +53,9 @@ const Province = sequelize.define(
     timestamps: false,
   }
 );
-module.exports = { Province, sequelize };
+module.exports = { Pdr, sequelize };
 
-Province.sync({
+Pdr.sync({
   alter: true,
 })
   .then(() => {

@@ -1,0 +1,56 @@
+POST http://localhost:3000/populations
+Content-Type: application/json
+
+{
+  "year":"2018", 
+  "population_rurale":"933", 
+  "population_habitantMoins3km":"34",
+  "population_habitantEntre3km6km":"15",
+  "population_habitantEntre6km10km":"5",
+  "population_habitantPlus10km":"17",
+  "population_cible":"17",
+  "distanceMoyenneRouteProche":"9",
+  "enfant_id":"4",
+  "enfant_naissancesAttendues":"13",
+  "enfant_moins1ans":"17",
+  "enfant_moins5ans":"16",
+  "femme_id":"13",
+  "femme_far":"15",
+  "femme_fmar":"14",
+  "femme_femmeEnceinte":"13",
+  "csr_id":"12",
+  "createdAt":"2022-11-17",
+  "updatedAt":"2019-11-17"
+}
+###
+GET http://localhost:3000/populations
+###
+
+GET http://localhost:3000/populations/1
+###
+DELETE http://localhost:3000/populations/2
+###
+PATCH http://localhost:3000/populations/3
+Content-Type: application/json
+
+{
+ "year":"2023", 
+  "population_rurale":"454", 
+  "population_habitantMoins3km":"22",
+  "population_habitantEntre3km6km":"33",
+  "population_habitantEntre6km10km":"4",
+  "population_habitantPlus10km":"36",
+  "population_cible":"45",
+  "distanceMoyenneRouteProche":"33",
+  "enfant_id":"34",
+  "enfant_naissancesAttendues":"44",
+  "enfant_moins1ans":"22",
+  "enfant_moins5ans":"44",
+  "femme_id":"32",
+  "femme_far":"25",
+  "femme_fmar":"56",
+  "femme_femmeEnceinte":"62",
+  "csr_id":"55",
+  "createdAt":"2023-10-27",
+  "updatedAt":"2023-12-11"
+}

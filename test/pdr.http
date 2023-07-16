@@ -1,0 +1,27 @@
+POST http://localhost:3000/pdrs
+Content-Type: application/json
+
+{
+  "localite": "ugpp",
+  "pdr": "aaa",
+  "csr": "rabat",
+  "createdAt":"2019-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/pdrs
+###
+GET http://localhost:3000/regions/2
+###
+DELETE http://localhost:3000/regions/3
+###
+PATCH http://localhost:3000/pdrs/2
+Content-Type: application/json
+
+{
+  "localite": "ffff",
+  "pdr": "aaeeea",
+  "csr": "casa",
+  "createdAt":"2019-12-06",
+  "updatedAt":"2021-11-17"
+}

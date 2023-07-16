@@ -1,6 +1,6 @@
 const express = require("express");
 //const { sequelize, DataTypes } = require("sequelize");
-const { Province } = require('../models');
+const { Province } = require("../models");
 const router = express.Router();
 
 const {
@@ -9,9 +9,9 @@ const {
   getProvinceById,
   updateProvince,
   deleteProvince,
-}=require("../controllers/provinceController");
+} = require("../controllers/provinceController");
 
-router.get("/",getAllProvinces );
+router.get("/", getAllProvinces);
 router.post("/", createProvince);
 router.get("/:province_id", getProvinceById);
 router.patch("/:province_id", updateProvince);
