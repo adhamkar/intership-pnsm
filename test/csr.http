@@ -1,0 +1,40 @@
+POST http://localhost:3000/Csrs
+Content-Type: application/json
+
+{
+   "region": "New Region",
+  "province": "New Province",
+  "cs": "New CS",
+  "commune": "New Commune",
+  "csr": "New CSR",
+  "category": "New Category",
+  "codeRegion": 3,
+  "codeProvince": 4,
+  "email": "new@example.com",
+  "createdAt": "2023-07-17",
+  "updatedAt": "2023-07-17"
+}
+###
+GET http://localhost:3000/Csrs
+###
+
+GET http://localhost:3000/Csrs/1
+###
+DELETE http://localhost:3000/Csrs/2
+###
+PATCH http://localhost:3000/Csrs/2
+Content-Type: application/json
+
+{
+  "region": "another Region",
+  "province": "another Province",
+  "cs": "another CS",
+  "commune": "another Commune",
+  "csr": "another CSR",
+  "category": "another Category",
+  "codeRegion": 5,
+  "codeProvince": 4,
+  "email": "another@example.com",
+  "createdAt": "2023-07-17",
+  "updatedAt": "2023-07-17"
+}
