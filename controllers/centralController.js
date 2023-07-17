@@ -16,7 +16,7 @@ const getAllCentrals = async (req, res) => {
 
 const createCentral = async (req, res) => {
   try {
-    const { email, password, type, documents, createdAt, updatedAt } = req.body;
+    const { email, createdAt, updatedAt } = req.body;
     const newCentral = await Central.create({
       email,
       createdAt,

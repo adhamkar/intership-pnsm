@@ -1,0 +1,29 @@
+POST http://localhost:3000/rapports
+Content-Type: application/json
+
+{
+  "csr_id": "54",
+  "trimestre":3,
+  "year":"2020-12-06",
+  "sortie_id":19,
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/rapports
+###
+PATCH http://localhost:3000/rapports/2
+Content-Type: application/json
+
+{
+  "csr_id": "44",
+  "trimestre":1,
+  "year":"2020-12-06",
+  "sortie_id":12,
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+DELETE http://localhost:3000/rapports/1
+###
+GET http://localhost:3000/rapports/1

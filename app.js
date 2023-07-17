@@ -195,6 +195,7 @@ const planActionRouter = require("./routers/planActionRouter");
 const ressourceRouter = require("./routers/ressourceRouter");
 const ressourceHumaineRouter = require("./routers/ressourceHumaineRouter");
 const centralRouter = require("./routers/centralRouter");
+const rapportRouter = require("./routers/rapportRouter");
 
 const app = express();
 
@@ -213,6 +214,7 @@ app.use("/planActions", planActionRouter);
 app.use("/ressources", ressourceRouter);
 app.use("/ressourceHumaines", ressourceHumaineRouter);
 app.use("/centrals", centralRouter);
+app.use("/rapports", rapportRouter);
 
 // Start the server
 /* 
