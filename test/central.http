@@ -1,0 +1,23 @@
+POST http://localhost:3000/centrals
+Content-Type: application/json
+
+{
+  "email": "malika@example.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+GET http://localhost:3000/centrals
+###
+PATCH http://localhost:3000/centrals/1
+Content-Type: application/json
+
+{
+  "email": "ADHAM@example.com",
+  "createdAt":"2020-12-06",
+  "updatedAt":"2021-11-17"
+}
+###
+DELETE http://localhost:3000/centrals/1
+###
+GET http://localhost:3000/centrals/1
