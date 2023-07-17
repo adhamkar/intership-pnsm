@@ -1,0 +1,41 @@
+POST http://localhost:3000/ressources
+Content-Type: application/json
+
+{
+   "year":"2022-01-12",
+  "vehicule_id":"3323",
+  "vehicule_type":"car",
+  "vehicule_age":"5",
+  "budget_id":"2335",
+  "budget_besoinCarburant":"5.5",
+  "budget_KmsParcourus":"6",
+  "besoinUsm":"11",
+  "observation":"gcghcxkktx",
+  "csr_id":"22",
+  "createdAt":"2023-02-01",
+  "updatedAt":"2023-07-19"
+}
+###
+GET http://localhost:3000/ressources
+###
+GET http://localhost:3000/ressources/3
+###
+DELETE http://localhost:3000/ressources/3
+###
+PATCH http://localhost:3000/ressources/4
+Content-Type: application/json
+
+{
+  "year":"2022-01-13",
+  "vehicule_id":"6654",
+  "vehicule_type":"CAMION",
+  "vehicule_age":"5",
+  "budget_id":"2335",
+  "budget_besoinCarburant":"5.5",
+  "budget_KmsParcourus":"6",
+  "besoinUsm":"11",
+  "observation":"gcghcxkktx",
+  "csr_id":"22",
+  "createdAt":"2023-02-01",
+  "updatedAt":"2023-07-19"
+}

@@ -1,0 +1,75 @@
+POST http://localhost:3000/ressourceHumaines
+Content-Type: application/json
+
+
+      {
+  "year": "2020-04-14",
+  "fixe_id": 133,
+  "fixe_medecin": 3,
+  "fixe_infermier": 4,
+  "fixe_sageFemme": 3,
+  "fixe_chauffeur": 5,
+  "fixe_appuie": 5,
+  "mobile_id": 33,
+  "mobile_medecin": 5,
+  "mobile_infermier": 8,
+  "mobile_sageFemme": 9,
+  "mobile_chauffeur": 5,
+  "mobile_appuie": 5,
+  "mobile_technicien": true,
+  "mobile_emOperationnelle": 5,
+  "csr_id": 55,
+  "createdAt": "2020-03-14",
+  "updatedAt": "2020-03-14",
+  "emOperationnelle": 3,
+  "ressourcesHumaineMobilise_id": 5436,
+  "ressourcesHumaineMobilise_medecin": 14,
+  "ressourcesHumaineMobilise_infermier": 33,
+  "ressourcesHumaineMobilise_sageFemme": 42,
+  "ressourcesHumaineMobilise_chauffeur": 33,
+  "ressourcesHumaineMobilise_appuie": 44,
+  "ressourcesHumaineMobilise_technicien": true,
+  "trimestre": 1,
+  "sortie_id": 23
+
+}
+###
+GET http://localhost:3000/ressourceHumaines
+###
+GET http://localhost:3000/ressourceHumaines/2
+###
+DELETE http://localhost:3000/ressourceHumaines/3
+###
+PATCH http://localhost:3000/ressourceHumaines/3
+Content-Type: application/json
+
+{
+  "year": "2020-04-14",
+  "fixe_id": 133,
+  "fixe_medecin": 3,
+  "fixe_infermier": 4,
+  "fixe_sageFemme": 3,
+  "fixe_chauffeur": 5,
+  "fixe_appuie": 5,
+  "mobile_id": 33,
+  "mobile_medecin": 5,
+  "mobile_infermier": 8,
+  "mobile_sageFemme": 9,
+  "mobile_chauffeur": 5,
+  "mobile_appuie": 5,
+  "mobile_technicien": true,
+  "mobile_emOperationnelle": 5,
+  "csr_id": 55,
+  "createdAt": "2020-03-14",
+  "updatedAt": "2020-03-14",
+  "emOperationnelle": 3,
+  "ressourcesHumaineMobilise_id": 5436,
+  "ressourcesHumaineMobilise_medecin": 14,
+  "ressourcesHumaineMobilise_infermier": 33,
+  "ressourcesHumaineMobilise_sageFemme": 42,
+  "ressourcesHumaineMobilise_chauffeur": 33,
+  "ressourcesHumaineMobilise_appuie": 44,
+  "ressourcesHumaineMobilise_technicien": true,
+  "trimestre": 1,
+  "sortie_id": 25
+}

@@ -187,11 +187,13 @@ app.listen(3000, () => {
 const express = require("express");
 
 const userRouter = require("./routers/userRouter");
-const regionRouter=require("./routers/regionRouter");
-const provinceRouter=require("./routers/provinceRouter");
-const populationRouter=require("./routers/populationRouter");
-const pdrRouter=require("./routers/pdrRouter");
-const planActionRouter=require("./routers/planActionRouter");
+const regionRouter = require("./routers/regionRouter");
+const provinceRouter = require("./routers/provinceRouter");
+const populationRouter = require("./routers/populationRouter");
+const pdrRouter = require("./routers/pdrRouter");
+const planActionRouter = require("./routers/planActionRouter");
+const ressourceRouter = require("./routers/ressourceRouter");
+const ressourceHumaineRouter = require("./routers/ressourceHumaineRouter");
 
 const app = express();
 
@@ -207,6 +209,8 @@ app.use("/provinces", provinceRouter);
 app.use("/populations", populationRouter);
 app.use("/pdrs", pdrRouter);
 app.use("/planActions", planActionRouter);
+app.use("/ressources", ressourceRouter);
+app.use("/ressourceHumaines", ressourceHumaineRouter);
 
 // Start the server
 /* 
@@ -215,4 +219,4 @@ app.listen(8080, () => {
 });
 */
 
-module.exports = app
+module.exports = app;

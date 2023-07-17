@@ -1,10 +1,8 @@
-
 const { Region } = require("../models/region");
 //const sequelize=require('sequelize');
 
 const getAllRegions = async (req, res) => {
   try {
-    
     const regions = await Region.findAll();
     res.status(200).json(regions);
   } catch (error) {
@@ -12,7 +10,6 @@ const getAllRegions = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 const createRegion = async (req, res) => {
   try {
