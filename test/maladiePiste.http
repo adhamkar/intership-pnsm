@@ -1,0 +1,31 @@
+POST http://localhost:3000/maladiePistes
+Content-Type: application/json
+
+{
+ "year": "2023-07-16",
+  "maladie": "Example Maladie",
+  "csr_id": 1,
+  "trimestre": 2,
+  "sortie_id": 3,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/maladiePistes
+###
+GET http://localhost:3000/maladiePistes/1
+###
+DELETE http://localhost:3000/maladiePistes/1
+###
+PATCH http://localhost:3000/maladiePistes/1
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "maladie": "NEW Maladie",
+  "csr_id": 1,
+  "trimestre": 2,
+  "sortie_id": 3,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}

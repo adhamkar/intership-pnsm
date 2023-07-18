@@ -199,6 +199,7 @@ const rapportRouter = require("./routers/rapportRouter");
 const csrRouter = require("./routers/csrRouter");
 const autreActiviteRouter = require("./routers/autreActiviteRouter");
 const detectionPrecoceCancerRouter = require("./routers/detectionPrecoceCancerRouter");
+const maladiePisteRouter = require("./routers/maladiePisteRouter");
 
 const app = express();
 
@@ -221,6 +222,7 @@ app.use("/rapports", rapportRouter);
 app.use("/csrs", csrRouter);
 app.use("/autreActivites", autreActiviteRouter);
 app.use("/detectionPrecoceCancers", detectionPrecoceCancerRouter);
+app.use("/maladiePistes", maladiePisteRouter);
 
 // Start the server
 /* 
