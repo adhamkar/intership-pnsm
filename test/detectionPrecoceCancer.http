@@ -1,0 +1,33 @@
+POST http://localhost:3000/detectionPrecoceCancers
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "femmeExamine": "Examine",
+  "femmeRefere": "Refer",
+  "csr": "CSR",
+  "trimestre": "Trimester",
+  "sortie_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/detectionPrecoceCancers
+###
+PATCH http://localhost:3000/detectionPrecoceCancers/1
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "femmeExamine": "nerw Examine",
+  "femmeRefere": "Refer",
+  "csr": "CSR",
+  "trimestre": "Trimester",
+  "sortie_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+DELETE http://localhost:3000/detectionPrecoceCancers/1
+###
+GET http://localhost:3000/detectionPrecoceCancers/1

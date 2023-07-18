@@ -1,4 +1,4 @@
-const { AutreActivite } = require("../models/AutreActivite");
+const { AutreActivite } = require("../models/autreActivite");
 //const sequelize=require('sequelize');
 
 const getAllAutreActivites = async (req, res) => {
