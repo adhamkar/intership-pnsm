@@ -1,0 +1,41 @@
+POST http://localhost:3000/autreActivites
+Content-Type: application/json
+
+{
+  "csr_id": 1,
+  "sortie_id": 2,
+  "trimestre": 3,
+  "ignore": false,
+  "ativity_id": 4,
+  "activity_typeBeneficier": "Type of Beneficiary",
+  "activity_type": "Type of Activity",
+  "activity_Beneficier": 5,
+  "activity_observation": "Observation",
+  "year": "2023-07-16",
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/autreActivites
+###
+PATCH http://localhost:3000/autreActivites/3
+Content-Type: application/json
+
+{
+  "csr_id": 6,
+  "sortie_id": 2,
+  "trimestre": 3,
+  "ignore": false,
+  "ativity_id": 4,
+  "activity_typeBeneficier": "ANOTHER of Beneficiary",
+  "activity_type": "ANOTHER of Activity",
+  "activity_Beneficier": 5,
+  "activity_observation": "ANOTHER Observation",
+  "year": "2023-07-16",
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+DELETE http://localhost:3000/autreActivites/1
+###
+GET http://localhost:3000/autreActivites/1

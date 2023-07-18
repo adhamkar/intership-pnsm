@@ -197,6 +197,7 @@ const ressourceHumaineRouter = require("./routers/ressourceHumaineRouter");
 const centralRouter = require("./routers/centralRouter");
 const rapportRouter = require("./routers/rapportRouter");
 const csrRouter = require("./routers/csrRouter");
+const autreActiviteRouter = require("./routers/autreActiviteRouter");
 
 const app = express();
 
@@ -217,6 +218,7 @@ app.use("/ressourceHumaines", ressourceHumaineRouter);
 app.use("/centrals", centralRouter);
 app.use("/rapports", rapportRouter);
 app.use("/csrs", csrRouter);
+app.use("/autreActivites", autreActiviteRouter);
 
 // Start the server
 /* 
