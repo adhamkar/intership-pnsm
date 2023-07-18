@@ -1,0 +1,51 @@
+POST http://localhost:3000/santeScolaires
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "etablissementVisite": 1,
+  "eleveExamine_id": 2,
+  "eleveExamine_cible": 100,
+  "eleveExamine_realisation": 80,
+  "lutteContreDeficienceVisuelle_id": 3,
+  "lutteContreDeficienceVisuelle_echelleMetrique_id": 4,
+  "lutteContreDeficienceVisuelle_echelleMetrique_cible": "Cible 1",
+  "lutteContreDeficienceVisuelle_echelleMetrique_realisation": "Realisation 1",
+  "lutteContreDeficienceVisuelle_refractionAutomatique_id": 5,
+  "lutteContreDeficienceVisuelle_refractionAutomatique_cible": "Cible 2",
+  "lutteContreDeficienceVisuelle_refractionAutomatique_realisation": "Realisation 2",
+  "csr_id": 6,
+  "trimestre": "Trimester 1",
+  "sortie_id": 7,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/santeScolaires
+###
+PATCH http://localhost:3000/santeScolaires/1
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "etablissementVisite": 2,
+  "eleveExamine_id": 2,
+  "eleveExamine_cible": 100,
+  "eleveExamine_realisation": 80,
+  "lutteContreDeficienceVisuelle_id": 3,
+  "lutteContreDeficienceVisuelle_echelleMetrique_id": 4,
+  "lutteContreDeficienceVisuelle_echelleMetrique_cible": "Cible 1",
+  "lutteContreDeficienceVisuelle_echelleMetrique_realisation": "Realisation 1",
+  "lutteContreDeficienceVisuelle_refractionAutomatique_id": 5,
+  "lutteContreDeficienceVisuelle_refractionAutomatique_cible": "Cible 2",
+  "lutteContreDeficienceVisuelle_refractionAutomatique_realisation": "Realisation 2",
+  "csr_id": 6,
+  "trimestre": "Trimester 1",
+  "sortie_id": 7,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+DELETE http://localhost:3000/santeScolaires/1
+###
+GET http://localhost:3000/santeScolaires/1

@@ -1,6 +1,6 @@
 const express = require("express");
 //const { sequelize, DataTypes } = require("sequelize");
-const { Ressource } = require('../models');
+const { Ressource } = require("../models");
 const router = express.Router();
 
 const {
@@ -9,9 +9,9 @@ const {
   getRessourceById,
   updateRessource,
   deleteRessource,
-}=require("../controllers/ressourceController");
+} = require("../controllers/ressourceController");
 
-router.get("/",getAllRessources );
+router.get("/", getAllRessources);
 router.post("/", createRessource);
 router.get("/:ressource_id", getRessourceById);
 router.patch("/:ressource_id", updateRessource);
