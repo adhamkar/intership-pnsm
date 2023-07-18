@@ -29,12 +29,12 @@ const Central = sequelize.define(
       allowNull: false,
     },
     createdAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
       allowNull: false,
     },
     updatedAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
       allowNull: true,
     },
