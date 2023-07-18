@@ -1,0 +1,39 @@
+POST http://localhost:3000/pdrVisites
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "realise": 1,
+  "id_unique": "123e4567-e89b-12d3-a456-426614174000",
+  "KmParcourus": 100,
+  "observation": "Example Observation",
+  "csr_id": 1,
+  "trimestre": 2,
+  "sortie_id": 3,
+  "budgetCarburantEmConsomme": 50.5,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/pdrVisites
+###
+GET http://localhost:3000/regions/1
+###
+DELETE http://localhost:3000/regions/1
+###
+PATCH http://localhost:3000/pdrVisites/1
+Content-Type: application/json
+
+{
+   "year": "2023-07-16",
+  "realise": 1,
+  "id_unique": "123e4567-e89b-12d3-a456-426614174110",
+  "KmParcourus": 100,
+  "observation": "Example Observation",
+  "csr_id": 1,
+  "trimestre": 2,
+  "sortie_id": 3,
+  "budgetCarburantEmConsomme": 50.5,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
