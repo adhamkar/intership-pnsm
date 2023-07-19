@@ -1,0 +1,59 @@
+POST http://localhost:3000/planificationFamiliales
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "pilule_id": 1,
+  "pilule_na": 10,
+  "pilule_aa": 5,
+  "injectable_id": 2,
+  "injectable_na": 8,
+  "injectable_aa": 3,
+  "diu_id": 3,
+  "diu_na": 6,
+  "diu_aa": 2,
+  "condom_id": 4,
+  "condom_na": "Available",
+  "condom_aa": "Limited",
+  "reference_id": 5,
+  "reference_diu": 4,
+  "reference_it": 7,
+  "csr_id": 1,
+  "sortie_id": 1,
+  "trimestre": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/planificationFamiliales
+###
+GET http://localhost:3000/planificationFamiliales/1
+###
+DELETE http://localhost:3000/planificationFamiliales/1
+###
+PATCH http://localhost:3000/planificationFamiliales/1
+Content-Type: application/json
+
+{
+  "year": "2013-07-16",
+  "pilule_id": 1,
+  "pilule_na": 10,
+  "pilule_aa": 5,
+  "injectable_id": 2,
+  "injectable_na": 8,
+  "injectable_aa": 3,
+  "diu_id": 3,
+  "diu_na": 6,
+  "diu_aa": 2,
+  "condom_id": 4,
+  "condom_na": "Available",
+  "condom_aa": "Limited",
+  "reference_id": 5,
+  "reference_diu": 4,
+  "reference_it": 7,
+  "csr_id": 1,
+  "sortie_id": 1,
+  "trimestre": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
