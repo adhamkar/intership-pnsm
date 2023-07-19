@@ -1,0 +1,51 @@
+POST http://localhost:3000/SanteMaternelles
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "cpn_id": 1,
+  "cpn_nouvellInscrit_id": 2,
+  "cpn_nouvellInscrit_t": 2,
+  "cpn_ancienlInscrit_id": 3,
+  "cpn_ancienInscrit_t": 3,
+  "auteConsultation": 1,
+  "garDepiste": 1,
+  "femmeExaminePostNatal": 10,
+  "vat": 1,
+  "reference": 1,
+  "trimestre": 1,
+  "csr_id": 4,
+  "sortie_id": 5,
+  "femmePriseCharge": 15,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/SanteMaternelles
+###
+PATCH http://localhost:3000/SanteMaternelles/1
+Content-Type: application/json
+
+{
+ "year": "2023-07-16",
+  "cpn_id": 1,
+  "cpn_nouvellInscrit_id": 2,
+  "cpn_nouvellInscrit_t": 2,
+  "cpn_ancienlInscrit_id": 3,
+  "cpn_ancienInscrit_t": 3,
+  "auteConsultation": 1,
+  "garDepiste": 1,
+  "femmeExaminePostNatal": 10,
+  "vat": 1,
+  "reference": 1,
+  "trimestre": 1,
+  "csr_id": 4,
+  "sortie_id": 5,
+  "femmePriseCharge": 15,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+DELETE http://localhost:3000/SanteMaternelles/1
+###
+GET http://localhost:3000/SanteMaternelles/1
