@@ -1,0 +1,51 @@
+POST http://localhost:3000/sorties
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "submit": true,
+  "csr_id": 1,
+  "trimestre": 2,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16",
+  "pdrVisite_id": 2,
+  "populationCible_id": 3,
+  "ressourceHumainMobil_id": 4,
+  "santeMaternelle_id": 5,
+  "santeInfantile_id": 6,
+  "planificationFamiliale_id": 7,
+  "santeScolaire_id": 8,
+  "consultationMedicale_id": 9,
+  "detectionPrecCancer_id": 10,
+  "maladiePiste_id": 11,
+  "autreActivite": "Example Activity"
+}
+###
+GET http://localhost:3000/sorties
+###
+GET http://localhost:3000/sorties/1
+###
+DELETE http://localhost:3000/sorties/1
+###
+PATCH http://localhost:3000/sorties/1
+Content-Type: application/json
+
+{
+  "year": "2023-07-06",
+  "submit": false,
+  "csr_id": 1,
+  "trimestre": 2,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16",
+  "pdrVisite_id": 2,
+  "populationCible_id": 3,
+  "ressourceHumainMobil_id": 4,
+  "santeMaternelle_id": 5,
+  "santeInfantile_id": 6,
+  "planificationFamiliale_id": 7,
+  "santeScolaire_id": 8,
+  "consultationMedicale_id": 9,
+  "detectionPrecCancer_id": 10,
+  "maladiePiste_id": 11,
+  "autreActivite": "Example Activity"
+}

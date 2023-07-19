@@ -207,6 +207,7 @@ const santeInfantilRouter = require("./routers/santeInfantilRouter");
 const programmeRouter = require("./routers/programmeRouter");
 const populationCibleRouter = require("./routers/populationCibleRouter");
 const planificationFamilialeRouter = require("./routers/planificationFamilialeRouter");
+const sortieRouter = require("./routers/sortieRouter");
 const app = express();
 
 app.use(express.json());
@@ -236,6 +237,7 @@ app.use("/santeInfantils", santeInfantilRouter);
 app.use("/programmes", programmeRouter);
 app.use("/populationCibles", populationCibleRouter);
 app.use("/planificationFamiliales", planificationFamilialeRouter);
+app.use("/sorties", sortieRouter);
 
 // Start the server
 /* 
