@@ -1,0 +1,41 @@
+POST http://localhost:3000/populationCibles
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "populationCible": 1000,
+  "fmar": 1,
+  "enfant_id": 1,
+  "enfant_naissancesAttendues": 200,
+  "enfant_moins1ans": 50,
+  "enfant_moins5ans": 150,
+  "csr_id": 1,
+  "trimestre": 1,
+  "sortie_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/populationCibles
+###
+GET http://localhost:3000/populationCibles/1
+###
+DELETE http://localhost:3000/populationCibles/1
+###
+PATCH http://localhost:3000/populationCibles/2
+Content-Type: application/json
+
+{
+   "year": "2023-07-16",
+  "populationCible": 90,
+  "fmar": 1,
+  "enfant_id": 1,
+  "enfant_naissancesAttendues": 200,
+  "enfant_moins1ans": 50,
+  "enfant_moins5ans": 150,
+  "csr_id": 1,
+  "trimestre": 1,
+  "sortie_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
