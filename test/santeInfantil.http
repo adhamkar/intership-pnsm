@@ -1,0 +1,53 @@
+POST http://localhost:3000/santeInfantils
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "vaccination_id": 1,
+  "vaccination_pentavalent": 2,
+  "vaccination_rr": 3,
+  "vaccination_bcg": 4,
+  "vitamineA": 5,
+  "vitamineB": 6,
+  "enfantsAvecInsuffisancePonderale": 1,
+  "enfantsAvecRetardCroissance": 1,
+  "diarrhe": 10,
+  "ira": 1,
+  "reference": 1,
+  "trimestre": 1,
+  "csr_id": 4,
+  "sortie_id": 5,
+  "enfantPrisesCharge": 15,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/santeInfantils
+###
+PATCH http://localhost:3000/santeInfantils/2
+Content-Type: application/json
+
+{
+ "year": "2023-07-16",
+  "vaccination_id": 1,
+  "vaccination_pentavalent": 2,
+  "vaccination_rr": 3,
+  "vaccination_bcg": 4,
+  "vitamineA": 5,
+  "vitamineB": 6,
+  "enfantsAvecInsuffisancePonderale": 1,
+  "enfantsAvecRetardCroissance": 1,
+  "diarrhe": 10,
+  "ira": 1,
+  "reference": 1,
+  "trimestre": 1,
+  "csr_id": 4,
+  "sortie_id": 5,
+  "enfantPrisesCharge": 15,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+DELETE http://localhost:3000/santeInfantils/1
+###
+GET http://localhost:3000/santeInfantils/2
