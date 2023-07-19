@@ -1,0 +1,41 @@
+POST http://localhost:3000/programmes
+Content-Type: application/json
+
+{
+  "year": "2023-07-16",
+  "localite": "Example Locality",
+  "pdr": "Example PDR",
+  "distance": 100,
+  "accessibility": "Example Accessibility",
+  "t1": 1,
+  "t2": 2,
+  "t3": 3,
+  "t4": 4,
+  "csr_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}
+###
+GET http://localhost:3000/programmes
+###
+GET http://localhost:3000/programmes/1
+###
+DELETE http://localhost:3000/programmes/1
+###
+PATCH http://localhost:3000/programmes/1
+Content-Type: application/json
+
+{
+ "year": "2023-07-16",
+  "localite": "Example ggg",
+  "pdr": "Example PDR",
+  "distance": 100,
+  "accessibility": "Example Accessibility",
+  "t1": 1,
+  "t2": 2,
+  "t3": 3,
+  "t4": 4,
+  "csr_id": 1,
+  "createdAt": "2023-07-16",
+  "updatedAt": "2023-07-16"
+}

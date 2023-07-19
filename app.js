@@ -204,6 +204,7 @@ const pdrVisiteRouter = require("./routers/pdrVisiteRouter");
 const santeScolaireRouter = require("./routers/santeScolaireRouter");
 const santeMaternelleRouter = require("./routers/santeMaternelleRouter");
 const santeInfantilRouter = require("./routers/santeInfantilRouter");
+const programmeRouter = require("./routers/programmeRouter");
 
 const app = express();
 
@@ -231,6 +232,7 @@ app.use("/pdrVisites", pdrVisiteRouter);
 app.use("/santeScolaires", santeScolaireRouter);
 app.use("/santeMaternelles", santeMaternelleRouter);
 app.use("/santeInfantils", santeInfantilRouter);
+app.use("/programmes", programmeRouter);
 
 // Start the server
 /* 
