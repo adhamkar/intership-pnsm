@@ -17,3 +17,5 @@ Content-Type: application/json
 
 }
 ###
+GET  http://localhost:3000/api/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkZG1AaG90bWFpbC5jb20iLCJpYXQiOjE2ODk5NzMxMzIsImV4cCI6MTY4OTk3NjczMn0.83kO5HIo1UQqLDTH3ar7IZx9C7dISTMS-TM9l5HUFng

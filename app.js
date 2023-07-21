@@ -212,8 +212,8 @@ const sortieRouter = require("./routers/sortieRouter");
 //router of auth_jwt
 const authRoutes = require('./routers/auth');
 //middleware
-const authenticateToken = require('./middleware/auth');
-
+//const authenticateToken = require('./middleware/auth');
+const protectedRouter = require('./routers/protectedRouter');
 const app = express();
 
 app.use(express.json());
@@ -245,7 +245,9 @@ app.use("/programmes", programmeRouter);
 app.use("/populationCibles", populationCibleRouter);
 app.use("/planificationFamiliales", planificationFamilialeRouter);
 app.use("/sorties", sortieRouter);
+
 app.use('/auth', authRoutes);
+app.use('/api', protectedRouter);
 
 // Start the server
 /* 
