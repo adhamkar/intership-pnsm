@@ -13,7 +13,9 @@ router.post('/login', async (req, res) => {
   try {
     // Find the user by email in the database
     const user = await User.findOne({ where: { email } });
+
     console.log("User found:", user);
+    
     if (!user) {
       console.log("User not found for email:", email);
       return res.status(401).json({ error: 'Authentication failed' });
