@@ -19,6 +19,7 @@ sql.connect(config, function (err) {
   });
 });
 */
+
 const app = require("./app");
 
 // Start the server

@@ -1,0 +1,19 @@
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email":"sddm@hotmail.com",
+  "password":"fff",
+  "type":"cs"
+
+}
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email":"sddm@hotmail.com",
+  "password":"fff"
+
+}
+###

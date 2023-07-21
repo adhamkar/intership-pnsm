@@ -185,6 +185,7 @@ app.listen(3000, () => {
  */
 
 const express = require("express");
+const bodyParser = require('body-parser');
 
 const userRouter = require("./routers/userRouter");
 const regionRouter = require("./routers/regionRouter");
@@ -208,9 +209,15 @@ const programmeRouter = require("./routers/programmeRouter");
 const populationCibleRouter = require("./routers/populationCibleRouter");
 const planificationFamilialeRouter = require("./routers/planificationFamilialeRouter");
 const sortieRouter = require("./routers/sortieRouter");
+//router of auth_jwt
+const authRoutes = require('./routers/auth');
+//middleware
+const authenticateToken = require('./middleware/auth');
+
 const app = express();
 
 app.use(express.json());
+//app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Welcome");
@@ -238,6 +245,7 @@ app.use("/programmes", programmeRouter);
 app.use("/populationCibles", populationCibleRouter);
 app.use("/planificationFamiliales", planificationFamilialeRouter);
 app.use("/sorties", sortieRouter);
+app.use('/auth', authRoutes);
 
 // Start the server
 /* 

@@ -1,4 +1,3 @@
-
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
   dialect: "mssql",
@@ -43,12 +42,12 @@ const User = sequelize.define(
       allowNull: true,
     },
     createdAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
     updatedAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
       allowNull: true,
     },
@@ -59,8 +58,18 @@ const User = sequelize.define(
     timestamps: false,
   }
 );
+
 module.exports = { User, sequelize };
 
+User.sync({
+  alter: true,
+})
+  .then(() => {
+    console.log("Table and model synchronized successfully");
+  })
+  .catch((error) => {
+    console.log("Failed to synchronize table and model:", error);
+  });
 
 /*
 
@@ -120,5 +129,3 @@ module.exports = (sequelize, DataTypes) => {
   module.exports = { User };
 };
  */
-
-
