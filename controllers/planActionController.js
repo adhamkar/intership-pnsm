@@ -14,6 +14,7 @@ const getAllPlanActions = async (req, res) => {
 const createPlanAction = async (req, res) => {
   try {
     const {
+      population_id,
       csr_id,
       year,
       programme_id,
@@ -25,6 +26,7 @@ const createPlanAction = async (req, res) => {
     } = req.body;
 
     const newPlanAction = await PlanAction.create({
+      population_id,
       csr_id,
       year,
       programme_id,
@@ -61,6 +63,7 @@ const updatePlanAction = async (req, res) => {
   try {
     const { planAction_id } = req.params;
     const {
+      population_id,
       csr_id,
       year,
       programme_id,
@@ -76,6 +79,7 @@ const updatePlanAction = async (req, res) => {
     if (!r) {
       res.status(404).json({ error: "PlanAction not found" });
     } else {
+      r.population_id = population_id || r.population_id;
       r.csr_id = csr_id || r.csr_id;
       r.year = year || r.year;
       r.programme_id = programme_id || r.programme_id;

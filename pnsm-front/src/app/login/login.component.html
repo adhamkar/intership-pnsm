@@ -1,0 +1,59 @@
+<p></p>
+<!--
+  <div class="container">
+  <h2>login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">SignIn</button>
+  </form>
+  <p>Don't have an account? <button><a routerLink="/signup">signup here</a></button></p>
+</div>
+-->
+<!-- login.component.html -->
+<div class="photo">
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Login</h1>
+        <p class="lead">Plateforme national de la sante mobile.</p>
+      </div>
+    </div> <br>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput required>
+        <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" formControlName="password" matInput required>
+        <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button type="submit" class="btn btn-primary">LogIn</button>
+  </form>
+  <p>Don't have an account? <a routerLink="/signup"><button type="button" class="btn btn-link">signup here</button></a></p>
+</div>
+<br>
+<br>
+<br>
+</div>
+
+

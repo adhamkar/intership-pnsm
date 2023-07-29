@@ -16,6 +16,10 @@ const sequelize = new Sequelize("test_Db", "adhaam", "1234", {
   },
 });
 
+const {Province}=require('./province');
+const {Rapport}=require('./Rapport');
+const {PlanAction}=require('./planAction');
+
 const Csr = sequelize.define(
   "csr",
   {
@@ -77,6 +81,9 @@ const Csr = sequelize.define(
     timestamps: false,
   }
 );
+//Csr.hasMany(Province, { foreignKey: 'csr_id', as: 'provinces' });
+//Csr.hasMany(Rapport, { foreignKey: 'csr_id', as: 'rapports' });
+//Csr.hasMany(PlanAction, { foreignKey: 'csr_id', as: 'planActions' });
 module.exports = { Csr, sequelize };
 
 Csr.sync({

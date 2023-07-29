@@ -27,7 +27,10 @@ const User = sequelize.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      validate: {
+        isEmail: true, 
+      },
+      
     },
     password: {
       type: DataTypes.STRING,
@@ -36,6 +39,9 @@ const User = sequelize.define(
     type: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate:{
+        isIn:[['csr','region','province','central']],
+      },
     },
     documents: {
       type: DataTypes.STRING,

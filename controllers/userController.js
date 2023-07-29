@@ -32,10 +32,6 @@ const createUser = async (req, res) => {
   }
 };
 
-
- 
-
-
 const getUserById = async (req, res) => {
   try {
     const { user_id } = req.params;
@@ -45,6 +41,23 @@ const getUserById = async (req, res) => {
       res.status(404).json({ error: "User not found" });
     } else {
       res.status(200).json(user);
+    }
+  } catch (error) {
+    console.error("Error getting user:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getUserByemail = async (req, res) => {
+  try {
+    const user_id = req.params.user_id;
+    const user = await User.findByPk(user_id);
+
+    if (!user) {
+      res.status(404).json({ error: "User email not found" });
+    } else {
+      const email = user.email;
+      res.status(200).json({ email });
     }
   } catch (error) {
     console.error("Error getting user:", error);
@@ -102,4 +115,5 @@ module.exports = {
   getUserById,
   updateUser,
   deleteUser,
+  getUserByemail,
 };

@@ -185,6 +185,8 @@ app.listen(3000, () => {
  */
 
 const express = require("express");
+const cors = require('cors');
+//const { sequelize } = require('./association/relationships');
 const bodyParser = require('body-parser');
 
 const userRouter = require("./routers/userRouter");
@@ -217,6 +219,7 @@ const protectedRouter = require('./routers/protectedRouter');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 //app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -255,5 +258,8 @@ app.listen(8080, () => {
   console.log("Server started on port 8080");
 });
 */
+// Sync the Sequelize instance to create the associations
+
+//sequelize.sync();
 
 module.exports = app;

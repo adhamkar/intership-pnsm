@@ -25,6 +25,11 @@ const PlanAction = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    population_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      
+    },
     csr_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

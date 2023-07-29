@@ -1,0 +1,74 @@
+<p></p>
+<!--
+<div class="container">
+  <h2>Sign Up</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" formControlName="type" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+  <p>Already have an account? <button><a routerLink="/login">Login here</a></button></p>
+</div>
+-->
+<div class="photo">
+<br>
+
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">SignUp</h1>
+      <p class="lead">Plateforme national de la sante mobile.</p>
+    </div>
+  </div> <br>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput required>
+        <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="emailExists">Email already exists</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" formControlName="password" matInput required>
+        <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" required>
+          <mat-option value="csr">csr</mat-option>
+          <mat-option value="region">region</mat-option>
+          <mat-option value="province">province</mat-option>
+          <mat-option value="central">central</mat-option>
+        </mat-select>
+        <mat-error *ngIf="signupForm.get('type')?.invalid && signupForm.get('type')?.touched">
+          Type is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+  <p>Already have an account? <a routerLink="/login"><button type="button" class="btn btn-link">login here</button></a></p>
+</div>
+</div>
+
+

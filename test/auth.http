@@ -2,9 +2,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email":"sddm@hotmail.com",
-  "password":"fff",
-  "type":"cs"
+  "email":"mofffo@hotmail.com",
+  "password":"123456789",
+  "type":"csr"
 
 }
 ###
@@ -12,10 +12,10 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email":"sddm@hotmail.com",
-  "password":"fff"
+  "email":"momo@hotmail.com",
+  "password":"123456789"
 
 }
 ###
 GET  http://localhost:3000/api/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkZG1AaG90bWFpbC5jb20iLCJpYXQiOjE2ODk5NzMxMzIsImV4cCI6MTY4OTk3NjczMn0.83kO5HIo1UQqLDTH3ar7IZx9C7dISTMS-TM9l5HUFng
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkZG1AaG90bWFpbC5jb20iLCJpYXQiOjE2OTAxNTI4MjUsImV4cCI6MTY5MDE1NjQyNX0.yjAk-bIHVgBW-51wWTxU5V-Dg-t_Do2X-U5FYL5clHI

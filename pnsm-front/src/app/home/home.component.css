@@ -1,0 +1,71 @@
+/*
+.header {
+  height: 100vh;
+  width: 100%;
+  background-image: url('../../assets/logopnsm.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-position-y: 40px;
+  background-attachment: fixed;
+ }
+
+*/
+.invisible-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  /* Optionally set other styles as needed */
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+.image1{
+  height: 58vh;
+  width: 100%;
+}
+.col-12 {
+  width: 100%;
+
+}
+.bg-grd{
+  background-color: #114094;
+  background-image: linear-gradient(1601deg,#114094,#6294ed 100%);
+  color: white !important;
+}
+.card{
+border: 0 !important;
+box-shadow: none !important;
+border-radius: 0.5rem;
+}
+.text-white{
+  color: white !important;
+}
+.text-center{
+  text-align: center !important;
+}
+.fw-bold{
+  font-weight: 700 !important;
+}
+.p-2{
+  padding: 0.5rem;
+}
+ .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh; /* Adjust the height of the footer background image as needed */
+  background-image: url('../../assets/si7a.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}

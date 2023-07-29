@@ -2,9 +2,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "malika@example.com",
+  "email": "rr@example.com",
   "password": "adhegzrtgrtam",
-  "type": "cs",
+  "type": "csr",
   "documents": "Lorem waa",
   "createdAt":"2020-12-06",
   "updatedAt":"2021-11-17"
@@ -27,3 +27,5 @@ Content-Type: application/json
 DELETE http://localhost:3000/users/1
 ###
 GET http://localhost:3000/users/2
+###
+GET http://localhost:3000/users/2/email
