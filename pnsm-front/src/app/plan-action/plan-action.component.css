@@ -1,0 +1,28 @@
+.photoPlanAction{
+background-image: url('../../assets/logoforPlanAction.png');
+background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.bcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  margin-top: 10px;
+  margin-bottom: 130px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 7px;
+  max-width: 400px; /* Set the maximum width you desire */
+  margin: 0 auto;
+}
+
+.image{
+  background-image: url('../../assets/logoforPlanAction.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-left: 490px;
+  height: 30vh;
+}

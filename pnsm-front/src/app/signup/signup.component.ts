@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit{
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      type: ['', Validators.required],
+      type: ['', [Validators.required]],
     });
   }
 
@@ -42,12 +42,16 @@ export class SignupComponent implements OnInit{
             // Proceed with user creation if email doesn't exist
             this.http.post('http://localhost:3000/auth/signup', formData).subscribe(
               (response) => {
-                // Handle successful response here, e.g., redirect to home page
+                if (formData.type === 'csr'){
                 console.log('User created:', response);
+                localStorage.setItem('userType', formData.type);
+                this.router.navigate(['/planaction']);
+              }
               },
               (error) => {
                 // Handle error here, e.g., display error message to user
                 console.error('Error creating user:', error);
+
               }
             );
           }
@@ -107,5 +111,5 @@ getUserEmail(): Observable<string | null>{
     return of(null); // Return null if the user ID is not available
   }
 }
-
 }
+

@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomeComponent } from './home/home.component';
 import { MatSelectModule } from '@angular/material/select';
+import { PlanActionComponent } from './plan-action/plan-action.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PlanActionComponent
   ],
   imports: [
     BrowserModule,

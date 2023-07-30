@@ -30,7 +30,8 @@
               "src/styles.css",
               "src/app/login/login.component.css",
               "src/app/signup/signup.component.css",
-              "src/app/home/home.component.css"
+              "src/app/home/home.component.css",
+              "src/app/plan-action/plan-action.component.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"

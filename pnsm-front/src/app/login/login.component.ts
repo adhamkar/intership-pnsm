@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+
     });
   }
   ngOnInit(): void {
@@ -21,20 +22,20 @@ export class LoginComponent implements OnInit{
 
   onLogin() {
     if(this.loginForm.valid){
-      const formData=this.loginForm.value
-    const loginData={email: formData.email,password:formData.password};
+    const formData=this.loginForm.value
+    const loginData={email: formData.email,password:formData.password, type:formData.type};
     this.http.post('http://localhost:3000/auth/login',loginData).subscribe(
       (response: any) => {
         // Handle successful login here
+
         console.log('Login successful!', response);
-
-        // Assuming the server returns an access token upon successful login
         const accessToken = response.accessToken;
-        // Example of saving the access token in local storage:
         localStorage.setItem('access_token', accessToken);
+        const userType = localStorage.getItem('userType');
+        if (userType === 'csr'){
+          this.router.navigate(['/planaction']);
+        }
 
-        // Redirect to the desired page after successful login
-        this.router.navigate(['/home']);
       },
       (error) => {
         console.error('Login failed!', error);
