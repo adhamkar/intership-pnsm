@@ -31,7 +31,12 @@
               "src/app/login/login.component.css",
               "src/app/signup/signup.component.css",
               "src/app/home/home.component.css",
-              "src/app/plan-action/plan-action.component.css"
+              "src/app/plan-action/plan-action.component.css",
+              "src/app/population-couvrir/population-couvrir.component.css",
+              "src/app/programme-remplire/programme-remplire.component.css",
+              "src/app/ressources/ressources.component.css",
+              "src/app/ressources-humaine/ressources-humaine.component.css",
+              "src/app/image-slides/image-slides.component.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"

@@ -35,7 +35,7 @@ const createPopulation = async (req, res) => {
       femme_femmeEnceinte,
       csr_id,
       createdAt,
-      updatedAt } = req.body;
+      updatedAt,} = req.body;
     const newPopulation = await Population.create({
       year, 
       population_rurale, 

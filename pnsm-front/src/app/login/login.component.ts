@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private http: HttpClient, private router:Router) {
+  userType: string | null = null;
+  constructor(private fb: FormBuilder, private http: HttpClient, private router:Router,private route:ActivatedRoute) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -18,6 +19,9 @@ export class LoginComponent implements OnInit{
     });
   }
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.userType = params['userType'] || null;
+    });
   }
 
   onLogin() {
@@ -31,10 +35,8 @@ export class LoginComponent implements OnInit{
         console.log('Login successful!', response);
         const accessToken = response.accessToken;
         localStorage.setItem('access_token', accessToken);
-        const userType = localStorage.getItem('userType');
-        if (userType === 'csr'){
-          this.router.navigate(['/planaction']);
-        }
+        this.router.navigate(['/planaction']);
+        
 
       },
       (error) => {

@@ -1,10 +1,9 @@
 const express = require('express');
-//const authController = require('../controllers/auth');
-
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../models/user');
 const { generateToken } = require('../utils/jwt');
+const { Population } = require('../models/population');
 
 router.post('/login', async (req, res) => {
   
@@ -67,6 +66,45 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.post('/populations',  async (req, res) =>{
+  try{
+    const { 
+      population_rurale,
+      population_cible_equipe_mobile,
+      population_habitant_moins_de_3km,
+      listeLocPopulation_habitant_entre_3km_et_6kmalites,
+      population_habitant_entre_6km_10km,
+      population_habitant_plus_10km,
+      distance_moyenne_entre_cs_route_goudronnee_plus_proche,
+      naissances_attendues,
+      enfants_moins_1ans,
+      enfants_moins_5ans,
+      nombre_FAR,
+      nombre_FMAR,
+      femmes_enceintes,
+    } = req.body;
+    const newPopulation = await Population.create({ 
+      population_rurale,
+      population_cible_equipe_mobile,
+      population_habitant_moins_de_3km,
+      listeLocPopulation_habitant_entre_3km_et_6kmalites,
+      population_habitant_entre_6km_10km,
+      population_habitant_plus_10km,
+      distance_moyenne_entre_cs_route_goudronnee_plus_proche,
+      naissances_attendues,
+      enfants_moins_1ans,
+      enfants_moins_5ans,
+      nombre_FAR,
+      nombre_FMAR,
+      femmes_enceintes,
+     });
+     res.status(201).json({ newPopulation });
+  }catch(error){
+    console.error(error);
+    res.status(500).json({ error: 'saving data failed' })
+  }
+  
+})
 module.exports = router;
 /*
 router.post('/signup', authController.signup);
@@ -74,4 +112,4 @@ router.post('/login', authController.login);
 */
 
 
-module.exports = router;
+

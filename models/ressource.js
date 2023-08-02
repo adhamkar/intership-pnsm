@@ -68,7 +68,7 @@ const Ressource = sequelize.define(
     createdAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
     updatedAt: {
       type: DataTypes.DATEONLY,

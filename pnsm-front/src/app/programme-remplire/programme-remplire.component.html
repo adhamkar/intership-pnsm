@@ -1,0 +1,90 @@
+
+<header class="logout">
+  <div class="toframe">
+    <button class="button1 btn2">
+      modifier mot de passe
+  </button>
+    <button class=" button1 btn1" (click)="onLogout()">
+      logout
+  </button>
+  </div>
+</header>
+
+<div class=" reduce">
+  <div class="card bg-grd p-2 fs-7 text-white fw-bold text-center">
+    Plan d’action des unités médicales mobiles (UMM)
+</div>
+<h5 class="h5">
+  Détails du plan d'action
+</h5>
+
+<div class="toCenter">
+<form class="form-container" [formGroup]="myprogramme" (ngSubmit)="getProgrammeData()">
+  <div class="form" >
+    <h5 class="pop">
+      <mat-icon class="people">list</mat-icon>
+      Programme prévisionnel des UMM
+    </h5>
+    <h5 class="pop circle-icon">
+      <u>Information sur le programme :</u>
+    </h5>
+
+      <span>PDR à couvrir</span>
+      <input placeholder="pdr" type="text" class="input2" formControlName="pdr" required>
+      <span>Distance entre le centre de santé et le PDR</span>
+      <input placeholder="distance"  type="number" class="input2" formControlName="distance" required>
+      <span>Accessibilité au PDR</span>
+        <select formControlName="accessibility" required>
+          <option value="" disabled selected>Choisir une option</option>
+          <option value="car">car</option>
+          <option value="automobile">automobile</option>
+          <option value="camion">camion</option>
+          <option value="autre">autre</option>
+        </select>
+
+      <span>Liste des localités</span>
+      <select formControlName="localite" required>
+        <option value="" disabled selected>Choisir une option</option>
+        <option value="region1">region1</option>
+        <option value="region2">region2</option>
+        <option value="autre">autre</option>
+
+      </select>
+      <span>CSR_id</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="csr_id" required>
+      <span>Année</span>
+      <input placeholder="valeur" type="date" class="input2" formControlName="year" required>
+
+      <span>T1</span>
+      <input placeholder="trimestre 1"  type="number" class="input2" formControlName="t1" required>
+      <span>T2</span>
+      <input placeholder="trimestre 2" type="number" class="input2" formControlName="t2" required>
+      <span>T3</span>
+      <input placeholder="trimestre 3" type="number" class="input2" formControlName="t3" required>
+      <span>T4</span>
+      <input placeholder="trimestre 4" type="number" class="input2" formControlName="t4" required>
+
+      <div class="button-container">
+      <button  type="submit" [disabled]="myprogramme.invalid" class=" button1 btn1 senda">Send</button>
+      <div class="success1" *ngIf="isDataSaved">
+        <div class="check">
+          <mat-icon>check</mat-icon>
+        </div>
+        <span class="enrg">
+        Enregisté
+        </span>
+
+      </div>
+      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/ressources">
+        <mat-icon>keyboard_tab</mat-icon>
+      </button>
+      </div>
+  </div>
+</form>
+</div>
+<br><br><br><br><br><br>
+<footer class="footer">
+  <div class="container3">
+    <img src="../../assets/si7a.png" alt="Footer Image">
+  </div>
+</footer>

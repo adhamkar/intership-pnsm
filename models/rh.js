@@ -96,12 +96,12 @@ const RessourceHumaine = sequelize.define(
     createdAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
     updatedAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: true,
+      allowNull: false,
     },
     emOperationnelle: {
       type: DataTypes.TINYINT,

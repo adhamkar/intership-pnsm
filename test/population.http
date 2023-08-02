@@ -2,8 +2,8 @@ POST http://localhost:3000/populations
 Content-Type: application/json
 
 {
-  "year":"2018", 
-  "population_rurale":"933", 
+  
+  "population_rurale":"33", 
   "population_habitantMoins3km":"34",
   "population_habitantEntre3km6km":"15",
   "population_habitantEntre6km10km":"5",
@@ -18,7 +18,7 @@ Content-Type: application/json
   "femme_far":"15",
   "femme_fmar":"14",
   "femme_femmeEnceinte":"13",
-  "csr_id":"12",
+  
   "createdAt":"2022-11-17",
   "updatedAt":"2019-11-17"
 }

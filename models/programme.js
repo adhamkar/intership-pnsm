@@ -31,6 +31,9 @@ const Programme = sequelize.define(
     localite: {
       type: DataTypes.STRING(255),
       allowNull: false,
+      validate:{
+        isIn:[['region1','region2','autre']],
+      },
     },
     pdr: {
       type: DataTypes.STRING,
@@ -43,22 +46,29 @@ const Programme = sequelize.define(
     accessibility: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate:{
+        isIn:[['car','automobile','camion','autre']],
+      },
     },
     t1: {
       type: DataTypes.TINYINT,
       allowNull: false,
+      defaultValue: 0,
     },
     t2: {
       type: DataTypes.TINYINT,
       allowNull: false,
+      defaultValue: 0,
     },
     t3: {
       type: DataTypes.TINYINT,
       allowNull: false,
+      defaultValue: 0,
     },
     t4: {
       type: DataTypes.TINYINT,
       allowNull: false,
+      defaultValue: 0,
     },
     csr_id: {
       type: DataTypes.INTEGER,
@@ -67,7 +77,7 @@ const Programme = sequelize.define(
     createdAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
     updatedAt: {
       type: DataTypes.DATEONLY,

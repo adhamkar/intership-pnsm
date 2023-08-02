@@ -2,7 +2,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email":"mofffo@hotmail.com",
+  "email":"gggshhght@hotmail.com",
   "password":"123456789",
   "type":"csr"
 
@@ -12,10 +12,32 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email":"momo@hotmail.com",
+  "email":"gggshhght@hotmail.com",
   "password":"123456789"
 
 }
 ###
+POST http://localhost:3000/auth/populations
+Content-Type: application/json
+
+{
+  "population_rurale": 33,
+  "population_habitantMoins3km": 34,
+  "population_habitantEntre3km6km": 15,
+  "population_habitantEntre6km10km": 5,
+  "population_habitantPlus10km": 17,
+  "population_cible": 17,
+  "distanceMoyenneRouteProche": 9,
+  "enfant_id": 4,
+  "enfant_naissancesAttendues": 13,
+  "enfant_moins1ans": 17,
+  "enfant_moins5ans": 16,
+  "femme_id": 13,
+  "femme_far": 15,
+  "femme_fmar": 14,
+  "femme_femmeEnceinte": 13
+
+}
+###
 GET  http://localhost:3000/api/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkZG1AaG90bWFpbC5jb20iLCJpYXQiOjE2OTAxNTI4MjUsImV4cCI6MTY5MDE1NjQyNX0.yjAk-bIHVgBW-51wWTxU5V-Dg-t_Do2X-U5FYL5clHI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdnZ3NoaGdodEBob3RtYWlsLmNvbSIsImlhdCI6MTY5MDc2NjAyMSwiZXhwIjoxNjkwNzY5NjIxfQ.fK7UsTFV_XvccYrkCUb69AAJ-J8Djgvc8TGZP9IRCUs

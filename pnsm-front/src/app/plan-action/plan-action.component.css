@@ -18,11 +18,13 @@ background-size: cover;
   margin: 0 auto;
 }
 
-.image{
+.headerpl{
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-image: url('../../assets/logoforPlanAction.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-left: 490px;
+  margin-left: 20px;
   height: 30vh;
 }

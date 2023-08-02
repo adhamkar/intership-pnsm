@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router  } from '@angular/router';
 import { response } from 'express';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
   }
   onSubmit() {
     if (this.signupForm.valid) {
@@ -45,7 +46,7 @@ export class SignupComponent implements OnInit{
                 if (formData.type === 'csr'){
                 console.log('User created:', response);
                 localStorage.setItem('userType', formData.type);
-                this.router.navigate(['/planaction']);
+                this.router.navigate(['/planaction'],{queryParams:{userType:formData.type}});
               }
               },
               (error) => {

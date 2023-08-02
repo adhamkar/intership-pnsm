@@ -1,0 +1,120 @@
+<header class="logout">
+  <div class="toframe">
+    <button class="button1 btn2">
+      modifier mot de passe
+  </button>
+    <button class=" button1 btn1" (click)="onLogout()">
+      logout
+  </button>
+  </div>
+</header>
+
+<div class=" reduce">
+  <div class="card bg-grd p-2 fs-7 text-white fw-bold text-center">
+    Plan d’action des unités médicales mobiles (UMM)
+</div>
+<h5 class="h5">
+  Détails du plan d'action
+</h5>
+<div class="toCenter">
+<form class="form-container" [formGroup]="myRh" (ngSubmit)="getRHData()">
+  <div class="form" >
+    <h5 class="pop">
+      <mat-icon class="people">directions_car</mat-icon>
+      Population à couvrir par l'équipe mobile
+    </h5>
+    <h5 class="pop circle-icon">
+      <u>Information sur les ressources Humaines:</u>
+    </h5>
+    <span>Année</span>
+    <input placeholder="valeur" type="date" class="input2" formControlName="year" required>
+    <span>Trimestre</span>
+    <input placeholder="valeur" type="number" class="input2" formControlName="trimestre" required>
+    <span>Sortie id</span>
+    <input placeholder="valeur" type="number" class="input2" formControlName="sortie_id" required>
+      <h5 class="pop circle-icon">
+        <u>Mode fixe:</u>
+      </h5>
+      <span>Fixe id</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="fixe_id" required>
+      <span>Medecin</span>
+      <input placeholder="valeur"  type="text" class="input2" formControlName="fixe_medecin" required>
+      <span>Infermier</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="fixe_infermier" required>
+      <span>Sage Femme</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="fixe_sageFemme" required>
+      <span>Chauffeur</span>
+      <input placeholder="valeur"  type="number" class="input2" formControlName="fixe_chauffeur" required>
+      <span>Appuie</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="fixe_appuie" required>
+      <h5 class="pop circle-icon">
+        <u>Mode mobile :</u>
+      </h5>
+      <span>Mobile id</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_id" required>
+      <span>Medecin</span>
+      <input placeholder="valeur"  type="text" class="input2" formControlName="mobile_medecin" required>
+      <span>Infermier</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_infermier" required>
+      <span>Sage Femme</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_sageFemme" required>
+      <span>Chauffeur</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_chauffeur" required>
+      <span>Appuie</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_appuie" required>
+      <span><mat-checkbox formControlName="mobile_technicien" required>Technicien</mat-checkbox></span><br>
+      <span>Nombre d’équipes opérationnelle Mobile</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="mobile_emOperationnelle" required>
+      <span>CSR id</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="csr_id" required>
+      <h5 class="pop circle-icon">
+        <u>Ressources Humaine Mobilisé :</u>
+      </h5>
+      <span>RH id</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_id" required>
+      <span>Medecin</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_medecin" required>
+      <span>Infermier</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_infermier" required>
+      <span>Sage Femme</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_sageFemme" required>
+      <span>Chauffeur</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_chauffeur" required>
+      <span>Appui</span>
+      <input placeholder="valeur" type="number" class="input2" formControlName="ressourcesHumaineMobilise_appuie" required>
+      <span><mat-checkbox formControlName="ressourcesHumaineMobilise_technicien" required>Technicien</mat-checkbox></span>
+      <!--
+
+      <input placeholder="valeur" type="checkbox" value="true" class="input2" formControlName="ressourcesHumaineMobilise_technicien" required>
+      -->
+      <h5 class="pop circle-icon">
+        <u>Nombre d’équipes opérationnelle :</u>
+      </h5>
+      <input placeholder="valeur" type="number" class="input2" formControlName="emOperationnelle" required>
+      <div class="button-container">
+      <button  type="submit" [disabled]="myRh.invalid" class=" button1 btn1 " >Send</button>
+      <div class="success1" *ngIf="isDataSaved">
+        <div class="check">
+          <mat-icon>check</mat-icon>
+        </div>
+        <span class="enrg">
+        Enregisté
+        </span>
+
+      </div>
+      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/ressourcesHumaine">
+        <mat-icon>keyboard_tab</mat-icon>
+      </button>
+      </div>
+  </div>
+</form>
+</div>
+<br><br><br><br><br><br>
+<div class="footer" >
+  <div >
+  <div class="container3" >
+    <img src="../../assets/si7a.png" alt="Footer Image">
+  </div>
+</div>
+</div>
+

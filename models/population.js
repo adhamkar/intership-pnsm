@@ -26,6 +26,7 @@ const Population = sequelize.define(
     },
     year: {
       type: DataTypes.DATEONLY,
+      defaultValue: Sequelize.NOW,
       allowNull: false,
     },
     population_rurale: {
@@ -90,17 +91,17 @@ const Population = sequelize.define(
     },
     csr_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     createdAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
     updatedAt: {
       type: DataTypes.DATEONLY,
       defaultValue: Sequelize.NOW,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

@@ -26,6 +26,16 @@
   height: 58vh;
   width: 100%;
 }
+.slide{
+  margin-top: 2rem;
+
+  padding: 35px;
+  height: 50vh;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .col-12 {
   width: 100%;
 
@@ -52,7 +62,7 @@ border-radius: 0.5rem;
 .p-2{
   padding: 0.5rem;
 }
- .footer {
+ .footer1 {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -63,9 +73,14 @@ border-radius: 0.5rem;
   background-repeat: no-repeat;
   background-position: center center;
  }
+
 @media screen and (max-width: 600px) {
   .container {
     max-width: 100%;
     padding: 10px;
   }
+}
+
+.custom-card {
+  background-color: #ebebeb; /* Replace "your-desired-color" with your desired background color value */
 }

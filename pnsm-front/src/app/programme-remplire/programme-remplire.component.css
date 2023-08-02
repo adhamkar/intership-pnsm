@@ -1,0 +1,17 @@
+.h5{
+
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 7px;
+  max-width: 150px;
+  margin-top: 10px;
+  font-weight: 600;
+  background-color: lightgreen;
+}
+
+.toCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+}
