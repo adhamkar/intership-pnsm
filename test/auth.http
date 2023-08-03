@@ -41,3 +41,11 @@ Content-Type: application/json
 ###
 GET  http://localhost:3000/api/protected
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdnZ3NoaGdodEBob3RtYWlsLmNvbSIsImlhdCI6MTY5MDc2NjAyMSwiZXhwIjoxNjkwNzY5NjIxfQ.fK7UsTFV_XvccYrkCUb69AAJ-J8Djgvc8TGZP9IRCUs
+###
+PATCH http://localhost:3000/auth/pssw
+Content-Type: application/json
+
+{
+  "email": "gggshhght@hotmail.com",
+  "newPassword": "aaaabbbbbb"
+}

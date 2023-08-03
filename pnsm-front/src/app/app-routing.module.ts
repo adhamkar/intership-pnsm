@@ -7,7 +7,10 @@ import { PlanActionComponent  } from './plan-action/plan-action.component';
 import { PopulationCouvrirComponent } from './population-couvrir/population-couvrir.component';
 import {ProgrammeRemplireComponent} from './programme-remplire/programme-remplire.component';
 import{RessourcesComponent} from './ressources/ressources.component';
-import{RessourcesHumaineComponent} from './ressources-humaine/ressources-humaine.component'
+import{RessourcesHumaineComponent} from './ressources-humaine/ressources-humaine.component';
+import{AboutUsComponent} from './about-us/about-us.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
+import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
 
 const routes: Routes = [
 
@@ -20,6 +23,9 @@ const routes: Routes = [
   { path: 'programmeRemplire', component: ProgrammeRemplireComponent },
   {path:'ressources', component: RessourcesComponent},
   {path:'ressourcesHumaine', component: RessourcesHumaineComponent},
+  {path:'aboutus',component: AboutUsComponent},
+  {path:'modiermdp',component: PasswordChangeComponent},
+  {path:'ModifierETtelecharger',component: ModifierETtelechargerComponent}
 ];
 
 @NgModule({

@@ -249,13 +249,14 @@ table {
 }
 .input2{
   margin-top: 9px;
+
 }
 .form-container .form .input2 {
   color: #87a4b6;
   width: 100%;
-  background-color: #002733;
-  border: none;
-  outline: none;
+  background-color: #969696;
+
+  outline-color: #114094;
   padding: 10px;
   margin-bottom: 20px;
   font-weight: bold;

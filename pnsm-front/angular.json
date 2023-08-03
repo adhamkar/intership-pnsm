@@ -36,7 +36,9 @@
               "src/app/programme-remplire/programme-remplire.component.css",
               "src/app/ressources/ressources.component.css",
               "src/app/ressources-humaine/ressources-humaine.component.css",
-              "src/app/image-slides/image-slides.component.css"
+              "src/app/modifier-ettelecharger/modifier-ettelecharger.component.css",
+              "src/app/password-change/password-change.component.css"
+
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"

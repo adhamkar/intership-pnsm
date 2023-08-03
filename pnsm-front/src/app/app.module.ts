@@ -23,6 +23,9 @@ import { RessourcesHumaineComponent } from './ressources-humaine/ressources-huma
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 
 
@@ -38,6 +41,9 @@ import { MatButtonModule } from '@angular/material/button';
     ProgrammeRemplireComponent,
     RessourcesComponent,
     RessourcesHumaineComponent,
+    AboutUsComponent,
+    ModifierETtelechargerComponent,
+    PasswordChangeComponent,
   ],
   imports: [
     BrowserModule,

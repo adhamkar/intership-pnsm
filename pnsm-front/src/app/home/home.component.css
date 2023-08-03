@@ -84,3 +84,101 @@ border-radius: 0.5rem;
 .custom-card {
   background-color: #ebebeb; /* Replace "your-desired-color" with your desired background color value */
 }
+footer{
+  padding: 0;
+  margin: 0;
+  background-color: #4169E1;
+}
+.footerContainer{
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 70px 30px 20px;
+}
+.socialIcons{
+  display: flex;
+  justify-content: center;
+}
+.socialIcons a{
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 50px;
+  background-color: white;
+}
+.socialIcons a .i{
+font-size: 1.65rem;
+color: black;
+opacity: 0.9;
+}
+.socialIcons a:hover{
+  background-color: black;
+  transition: 0.5s;
+}
+
+.socialIcons a:hover .i{
+color: white;
+transition: 0.5s;
+}
+.footerNav
+{
+  margin: 30px 0;
+}
+.footerNav ul{
+  display: flex;
+  justify-content: center;
+}
+.footerNav {
+ color: white;
+ margin: 20px;
+ text-decoration: none;
+ font-size: 1.3rem;
+ opacity: 0.7;
+ transition: 0.5s;
+}
+a{
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.3rem;
+
+}
+ul
+{
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  list-style-type: none;
+}
+li{
+  color: white;
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+.hoverme:hover{
+  opacity: 1;
+  color: white;
+}
+.head{
+  color: black;
+}
+.footerBottom
+{
+  background-color: #114094;
+  padding: 20px;
+  text-align: center;
+}
+.footerBottom p{
+  color: white;
+}
+.designer{
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin: 0px 5px ;
+}
