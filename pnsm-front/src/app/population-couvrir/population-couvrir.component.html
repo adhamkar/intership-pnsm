@@ -1,7 +1,7 @@
 
 <header class="logout">
   <div class="toframe">
-    <button class="button1 btn2">
+    <button class="button1 btn2" (click)="changePwd()">
       modifier mot de passe
   </button>
     <button class=" button1 btn1" (click)="onLogout()">
@@ -65,7 +65,7 @@
       <button  type="submit" [disabled]="myForm.invalid" class=" button1 btn1 senda" >Send</button>
 
       <div class="success1" *ngIf="isDataSaved">
-        <div class="check">
+        <div class="check" >
           <mat-icon>check</mat-icon>
         </div>
         <span class="enrg">
@@ -81,7 +81,64 @@
       </div>
   </div>
 </form>
+<div class="Tablecontainer ">
+  <table *ngIf="tableData.length > 0" id="data-table" class="table custom-table ">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <!-- ... -->
+        <th>Column 17</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+        <td>{{ data.population_rurale }}</td>
+        <td>{{ data.population_habitantMoins3km }}</td>
+        <!-- Add your other column data here -->
+        <td>{{ data.population_habitantEntre3km6km }}</td>
+        <td>{{ data.population_habitantEntre6km10km }}</td>
+        <td>{{ data.population_habitantPlus10km }}</td>
+        <td>{{ data.population_cible }}</td>
+        <td>{{ data.distanceMoyenneRouteProche }}</td>
+        <td>{{ data.enfant_id }}</td>
+        <td>{{ data.enfant_naissancesAttendues }}</td>
+        <td>{{ data.enfant_moins1ans }}</td>
+        <td>{{ data.enfant_moins5ans }}</td>
+        <td>{{ data.femme_id }}</td>
+        <td>{{ data.femme_far }}</td>
+        <td>{{ data.femme_fmar }}</td>
+        <td>{{ data.femme_enceinte }}</td>
+        <td>{{ data.createdAt }}</td>
+        <!-- ... -->
+        <td>{{ data.updatedAt }}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
+
+<!-- Add button to download PDF -->
+<button type="button" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+</div>
+
+
+
 <!--
 <div class="tableau">
   <h5 class="pop">

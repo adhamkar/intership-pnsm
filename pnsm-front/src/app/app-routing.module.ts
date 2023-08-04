@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:'ressourcesHumaine', component: RessourcesHumaineComponent},
   {path:'aboutus',component: AboutUsComponent},
   {path:'modiermdp',component: PasswordChangeComponent},
-  {path:'ModifierETtelecharger',component: ModifierETtelechargerComponent}
+  {path:'modifierETtelecharger',component: ModifierETtelechargerComponent}
 ];
 
 @NgModule({

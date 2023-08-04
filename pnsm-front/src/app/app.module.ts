@@ -27,6 +27,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -59,7 +63,10 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     FormsModule,
     MatCheckboxModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastrModule.forRoot(),
+    CommonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -55,4 +55,7 @@ export class RessourcesComponent implements OnInit{
     console.log('logout successful')
     this.router.navigate(['/home'])
   }
+  changePwd(){
+    this.router.navigate(['/modiermdp'])
+  }
 }

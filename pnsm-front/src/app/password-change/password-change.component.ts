@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl,ValidationErrors,Valida
 import { HttpClient } from '@angular/common/http';
 import { Router,ActivatedRoute } from '@angular/router';
 import { response } from 'express';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-change',
@@ -10,9 +11,11 @@ import { response } from 'express';
   styleUrls: ['./password-change.component.css']
 })
 export class PasswordChangeComponent implements OnInit{
-  passwordForm :FormGroup
-constructor(private fb: FormBuilder, private http: HttpClient, private router:Router,private route:ActivatedRoute){
-this.passwordForm=this.fb.group({
+  passwordForm :FormGroup;
+  isDataSaved: boolean = false;
+constructor(private fb: FormBuilder, private http: HttpClient, private router:Router,private route:ActivatedRoute, private toastr: ToastrService){
+
+  this.passwordForm=this.fb.group({
   email: ['', Validators.required],
   currentPassword: ['', Validators.required],
   newPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -31,9 +34,14 @@ if(this.passwordForm.valid){
     this.http.patch('http://localhost:3000/auth/pssw',patchData).subscribe(
       (response: any) => {
         console.log('password modified!', response);
+        this.isDataSaved=true;
         const accessToken = response.accessToken;
         localStorage.setItem('access_token', accessToken);
-        this.router.navigate(['/home']);
+        this.toastr.success('Password modified successfully!', 'Success', {
+          timeOut: 3000,
+          progressBar: true,
+        })
+        //this.router.navigate(['/home']);
       },
       (error) => {
         console.error('changing failed!', error);

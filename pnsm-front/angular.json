@@ -19,6 +19,7 @@
             "polyfills": [
               "zone.js"
             ],
+            
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -37,7 +38,8 @@
               "src/app/ressources/ressources.component.css",
               "src/app/ressources-humaine/ressources-humaine.component.css",
               "src/app/modifier-ettelecharger/modifier-ettelecharger.component.css",
-              "src/app/password-change/password-change.component.css"
+              "src/app/password-change/password-change.component.css",
+              "node_modules/ngx-toastr/toastr.css"
 
             ],
             "scripts": [
