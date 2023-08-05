@@ -5,8 +5,30 @@ import { Router } from '@angular/router';
 import { response } from 'express';
 import{PopulationDataService} from './populationService.component'
 import { MatTableDataSource } from '@angular/material/table';
-const jsPDF = require('jspdf');
-import 'jspdf-autotable';
+import * as jsPDF from 'jspdf';
+
+import {  autoTable,UserOptions } from 'jspdf-autotable';
+
+interface TableDataRow {
+  populationType: string;
+  populationValue: number;
+  population_habitantMoins3km: number;
+  population_habitantEntre3km6km: number;
+  population_habitantEntre6km10km: number;
+  population_habitantPlus10km: number;
+  population_cible: number;
+  distanceMoyenneRouteProche: number;
+  enfant_id: number;
+  enfant_naissancesAttendues: number;
+  enfant_moins1ans: number;
+  enfant_moins5ans: number;
+  femme_id: number;
+  femme_far: number;
+  femme_fmar: number;
+  femme_femmeEnceinte: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 @Component({
   selector: 'app-population-couvrir',
@@ -15,6 +37,7 @@ import 'jspdf-autotable';
 })
 export class PopulationCouvrirComponent implements OnInit {
 
+  @ViewChild('test',{static:false}) el!:ElementRef
   isDataSaved: boolean = false;
   isVisible:boolean = false;
   populations:any;
@@ -120,6 +143,7 @@ export class PopulationCouvrirComponent implements OnInit {
   changePwd(){
     this.router.navigate(['/modiermdp'])
   }
+  /*
   downloadTableAsPDF() {
     const doc = new jsPDF.default(); // Initialize jsPDF as a constructor
     const columns = [
@@ -170,6 +194,128 @@ export class PopulationCouvrirComponent implements OnInit {
     });
 
     doc.save('data-table.pdf');
+  } */
+/*
+  downloadTableAsPDF() {
+    const doc = new jsPDF();
+    const tableData: TableDataRow[] = this.tableData
+
+    // Prepare the data for the table
+    const data: any[] = [];
+    for (const item of tableData) {
+      data.push([
+        item.populationType, // The first column value (Population)
+        item.populationValue, // The second column value (Valeur)
+      ]);
+
+      data.push([
+        "les habitants de moins de 3km",
+        item.population_habitantMoins3km,
+      ]);
+
+      data.push([
+        "les habitants entre 3km et 6km",
+        item.population_habitantEntre3km6km,
+      ]);
+
+      data.push([
+        "les habitants entre 6km et 10km",
+        item.population_habitantEntre6km10km,
+      ]);
+
+      data.push([
+        "les habitants de plus de 10km",
+        item.population_habitantPlus10km,
+      ]);
+
+      data.push([
+        "Population Cible",
+        item.population_cible,
+      ]);
+
+      data.push([
+        "Distance Moyenne la plus Route Proche",
+        item.distanceMoyenneRouteProche,
+      ]);
+
+      data.push([
+        "Enfant id",
+        item.enfant_id,
+      ]);
+
+      data.push([
+        "Naissances Attendues",
+        item.enfant_naissancesAttendues,
+      ]);
+
+      data.push([
+        "Enfant moins de 1ans",
+        item.enfant_moins1ans,
+      ]);
+
+      data.push([
+        "Enfant moins de 5ans",
+        item.enfant_moins5ans,
+      ]);
+
+      data.push([
+        "Femme id",
+        item.femme_id,
+      ]);
+
+      data.push([
+        "Femme far",
+        item.femme_far,
+      ]);
+
+      data.push([
+        "Femmes fmar",
+        item.femme_fmar,
+      ]);
+
+      data.push([
+        "Femmes Enceintes",
+        item.femme_femmeEnceinte,
+      ]);
+
+      data.push([
+        "Date de cration",
+        item.createdAt.toISOString(),
+      ]);
+
+      data.push([
+        "La mise à jour",
+        item.updatedAt.toISOString(),
+      ]);
+    }
+
+    // Set up the table configuration
+    const tableConfig: UserOptions = {
+      head: [['Population', 'Valeur']], // Header row
+      body: data, // Data rows
+    };
+
+    // Generate the table using autoTable
+    doc.autoTable(tableConfig);
+
+    // Save the PDF
+    doc.save('data-table.pdf');
+  }
+*/
+downloadTableAsPDF(){
+  let pdf=new jsPDF.default("l","pt","a4",true);
+  pdf.html(this.el.nativeElement,{
+    callback: (pdf:any)=>{
+      pdf.save("table.pdf")
+    }
+  })
+}
+  private getPopulationType(data:any){
+if(data.hasOwnProperty('populationType')){
+  return data.populationType;
+}else{
+  return '';
+}
   }
 
   private getTableData(): any[][] {

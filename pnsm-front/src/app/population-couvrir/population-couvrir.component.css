@@ -132,6 +132,10 @@ img {
   padding: 10px;
   border: 1px solid #ccc;
 }
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
 
 .custom-table th {
   background-color: #f2f2f2;
@@ -376,5 +380,7 @@ select {
   align-items: center;
 
 }
-
+#data-table{
+  font-size: small;
+}
 

@@ -81,62 +81,91 @@
       </div>
   </div>
 </form>
-<div class="Tablecontainer ">
-  <table *ngIf="tableData.length > 0" id="data-table" class="table custom-table ">
+</div>
+
+<div class="Tablecontainer " #test *ngIf="isDataSaved">
+  <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <!-- ... -->
-        <th>Column 17</th>
+        <th>Population</th>
+        <th>Valeur</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of tableData">
+        <td>Population rurale</td>
         <td>{{ data.population_rurale }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>les habitants de moins de 3km</td>
         <td>{{ data.population_habitantMoins3km }}</td>
-        <!-- Add your other column data here -->
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>les habitants entre 3km et 6km</td>
         <td>{{ data.population_habitantEntre3km6km }}</td>
+       </tr>
+        <tr *ngFor="let data of tableData">
+          <td>les habitants entre 6km et 10km</td>
         <td>{{ data.population_habitantEntre6km10km }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>les habitants de plus de 10km</td>
         <td>{{ data.population_habitantPlus10km }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Population Cible</td>
         <td>{{ data.population_cible }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Distance Moyenne la plus Route Proche</td>
         <td>{{ data.distanceMoyenneRouteProche }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Enfant id</td>
         <td>{{ data.enfant_id }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Naissances Attendues</td>
         <td>{{ data.enfant_naissancesAttendues }}</td>
+
+        <tr *ngFor="let data of tableData">
+          <td>Enfant moins de 1ans</td>
         <td>{{ data.enfant_moins1ans }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Enfant moins de 5ans</td>
         <td>{{ data.enfant_moins5ans }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Femme id</td>
         <td>{{ data.femme_id }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>Femme far</td>
         <td>{{ data.femme_far }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Femmes fmar</td>
         <td>{{ data.femme_fmar }}</td>
-        <td>{{ data.femme_enceinte }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Femmes Enceintes</td>
+        <td>{{ data.femme_femmeEnceinte }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Date de cration</td>
         <td>{{ data.createdAt }}</td>
-        <!-- ... -->
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>La mise à jour</td>
         <td>{{ data.updatedAt }}</td>
       </tr>
     </tbody>
   </table>
-
 </div>
 
-<!-- Add button to download PDF -->
-<button type="button" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
-</div>
-
+<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
 
 <!--
