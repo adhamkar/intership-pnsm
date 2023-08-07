@@ -94,7 +94,8 @@ export class PopulationCouvrirComponent implements OnInit {
         (response) => {
           console.log('Population created:', response);
           this.isDataSaved = true;
-          this.tableData.push({ population_rurale: formData.population_rurale,
+          this.tableData.push({
+            population_rurale: formData.population_rurale,
             population_habitantMoins3km: formData.population_habitantMoins3km,
             population_habitantEntre3km6km:formData.population_habitantEntre3km6km,
 
@@ -128,10 +129,6 @@ export class PopulationCouvrirComponent implements OnInit {
       console.log('Form is invalid. Please fill in all required fields.');
     }
   }
-
-
-
-
 
   ngOnInit(): void {
   }
@@ -302,6 +299,7 @@ export class PopulationCouvrirComponent implements OnInit {
     doc.save('data-table.pdf');
   }
 */
+
 downloadTableAsPDF(){
   let pdf=new jsPDF.default("l","pt","a4",true);
   pdf.html(this.el.nativeElement,{
@@ -310,6 +308,7 @@ downloadTableAsPDF(){
     }
   })
 }
+
   private getPopulationType(data:any){
 if(data.hasOwnProperty('populationType')){
   return data.populationType;

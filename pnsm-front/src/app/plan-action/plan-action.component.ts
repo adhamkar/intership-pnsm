@@ -15,6 +15,6 @@ export class PlanActionComponent implements OnInit{
   ngOnInit(): void {
   }
   onclick(){
-    this.router.navigate(['/populationCouvrir']);
+    this.router.navigate(['/modifierETtelecharger']);
   }
 }

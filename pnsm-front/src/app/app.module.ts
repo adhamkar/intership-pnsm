@@ -30,8 +30,11 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -48,6 +51,7 @@ import { MatTableModule } from '@angular/material/table';
     AboutUsComponent,
     ModifierETtelechargerComponent,
     PasswordChangeComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,11 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     ToastrModule.forRoot(),
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

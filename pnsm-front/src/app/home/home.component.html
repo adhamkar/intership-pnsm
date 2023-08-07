@@ -1,22 +1,56 @@
-
+<!--
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="nav-item nav-link active head" href="#">Home</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <a class="nav-item nav-link active head" href="#">Home</a>
         <a class="nav-item nav-link active" routerLink="/login">Login <span class="sr-only">(signUp)</span></a>
         <a class="nav-item nav-link active" routerLink="/aboutus">About us</a>
         <a class="nav-item nav-link active" href="#">Contact</a>
       </div>
     </div>
+
   </nav>
 <img src="../../assets/logopnsm.png" class="img-fluid ">
 </header>
+-->
+<div style="height: 55vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>PNSM</span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/home" mat-button>Home</a>
+        <a (click)="onclick()" mat-button >Login <span class="sr-only" >(signUp)</span></a>
+        <a routerLink="/aboutus" mat-button>About us</a>
+        <a href="#" mat-button>Contact</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-<br>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a routerLink="/home" mat-list-item>Home</a>
+        <a (click)="onclick()" mat-list-item>Login <span class="sr-only">(signUp)</span></a>
+        <a routerLink="/aboutus" mat-list-item>About us</a>
+        <a href="#" mat-list-item>Contact</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <img src="../../assets/logopnsm.png" class="img-fluid image2">
+  </mat-sidenav-container>
+
+</div>
+<br><br><br><br><br>
 
 <div class="col-12 ">
   <div class="card bg-grd p-2 fs-7 text-white fw-bold text-center">
@@ -24,7 +58,9 @@
       Bienvenu dans la Plateforme Nationale de la Santé Mobile
     </button>
 </div>
-</div><br>
+</div>
+<br><br><br>
+
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <div class="col left">
     <div class="card left">
@@ -45,17 +81,22 @@
     </div>
   </div>
 </div>
-<br><br><br><br><br><br><br><br>
+<br><br><br>
+
 <footer>
   <div class="footerContainer">
+
     <div class="socialIcons">
+     
       <a href="https://www.facebook.com/msps.gov.ma/"><mat-icon class="i">facebook</mat-icon></a>
       <a href=""><mat-icon class="i">linkedin</mat-icon></a>
       <a href=""><mat-icon class="i">instagram</mat-icon></a>
       <a href=""><mat-icon class="i">youtube</mat-icon></a>
+
     </div>
-    <div class="footerNav">
-      <ul>
+
+    <div class="footerNav ">
+      <ul >
         <li class="hoverme"><a href="">home</a></li>
         <li class="hoverme"><a href="">Actualités</a></li>
         <li class="hoverme"><a routerLink="/aboutus">About us</a></li>
@@ -63,12 +104,18 @@
         <li class="hoverme"><a href="">Notre équipe</a></li>
       </ul>
     </div>
+
+
   </div>
+
+
   <div class="footerBottom">
     <p>Copyright &copy;2022; Designed by <span class="designer">Adham Karmadi</span></p>
   </div>
 </footer>
-
+<div class="map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.2799954199845!2d-6.830891624576194!3d34.011023173172475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b824b730953%3A0x71150751ecb67123!2sMinist%C3%A8re%20de%20la%20sant%C3%A9%20du%20Maroc!5e0!3m2!1sfr!2sma!4v1691278905138!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 <!--
 <div class="footer1"></div>
 -->

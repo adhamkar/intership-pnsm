@@ -33,10 +33,17 @@ const generateToken = (user) => {
       email: user.email 
     }, 
     secretKey, { expiresIn: '1h' });
-  return token;
+    const refreshToken = jwt.sign(
+      { 
+        id: user.id, 
+        email: user.email,
+        refreshToken: true 
+      }, 
+      secretKey, { expiresIn: '7s' });
+  return {token,refreshToken};
 };
 
-// Function to verify and decode a JWT token
+
 const verifyToken = (token) => {
   try {
     const decoded = jwt.verify(token, secretKey);

@@ -11,7 +11,7 @@ import{RessourcesHumaineComponent} from './ressources-humaine/ressources-humaine
 import{AboutUsComponent} from './about-us/about-us.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
-
+import { ContactUsComponent } from './contact-us/contact-us.component';
 const routes: Routes = [
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +25,8 @@ const routes: Routes = [
   {path:'ressourcesHumaine', component: RessourcesHumaineComponent},
   {path:'aboutus',component: AboutUsComponent},
   {path:'modiermdp',component: PasswordChangeComponent},
-  {path:'modifierETtelecharger',component: ModifierETtelechargerComponent}
+  {path:'modifierETtelecharger',component: ModifierETtelechargerComponent},
+  {path:'contact',component: ContactUsComponent}
 ];
 
 @NgModule({
