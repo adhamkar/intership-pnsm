@@ -1,20 +1,25 @@
 import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import * as jsPDF from 'jspdf';
+import { SharedDataComponent } from '../shared-data/shared-data.component';
+
 @Component({
   selector: 'app-programme-remplire',
   templateUrl: './programme-remplire.component.html',
   styleUrls: ['./programme-remplire.component.css']
 })
 export class ProgrammeRemplireComponent implements OnInit{
+  lastSavedData: any = null;
+  loadedData: any = null;
   @ViewChild('test',{static:false}) el!:ElementRef;
+  @ViewChild('myprogramme') updateData:NgForm | undefined;
   tableData: any[] = [];
   isDataSaved: boolean = false;
   myprogramme:FormGroup;
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient){
+  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharedDataComponent){
     this.myprogramme=this.fb.group({
       pdr: ['', Validators.required],
       distance: ['', Validators.required],
@@ -31,16 +36,23 @@ export class ProgrammeRemplireComponent implements OnInit{
     })
   }
   ngOnInit(): void {
+
   }
   getProgrammeData(){
     if(this.myprogramme.valid){
-      const formData=this.myprogramme.value
+      const formData=this.myprogramme.value;
       console.log(formData);
       this.http.post('http://localhost:3000/programmes', formData).subscribe(
-        (response)=>{
+        (response:any)=>{
           console.log('programme created:', response);
             this.isDataSaved = true;
+
+            this.lastSavedData = {
+              programme_id: response.programme_id,
+              ...formData
+            };
             this.tableData.push({
+      programme_id:formData.programme_id,
       pdr: formData.pdr,
       distance: formData.distance,
       accessibility: formData.accessibility,
@@ -55,15 +67,37 @@ export class ProgrammeRemplireComponent implements OnInit{
       t3: formData.t3,
       t4: formData.t4,
             });
-      this.myprogramme.reset();
         },
         (error) => {
           console.error('Error creating population:', error);
           console.log('Detailed error:', error.error);
         }
       )
+
     }else{
       console.log('Form is invalid. Please fill in all required fields.');
+    }
+  }
+  updateLastRecord(){
+    if(this.lastSavedData){
+      const formData=this.myprogramme.value;
+      this.lastSavedData={
+        ...this.lastSavedData,
+        ...formData
+      };
+      this.http.patch(`http://localhost:3000/programmes/${this.lastSavedData.programme_id}`,this.lastSavedData)
+      .subscribe(
+(response)=>{
+  console.log('data updated',response);
+  this.isDataSaved=true;
+  
+},
+(error)=>{
+  console.log('cannot update data',error);
+}
+);
+    }else{
+      console.log('No data available to update.');
     }
   }
   onLogout(){

@@ -56,7 +56,7 @@
       <span>CSR id</span>
       <input placeholder="valeur" type="number" class="input2" formControlName="csr_id" required>
       <div class="button-container">
-      <button  type="submit" [disabled]="myressoure.invalid" class=" button1 btn1 " >Send</button>
+      <button  type="submit" [disabled]="myressoure.invalid || isDataSaved" class=" button1 btn1 " >Send</button>
       <div class="success1" *ngIf="isDataSaved">
         <div class="check">
           <mat-icon>check</mat-icon>
@@ -73,11 +73,59 @@
   </div>
 </form>
 </div>
-<br><br><br><br><br><br>
-<div class="footer" >
-  <div >
-  <div class="container3" >
-    <img src="../../assets/si7a.png" alt="Footer Image">
-  </div>
+<br>
+
+<div class="Tablecontainer "  *ngIf="isDataSaved" #test>
+  <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
+    <thead>
+      <tr>
+        <th>Ressources</th>
+        <th>Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+        <td>Année</td>
+        <td>{{ data.year }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>vehicule id</td>
+        <td>{{ data.vehicule_id }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Type de vehicule</td>
+        <td>{{ data.vehicule_type}}</td>
+       </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Age de vehicule</td>
+        <td>{{ data.vehicule_age }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>Budget id</td>
+        <td>{{ data.budget_id }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Budget des kilometres parcourus</td>
+        <td>{{ data.budget_KmsParcourus }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Besoins Usm</td>
+        <td>{{ data.besoinUsm }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Observation</td>
+        <td>{{ data.observation }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>CSR id</td>
+        <td>{{ data.csr_id }}</td>
+        </tr>
+
+
+    </tbody>
+  </table>
 </div>
-</div>
+
+<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+

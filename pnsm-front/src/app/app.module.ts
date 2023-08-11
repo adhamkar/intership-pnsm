@@ -35,6 +35,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { SharedButtonServiceComponent } from './shared-button-service/shared-button-service.component';
+import { SharedDataComponent } from './shared-data/shared-data.component';
+import { RapportComponent } from './rapport/rapport.component';
+import { SharePopulationDataComponent } from './share-population-data/share-population-data.component';
+
 
 
 @NgModule({
@@ -52,6 +57,11 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     ModifierETtelechargerComponent,
     PasswordChangeComponent,
     ContactUsComponent,
+    SharedButtonServiceComponent,
+    SharedDataComponent,
+    RapportComponent,
+    SharePopulationDataComponent,
+
   ],
   imports: [
     BrowserModule,

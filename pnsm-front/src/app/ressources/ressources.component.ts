@@ -1,9 +1,9 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
-
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-ressources',
@@ -11,6 +11,9 @@ import { response } from 'express';
   styleUrls: ['./ressources.component.css']
 })
 export class RessourcesComponent implements OnInit{
+  hide: boolean = false;
+  @ViewChild('test',{static:false}) el!:ElementRef;
+  tableData: any[] = []
   isDataSaved: boolean = false;
   myressoure:FormGroup;
   constructor(private fb: FormBuilder,private router: Router,private http: HttpClient){
@@ -39,12 +42,39 @@ export class RessourcesComponent implements OnInit{
         (response)=>{
           console.log('ressource created:', response);
             this.isDataSaved = true;
+            this.tableData.push({
+              year: formData.year,
+              vehicule_id: formData.vehicule_id,
+              vehicule_type: formData.vehicule_type,
+
+              vehicule_age: formData.vehicule_age,
+              budget_id: formData.budget_id,
+
+              budget_KmsParcourus:formData.budget_KmsParcourus ,
+
+              besoinUsm: formData.besoinUsm,
+              observation: formData.observation,
+              csr_id: formData.csr_id,
+
+                    });
             this.myressoure.reset();
         },
         (error) => {
           console.error('Error creating ressource:', error);
           console.log('Detailed error:', error.error);
         }
+      )
+    }else{
+      console.log('Form is invalid. Please fill in all required fields.');
+    }
+  }
+  editRessourcesData(){
+    if(this.myressoure.valid){
+      const formData=this.myressoure.value;
+      console.log(formData);
+      const resourceIdToUpdate=formData.resourceIdToUpdate;
+      this.http.patch('http://localhost:3000/ressources',formData).subscribe(
+
       )
     }else{
       console.log('Form is invalid. Please fill in all required fields.');
@@ -57,5 +87,13 @@ export class RessourcesComponent implements OnInit{
   }
   changePwd(){
     this.router.navigate(['/modiermdp'])
+  }
+  downloadTableAsPDF(){
+    let pdf=new jsPDF.default("l","pt","a4",true);
+    pdf.html(this.el.nativeElement,{
+      callback: (pdf:any)=>{
+        pdf.save("table.pdf")
+      }
+    })
   }
 }

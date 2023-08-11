@@ -10,8 +10,8 @@ import * as bcrypt from 'bcryptjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
- ;
-  islogin:boolean=false;
+ iscorrect:boolean=false;
+  islogin:boolean=true;
   loginForm: FormGroup;
   userType: string | null = null;
   constructor(private fb: FormBuilder, private http: HttpClient, private router:Router,private route:ActivatedRoute) {
@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
+
     if(this.loginForm.valid){
     const formData=this.loginForm.value
     const loginData={email: formData.email,password:formData.password};
     this.http.post('http://localhost:3000/auth/login',loginData).subscribe(
        (response: any) => {
-
 
           console.log('Login successful!', response);
           this.islogin=true;
@@ -44,13 +44,11 @@ export class LoginComponent implements OnInit{
           localStorage.setItem('access_token', accessToken);
           this.router.navigate(['/planaction']);
 
-
-
-
       },
       (error) => {
-        console.error('Login failed!', error);
         this.islogin=false;
+        console.error('Login failed!', error);
+
       }
     );
 

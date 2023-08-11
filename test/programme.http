@@ -22,12 +22,12 @@ GET http://localhost:3000/programmes/1
 ###
 DELETE http://localhost:3000/programmes/1
 ###
-PATCH http://localhost:3000/programmes/1
+PATCH http://localhost:3000/programmes/2
 Content-Type: application/json
 
 {
- "year": "2023-07-16",
-  "localite": "Example ggg",
+ "year": "2022-07-16",
+  "localite": "region1",
   "pdr": "Example PDR",
   "distance": 100,
   "accessibility": "Example Accessibility",

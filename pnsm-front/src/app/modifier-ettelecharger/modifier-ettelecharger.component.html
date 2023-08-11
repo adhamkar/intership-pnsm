@@ -38,7 +38,7 @@
   <div class=" haut2">
   Votre Progrès
   </div>
-  <table class="table custom-table ">
+  <table class="table custom-table " >
     <thead>
       <tr>
         <th></th>
@@ -49,23 +49,41 @@
     <tbody>
       <tr>
         <td>Population a couvrir </td>
-        <td><button class="mybutton" routerLink="/populationCouvrir">Ajouter</button></td>
-        <td><span class="espace">NaN</span></td>
+        <td><button class="mybutton" routerLink="/populationCouvrir" *ngIf="!cliecked" (click)="onclick()">Ajouter</button>
+          <span class="rempli" *ngIf="cliecked">Rempli</span>
+        </td>
+
+        <td><span class="espace" *ngIf="!cliecked">NaN</span>
+          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        </td>
       </tr>
       <tr>
         <td>Programme previsionel des UMM</td>
-        <td><button class="mybutton" routerLink="/programmeRemplire">Ajouter</button></td>
-        <td><span class="espace">NaN</span></td>
+        <td><button class="mybutton" routerLink="/programmeRemplire" *ngIf="!cliecked1" (click)="onclick1()">Ajouter</button>
+          <span class="rempli" *ngIf="cliecked1">Rempli</span>
+        </td>
+        <td><span class="espace" *ngIf="!cliecked">NaN</span>
+          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        </td>
       </tr>
       <tr>
         <td>Situation des moyen de mobilité</td>
-        <td><button class="mybutton" routerLink="/ressources">Ajouter</button></td>
-        <td><span class="espace">NaN</span></td>
+        <td><button class="mybutton" routerLink="/ressources"*ngIf="!cliecked2" (click)="onclick2()">Ajouter</button>
+          <span class="rempli" *ngIf="cliecked2">Rempli</span>
+        </td>
+        <td><span class="espace" *ngIf="!cliecked">NaN</span>
+          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        </td>
       </tr>
       <tr>
         <td>Ressources humaines à mobiliser</td>
-        <td><button class="mybutton" routerLink="/ressourcesHumaine">Ajouter</button></td>
-        <td><span class="espace">NaN</span></td>
+        <td><button class="mybutton" routerLink="/ressourcesHumaine"*ngIf="!cliecked3" (click)="onclick3()">Ajouter</button>
+          <span class="rempli" *ngIf="cliecked3">Rempli</span>
+        </td>
+        <td>
+          <span class="espace" *ngIf="!cliecked">NaN</span>
+          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        </td>
       </tr>
     </tbody>
   </table>

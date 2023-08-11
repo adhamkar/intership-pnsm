@@ -6,9 +6,9 @@ import { response } from 'express';
 import{PopulationDataService} from './populationService.component'
 import { MatTableDataSource } from '@angular/material/table';
 import * as jsPDF from 'jspdf';
-
 import {  autoTable,UserOptions } from 'jspdf-autotable';
-
+//import { SharedDataComponent } from '../shared-data/shared-data.component';
+import { SharePopulationDataComponent } from '../share-population-data/share-population-data.component';
 interface TableDataRow {
   populationType: string;
   populationValue: number;
@@ -36,7 +36,9 @@ interface TableDataRow {
   styleUrls: ['./population-couvrir.component.css']
 })
 export class PopulationCouvrirComponent implements OnInit {
+  importedData: any[] = [
 
+  ];
   @ViewChild('test',{static:false}) el!:ElementRef
   isDataSaved: boolean = false;
   isVisible:boolean = false;
@@ -45,7 +47,7 @@ export class PopulationCouvrirComponent implements OnInit {
   myprogramme:FormGroup;
   tableData: any[] = [];
 
-  constructor(private fb: FormBuilder,private router: Router, private populationData:PopulationDataService,private http: HttpClient){
+  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharePopulationDataComponent){
     this.myForm = this.fb.group({
       population_rurale: ['', Validators.required],
       population_habitantMoins3km: ['', Validators.required],
@@ -86,6 +88,9 @@ export class PopulationCouvrirComponent implements OnInit {
     })
 
   }
+  saveImportedData() {
+    this.sharedData.setData(this.importedData);
+  }
   getPopulationData() {
     if (this.myForm.valid) {
       const formData = this.myForm.value
@@ -119,6 +124,7 @@ export class PopulationCouvrirComponent implements OnInit {
             updatedAt:formData.updatedAt,
 
           });
+          this.sharedData.setData(this.tableData);
         },
         (error) => {
           console.error('Error creating population:', error);
@@ -301,7 +307,7 @@ export class PopulationCouvrirComponent implements OnInit {
 */
 
 downloadTableAsPDF(){
-  let pdf=new jsPDF.default("l","pt","a4",true);
+  let pdf=new jsPDF.default("l","pt","a3",true);
   pdf.html(this.el.nativeElement,{
     callback: (pdf:any)=>{
       pdf.save("table.pdf")

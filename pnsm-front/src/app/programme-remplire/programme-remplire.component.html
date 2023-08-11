@@ -19,7 +19,7 @@
 </h5>
 
 <div class="toCenter">
-<form class="form-container" [formGroup]="myprogramme" (ngSubmit)="getProgrammeData()">
+<form class="form-container" [formGroup]="myprogramme" (ngSubmit)="getProgrammeData()" >
   <div class="form" >
     <h5 class="pop">
       <mat-icon class="people">list</mat-icon>
@@ -65,7 +65,11 @@
       <input placeholder="trimestre 4" type="number" class="input2" formControlName="t4" required>
 
       <div class="button-container">
-      <button  type="submit" [disabled]="myprogramme.invalid" class=" button1 btn1 senda">Send</button>
+
+      <button  type="submit" [disabled]="myprogramme.invalid" class=" button1 btn1 ">Send</button>
+
+      <button  type="button"  (click)="updateLastRecord()" class=" button1 btn1 " *ngIf="isDataSaved">Update data</button>
+
       <div class="success1" *ngIf="isDataSaved">
         <div class="check">
           <mat-icon>check</mat-icon>
@@ -73,15 +77,16 @@
         <span class="enrg">
         Enregisté
         </span>
-
       </div>
       <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/ressources">
         <mat-icon>keyboard_tab</mat-icon>
       </button>
       </div>
+
   </div>
 </form>
 </div>
+
 <div class="Tablecontainer "  *ngIf="isDataSaved" #test>
   <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
     <thead>
@@ -138,9 +143,4 @@
 
 
 <button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
-<br><br><br><br><br><br>
-<footer class="footer">
-  <div class="container3">
-    <img src="../../assets/si7a.png" alt="Footer Image">
-  </div>
-</footer>
+<br><br>

@@ -43,7 +43,9 @@ const createProgramme = async (req, res) => {
       createdAt,
       updatedAt,
     });
-    res.status(201).json(newProgramme);
+    res.status(201).json(
+      newProgramme,
+      );
   } catch (error) {
     console.error("Failed to create Programme:", error);
     res.status(500).json({ error: "Failed to create Programme" });

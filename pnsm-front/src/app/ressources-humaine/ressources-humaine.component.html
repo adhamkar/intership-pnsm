@@ -102,13 +102,141 @@
         </span>
 
       </div>
-      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/ressourcesHumaine">
+      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/modifierETtelecharger">
         <mat-icon>keyboard_tab</mat-icon>
       </button>
       </div>
   </div>
 </form>
 </div>
+<br>
+<div class="Tablecontainer tab1" #test *ngIf="isDataSaved">
+  <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table table-condensed" >
+    <thead>
+      <tr>
+        <th>Ressources Humaines</th>
+        <th>Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+        <td>Année</td>
+        <td>{{ data.year }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Trimestre</td>
+        <td>{{ data.trimestre }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Sortie id</td>
+        <td>{{ data.sortie_id }}</td>
+       </tr>
+
+       <tr>
+        <th >Mode fix</th>
+      </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Id</td>
+        <td>{{ data.fixe_id }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>Medecin</td>
+        <td>{{ data.fixe_medecin }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Infermier</td>
+        <td>{{ data.fixe_infermier }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Sage femme</td>
+        <td>{{ data.fixe_sageFemme }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Chaffeur</td>
+        <td>{{ data.fixe_chauffeur }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Appuie</td>
+        <td>{{ data.fixe_appuie }}</td>
+        <tr>
+
+
+          <tr>
+            <th >Mode mobile </th>
+          </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Id</td>
+        <td>{{ data.mobile_id }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Medecin</td>
+        <td>{{ data.mobile_medecin }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Infermier</td>
+        <td>{{ data.mobile_infermier }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>Chaffeur</td>
+        <td>{{ data.mobile_chauffeur }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Appuie</td>
+        <td>{{ data.mobile_appuie }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Techniciens</td>
+        <td>{{ data.mobile_technicien }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Employé Operationnel/td>
+        <td>{{ data.mobile_emOperationnelle }}</td>
+        </tr>
+        <tr>
+          <th >Ressource Humaines Mobilisées</th>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>CSR id</td>
+        <td>{{ data.csr_id }}</td>
+      </tr>
+      <tr *ngFor="let data of tableData">
+        <td>Employé Operationnel</td>
+      <td>{{ data.emOperationnelle }}</td>
+    </tr>
+    <tr *ngFor="let data of tableData">
+      <td>Medecin</td>
+    <td>{{ data.ressourcesHumaineMobilise_id }}</td>
+  </tr>
+  <tr *ngFor="let data of tableData">
+    <td>La mise à jour</td>
+  <td>{{ data.ressourcesHumaineMobilise_medecin }}</td>
+</tr>
+<tr *ngFor="let data of tableData">
+  <td>Infermier</td>
+<td>{{ data.ressourcesHumaineMobilise_infermier }}</td>
+</tr>
+<tr *ngFor="let data of tableData">
+  <td>Sage femme</td>
+<td>{{ data.ressourcesHumaineMobilise_sageFemme }}</td>
+</tr>
+<tr *ngFor="let data of tableData">
+  <td>Chaffeur</td>
+<td>{{ data.ressourcesHumaineMobilise_chauffeur }}</td>
+</tr>
+<tr *ngFor="let data of tableData">
+  <td>Appuie</td>
+<td>{{ data.ressourcesHumaineMobilise_appuie }}</td>
+</tr>
+<tr *ngFor="let data of tableData">
+  <td>Technicien</td>
+<td>{{ data.ressourcesHumaineMobilise_technicien }}</td>
+</tr>
+    </tbody>
+  </table>
+</div>
+<br><br><br><br>
+
+<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 <br><br><br><br><br><br>
 <div class="footer" >
   <div >

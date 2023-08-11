@@ -1,5 +1,5 @@
 const express = require("express");
-//const { sequelize, DataTypes } = require("sequelize");
+
 const { Programme } = require("../models");
 const router = express.Router();
 

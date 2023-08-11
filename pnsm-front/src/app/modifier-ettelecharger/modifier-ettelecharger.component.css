@@ -36,10 +36,18 @@
 
   color: red;
 }
+.rempli{
+  padding: 10px;
+
+  color: #114094;
+}
 .back
 {
   padding: 10px;
   margin: 10px;
+}
+.done{
+  color: green;
 }
 .mybutton{
   display: inline-block;
