@@ -26,7 +26,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
-
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
@@ -39,7 +38,7 @@ import { SharedButtonServiceComponent } from './shared-button-service/shared-but
 import { SharedDataComponent } from './shared-data/shared-data.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { SharePopulationDataComponent } from './share-population-data/share-population-data.component';
-
+import {MatDialogModule } from '@angular/material/dialog'
 
 
 @NgModule({
@@ -61,6 +60,7 @@ import { SharePopulationDataComponent } from './share-population-data/share-popu
     SharedDataComponent,
     RapportComponent,
     SharePopulationDataComponent,
+
 
   ],
   imports: [
@@ -84,7 +84,8 @@ import { SharePopulationDataComponent } from './share-population-data/share-popu
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

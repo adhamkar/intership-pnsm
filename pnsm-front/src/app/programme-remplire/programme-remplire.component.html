@@ -18,7 +18,7 @@
   Détails du plan d'action
 </h5>
 
-<div class="toCenter">
+<div class="toCenter" >
 <form class="form-container" [formGroup]="myprogramme" (ngSubmit)="getProgrammeData()" >
   <div class="form" >
     <h5 class="pop">
@@ -68,8 +68,6 @@
 
       <button  type="submit" [disabled]="myprogramme.invalid" class=" button1 btn1 ">Send</button>
 
-      <button  type="button"  (click)="updateLastRecord()" class=" button1 btn1 " *ngIf="isDataSaved">Update data</button>
-
       <div class="success1" *ngIf="isDataSaved">
         <div class="check">
           <mat-icon>check</mat-icon>
@@ -82,12 +80,147 @@
         <mat-icon>keyboard_tab</mat-icon>
       </button>
       </div>
-
+      <br><br><br>
+      <button  type="button"  (click)="updateLastRecord()" class=" button1 btn1 " *ngIf="isDataSaved">Update data</button>
   </div>
 </form>
 </div>
+<!--
+<div class="Tablecontainer "
+ *ngIf="isDataSaved && show"
+ #test>
 
-<div class="Tablecontainer "  *ngIf="isDataSaved" #test>
+  <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
+    <thead>
+      <tr>
+        <th>Programme</th>
+        <th>Valeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+        <td>Point de rassemblement</td>
+        <td>{{ data.pdr }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Distance</td>
+        <td>{{ data.distance }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Accessibilité</td>
+        <td>{{ data.accessibility }}</td>
+       </tr>
+        <tr *ngFor="let data of tableData">
+          <td>localite</td>
+        <td>{{ data.localite }}</td>
+       </tr>
+       <tr *ngFor="let data of tableData">
+        <td>Centre de santé rurale id</td>
+        <td>{{ data.csr_id }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Date</td>
+        <td>{{ data.year }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Trimestre 1</td>
+        <td>{{ data.t1 }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Trimestre 2</td>
+        <td>{{ data.t2 }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Trimestre 3</td>
+        <td>{{ data.t3 }}</td>
+        </tr>
+        <tr *ngFor="let data of tableData">
+          <td>Trimestre 4</td>
+        <td>{{ data.t4 }}</td>
+        </tr>
+
+    </tbody>
+  </table>
+</div>
+-->
+
+  <div class="Tablecontainer " *ngIf="!isTableVisible && isDataSaved" #test>
+    <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
+      <thead>
+        <tr>
+          <th>Point de rassemblement</th>
+          <th>Distance</th>
+          <th>Accessibilité</th>
+          <th>localite</th>
+          <th>Centre de santé rurale id</th>
+          <th>Date</th>
+          <th>Trimestre 1</th>
+          <th>Trimestre 2</th>
+          <th>Trimestre 3</th>
+          <th>Trimestre 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of tableData" >
+          <td>{{ data.pdr }}</td>
+          <td>{{ data.distance }}</td>
+          <td>{{ data.accessibility }}</td>
+          <td>{{ data.localite }}</td>
+          <td>{{ data.csr_id }}</td>
+          <td>{{ data.year }}</td>
+          <td>{{ data.t1 }}</td>
+          <td>{{ data.t2 }}</td>
+          <td>{{ data.t3 }}</td>
+          <td>{{ data.t4 }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <button type="button" *ngIf="!isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+
+<div class="Tablecontainer" *ngIf="isTableVisible && isDataSaved"  #test>
+    <table *ngIf="updatedTableData.length > 0 " id="updated-data-table" class="table custom-table " >
+      <thead>
+        <tr>
+          <th>Point de rassemblement</th>
+          <th>Distance</th>
+          <th>Accessibilité</th>
+          <th>localite</th>
+          <th>Centre de santé rurale id</th>
+          <th>Date</th>
+          <th>Trimestre 1</th>
+          <th>Trimestre 2</th>
+          <th>Trimestre 3</th>
+          <th>Trimestre 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of updatedTableData">
+          <td>{{ data.pdr }}</td>
+          <td>{{ data.distance }}</td>
+          <td>{{ data.accessibility }}</td>
+          <td>{{ data.localite }}</td>
+          <td>{{ data.csr_id }}</td>
+          <td>{{ data.year }}</td>
+          <td>{{ data.t1 }}</td>
+          <td>{{ data.t2 }}</td>
+          <td>{{ data.t3 }}</td>
+          <td>{{ data.t4 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" *ngIf="isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+
+
+  <!--
+<div class="Tablecontainer "
+ *ngIf="!show"
+ #test>
+
   <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
     <thead>
       <tr>
@@ -141,6 +274,9 @@
   </table>
 </div>
 
+<button type="button" *ngIf="!show" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+-->
 
-<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+
 <br><br>

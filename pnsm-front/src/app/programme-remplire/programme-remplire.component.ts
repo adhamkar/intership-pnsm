@@ -17,7 +17,10 @@ export class ProgrammeRemplireComponent implements OnInit{
   @ViewChild('test',{static:false}) el!:ElementRef;
   @ViewChild('myprogramme') updateData:NgForm | undefined;
   tableData: any[] = [];
+  updatedTableData: any[] = [];
   isDataSaved: boolean = false;
+  show:boolean=true;
+  isTableVisible:boolean=false;
   myprogramme:FormGroup;
   constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharedDataComponent){
     this.myprogramme=this.fb.group({
@@ -46,7 +49,7 @@ export class ProgrammeRemplireComponent implements OnInit{
         (response:any)=>{
           console.log('programme created:', response);
             this.isDataSaved = true;
-
+            this.isTableVisible=false;
             this.lastSavedData = {
               programme_id: response.programme_id,
               ...formData
@@ -87,19 +90,49 @@ export class ProgrammeRemplireComponent implements OnInit{
       };
       this.http.patch(`http://localhost:3000/programmes/${this.lastSavedData.programme_id}`,this.lastSavedData)
       .subscribe(
-(response)=>{
-  console.log('data updated',response);
-  this.isDataSaved=true;
-  
-},
-(error)=>{
-  console.log('cannot update data',error);
-}
+          (response)=>{
+            console.log('data updated',response);
+            /*
+                   const updatedIndex = this.tableData
+                   .findIndex(item => item.programme_id === this.lastSavedData.programme_id);
+                    if (updatedIndex !== -1) {
+                      this.tableData[updatedIndex] = {
+                        ...this.tableData[updatedIndex],
+                        ...this.lastSavedData
+                      };
+                    }*/
+                    this.updatedTableData.push({
+                      programme_id:formData.programme_id,
+                      pdr: formData.pdr,
+                      distance: formData.distance,
+                      accessibility: formData.accessibility,
+
+                      localite: formData.localite,
+                      csr_id: formData.csr_id,
+
+                      year:formData.year ,
+
+                      t1: formData.t1,
+                      t2: formData.t2,
+                      t3: formData.t3,
+                      t4: formData.t4,
+                            });
+                            console.log('Updated Table Data:', this.updatedTableData);
+          this.isDataSaved=true;
+          this.isTableVisible=true;
+          },
+          (error)=>{
+            console.log('cannot update data',error);
+          }
 );
     }else{
       console.log('No data available to update.');
     }
   }
+  toggleTableVisibility() {
+    this.isTableVisible = !this.isTableVisible;
+  }
+
   onLogout(){
     localStorage.clear();
     console.log('logout successful')
