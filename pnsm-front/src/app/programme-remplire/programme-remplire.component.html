@@ -143,8 +143,8 @@
   </table>
 </div>
 -->
-
-  <div class="Tablecontainer " *ngIf="!isTableVisible && isDataSaved" #test>
+<!--
+<div class="Tablecontainer " *ngIf="!isTableVisible && isDataSaved" #test>
     <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
       <thead>
         <tr>
@@ -175,8 +175,98 @@
         </tr>
       </tbody>
     </table>
-
   </div>
+  <button type="button" *ngIf="!isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+-->
+
+<!--
+<div class="table-wrapper-scroll-y my-custom-scrollbar" *ngIf="!isTableVisible && isDataSaved" #test>
+    <table class="table table-bordered table-striped mb-0" *ngIf="tableData.length > 0 " id="data-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 10%;">Point de rassemblement</th>
+          <th scope="col" style="width: 10%;">Distance</th>
+          <th scope="col" style="width: 10%;">Accessibilité</th>
+          <th scope="col" style="width: 10%;">Localite</th>
+          <th scope="col" style="width: 10%;">CSR_ID</th>
+          <th scope="col" style="width: 10%;">Date</th>
+          <th scope="col" style="width: 10%;">Trimestre 1</th>
+          <th scope="col" style="width: 10%;">Trimestre 2</th>
+          <th scope="col" style="width: 10%;">Trimestre 3</th>
+          <th scope="col" style="width: 10%;">Trimestre 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of tableData" >
+          <td>{{ data.pdr }}</td>
+          <td>{{ data.distance }}</td>
+          <td>{{ data.accessibility }}</td>
+          <td>{{ data.localite }}</td>
+          <td>{{ data.csr_id }}</td>
+          <td>{{ data.year }}</td>
+          <td>{{ data.t1 }}</td>
+          <td>{{ data.t2 }}</td>
+          <td>{{ data.t3 }}</td>
+          <td>{{ data.t4 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+-->
+<div class="body1 map " *ngIf="!isTableVisible && isDataSaved"  #test >
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0 container-table" *ngIf="tableData.length > 0 " id="data-table">
+
+      <div class="table-wrapper-scroll-y my-custom-scrollbar" *ngFor="let data of tableData">
+        <tr>
+          <th class="myth" scope="col">Description</th>
+          <th class="myth" scope="col">Valeur</th>
+        </tr>
+      <tr>
+        <td class="mytd" scope="row">Point de rassemblement</td>
+        <td class="mytd">{{ data.pdr }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Distance</td>
+        <td class="mytd">{{ data.distance }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Accessibilité</td>
+        <td class="mytd">{{ data.accessibility }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">localite</td>
+        <td class="mytd">{{ data.localite }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">CSR_ID</td>
+        <td class="mytd">{{ data.csr_id }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Date</td>
+        <td class="mytd">{{ data.year }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 1</td>
+        <td class="mytd">{{ data.t1 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 2</td>
+        <td class="mytd">{{ data.t2 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 3</td>
+        <td class="mytd">{{ data.t3 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 4</td>
+        <td class="mytd">{{ data.t4 }}</td>
+      </tr>
+    </div>
+    </table>
+  </div>
+
+</div>
   <button type="button" *ngIf="!isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
 

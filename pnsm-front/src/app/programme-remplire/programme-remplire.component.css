@@ -12,6 +12,53 @@
 .toCenter{
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 
+}
+.vertical-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.vertical-row {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.vertical-cell {
+  padding: 5px 10px;
+}
+.body1{
+  font-family: Arial, sans-serif;
+  margin-left: 6rem;
+  margin-top: 2rem;
+
+}
+
+
+.container-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+.myth, .mytd {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+.myth {
+  background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#invisible{
+  display: none;
 }

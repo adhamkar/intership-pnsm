@@ -146,10 +146,11 @@ export class ProgrammeRemplireComponent implements OnInit{
       console.error('ElementRef is not available.');
       return;
     }
+
     let pdf=new jsPDF.default("l","pt","a4",true);
     pdf.html(this.el.nativeElement,{
       callback: (pdf:any)=>{
-        pdf.save("table.pdf")
+        pdf.save("table.pdf");
       }
     })
   }
