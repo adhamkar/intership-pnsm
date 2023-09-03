@@ -41,7 +41,11 @@ if(this.passwordForm.valid){
           timeOut: 3000,
           progressBar: true,
         })
-        //this.router.navigate(['/home']);
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 3000);
+
+
       },
       (error) => {
         console.error('changing failed!', error);

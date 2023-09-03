@@ -1,53 +1,55 @@
-<div class="Tablecontainer "   #test>
-  <table *ngIf="populationData.length > 0 " id="data-table" class="table custom-table " >
-    <thead>
-      <tr>
-        <th>Programme</th>
-        <th>Valeur</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of populationData">
-        <td>Point de rassemblement</td>
-        <td>{{ data.pdr }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Distance</td>
-        <td>{{ data.distance }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Accessibilité</td>
-        <td>{{ data.accessibility }}</td>
-       </tr>
-        <tr *ngFor="let data of populationData">
-          <td>localite</td>
-        <td>{{ data.localite }}</td>
-       </tr>
-       <tr *ngFor="let data of populationData">
-        <td>Centre de santé rurale id</td>
-        <td>{{ data.csr_id }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Date</td>
-        <td>{{ data.year }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Trimestre 1</td>
-        <td>{{ data.t1 }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Trimestre 2</td>
-        <td>{{ data.t2 }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Trimestre 3</td>
-        <td>{{ data.t3 }}</td>
-        </tr>
-        <tr *ngFor="let data of populationData">
-          <td>Trimestre 4</td>
-        <td>{{ data.t4 }}</td>
-        </tr>
+<div class="body1 map " *ngIf="lastInsertedData"  >
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0 container-table"  id="data-table">
 
-    </tbody>
-  </table>
+
+        <tr>
+          <th class="myth" scope="col">Description</th>
+          <th class="myth" scope="col">Valeur</th>
+        </tr>
+      <tr>
+        <td class="mytd" scope="row">Point de rassemblement</td>
+        <td class="mytd">{{ lastInsertedData.pdr }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Distance</td>
+        <td class="mytd">{{ lastInsertedData.distance }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Accessibilité</td>
+        <td class="mytd">{{ lastInsertedData.accessibility }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">localite</td>
+        <td class="mytd">{{ lastInsertedData.localite }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">CSR_ID</td>
+        <td class="mytd">{{ lastInsertedData.csr_id }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Date</td>
+        <td class="mytd">{{ lastInsertedData.year }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 1</td>
+        <td class="mytd">{{ lastInsertedData.t1 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 2</td>
+        <td class="mytd">{{ lastInsertedData.t2 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 3</td>
+        <td class="mytd">{{ lastInsertedData.t3 }}</td>
+      </tr>
+      <tr>
+        <td class="mytd" scope="row">Trimestre 4</td>
+        <td class="mytd">{{ lastInsertedData.t4 }}</td>
+      </tr>
+
+    </table>
+  </div>
 </div>
+  <button type="button" *ngIf="lastInsertedData" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+

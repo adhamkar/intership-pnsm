@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import * as jsPDF from 'jspdf';
-
+import { MatDialog,MatDialogRef  } from '@angular/material/dialog';
 @Component({
   selector: 'app-ressources-humaine',
   templateUrl: './ressources-humaine.component.html',
@@ -15,7 +15,7 @@ export class RessourcesHumaineComponent implements OnInit{
   tableData: any[] = [];
   isDataSaved: boolean = false;
   myRh:FormGroup;
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient){
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private router: Router,private http: HttpClient){
     this.myRh=this.fb.group({
       year: ['', Validators.required],
       trimestre:['', Validators.required],
@@ -91,7 +91,7 @@ export class RessourcesHumaineComponent implements OnInit{
               ressourcesHumaineMobilise_technicien:formData.ressourcesHumaineMobilise_technicien,
 
             });
-            this.myRh.reset();
+            
         },
         (error) => {
           console.error('Error creating RH:', error);
@@ -105,9 +105,11 @@ export class RessourcesHumaineComponent implements OnInit{
   onLogout(){
     localStorage.clear();
     console.log('logout successful')
+    this.closeModal();
     this.router.navigate(['/home'])
   }
   changePwd(){
+    this.closeModal();
     this.router.navigate(['/modiermdp'])
   }
   ngOnInit(): void {
@@ -123,4 +125,7 @@ export class RessourcesHumaineComponent implements OnInit{
     })
 
   }
+  closeModal():void{
+    const close=this.dialog.closeAll()
+     }
 }
