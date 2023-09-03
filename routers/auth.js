@@ -11,7 +11,6 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Find the user by email in the database
     const user = await User.findOne({ where: { email } });
 
     console.log("User found:", user);
@@ -21,7 +20,6 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Authentication failed' });
     }
 
-    // Compare the provided password with the hashed password in the database
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {

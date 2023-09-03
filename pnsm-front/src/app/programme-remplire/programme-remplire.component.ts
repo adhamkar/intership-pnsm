@@ -1,17 +1,24 @@
-import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Component,OnInit,ViewChild,ElementRef,Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import * as jsPDF from 'jspdf';
 import { SharedDataComponent } from '../shared-data/shared-data.component';
+import { MatDialog } from '@angular/material/dialog';
+import{ PdfProgrammeComponent} from '../pdf-programme/pdf-programme.component'
+import * as $ from 'jquery';
+import{RessourcesComponent} from '../ressources/ressources.component';
+import{DeleteModalMsgComponent} from '../delete-modal-msg/delete-modal-msg.component';
+import { TransferDataService } from '../transfer-data.service';
 
 @Component({
-  selector: 'app-programme-remplire',
+  selector: 'programme',
   templateUrl: './programme-remplire.component.html',
   styleUrls: ['./programme-remplire.component.css']
 })
 export class ProgrammeRemplireComponent implements OnInit{
+
   lastSavedData: any = null;
   loadedData: any = null;
   @ViewChild('test',{static:false}) el!:ElementRef;
@@ -22,7 +29,7 @@ export class ProgrammeRemplireComponent implements OnInit{
   show:boolean=true;
   isTableVisible:boolean=false;
   myprogramme:FormGroup;
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharedDataComponent){
+  constructor(private prg_Id:TransferDataService,private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharedDataComponent,private dialog: MatDialog){
     this.myprogramme=this.fb.group({
       pdr: ['', Validators.required],
       distance: ['', Validators.required],
@@ -54,6 +61,12 @@ export class ProgrammeRemplireComponent implements OnInit{
               programme_id: response.programme_id,
               ...formData
             };
+            const programmeId = response.programme_id;
+            this.prg_Id.setprogrammeId(response.programme_id)
+            const lastInsertedData = {
+              programme_id: response.programme_id,
+              ...formData
+            };
             this.tableData.push({
       programme_id:formData.programme_id,
       pdr: formData.pdr,
@@ -70,6 +83,7 @@ export class ProgrammeRemplireComponent implements OnInit{
       t3: formData.t3,
       t4: formData.t4,
             });
+
         },
         (error) => {
           console.error('Error creating population:', error);
@@ -129,6 +143,26 @@ export class ProgrammeRemplireComponent implements OnInit{
       console.log('No data available to update.');
     }
   }
+  DeleteLastData(){
+    if(this.lastSavedData){
+      this.http.delete(`http://localhost:3000/programmes/${this.lastSavedData.programme_id}`)
+      .subscribe(
+        (response)=>{
+          console.log('data deleted',response);
+          this.isDataSaved=false;
+          this.isTableVisible=false;
+          this.openDeleteModalMsg();
+          this.myprogramme.reset();
+        },
+        (error)=>{
+          console.log('error deleting data',error);
+        }
+      )
+    }else{
+          console.log('No data to delete')
+    }
+  }
+
   toggleTableVisibility() {
     this.isTableVisible = !this.isTableVisible;
   }
@@ -136,9 +170,11 @@ export class ProgrammeRemplireComponent implements OnInit{
   onLogout(){
     localStorage.clear();
     console.log('logout successful')
+    this.closeModal();
     this.router.navigate(['/home'])
   }
   changePwd(){
+    this.closeModal();
     this.router.navigate(['/modiermdp'])
   }
   downloadTableAsPDF(){
@@ -154,4 +190,32 @@ export class ProgrammeRemplireComponent implements OnInit{
       }
     })
   }
+  openModal(): void {
+    const dialogRef = this.dialog.open(RessourcesComponent, {
+      width: '80%',
+      height: '80%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.closeModal();
+    });
+  }
+
+  closeModal():void{
+    const close=this.dialog.closeAll()
+     }
+
+     openDeleteModalMsg():void{
+     const deleteMsg=this.dialog.open(DeleteModalMsgComponent,{
+      width: '30%',
+      height: '30%',
+});
+deleteMsg.afterClosed().subscribe((result) => {
+  this.closeModal();
+});
+ }
+
+
+
+
 }

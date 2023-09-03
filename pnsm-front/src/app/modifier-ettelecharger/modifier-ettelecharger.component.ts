@@ -4,7 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import { SharedButtonServiceComponent } from '../shared-button-service/shared-button-service.component';
-
+import{ProgrammeRemplireComponent} from '../programme-remplire/programme-remplire.component';
+import { MatDialog } from '@angular/material/dialog';
+import{PopulationCouvrirComponent} from '../population-couvrir/population-couvrir.component';
+import{RessourcesComponent} from '../ressources/ressources.component';
+import{RessourcesHumaineComponent} from '../ressources-humaine/ressources-humaine.component'
 @Component({
   selector: 'app-modifier-ettelecharger',
   templateUrl: './modifier-ettelecharger.component.html',
@@ -15,7 +19,7 @@ export class ModifierETtelechargerComponent implements OnInit {
   cliecked1:boolean=false;
   cliecked2:boolean=false;
   cliecked3:boolean=false;
-  constructor(private sharedButtonService: SharedButtonServiceComponent,private sharedButtonService1: SharedButtonServiceComponent,private sharedButtonService2: SharedButtonServiceComponent,private sharedButtonService3: SharedButtonServiceComponent){}
+  constructor(private dialog: MatDialog,private sharedButtonService: SharedButtonServiceComponent,private sharedButtonService1: SharedButtonServiceComponent,private sharedButtonService2: SharedButtonServiceComponent,private sharedButtonService3: SharedButtonServiceComponent){}
 
   ngOnInit(): void {
     this.cliecked = this.sharedButtonService.getButtonClicked();
@@ -38,5 +42,48 @@ this.sharedButtonService2.setButtonClicked(true);
 onclick3(){
   this.cliecked3=true;
 this.sharedButtonService3.setButtonClicked(true);
+}
+openModal(): void {
+  const dialogRef = this.dialog.open(ProgrammeRemplireComponent, {
+    width: '80%',
+    height: '80%',
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+
+  });
+}
+openModal1(): void {
+  const dialogRef = this.dialog.open(PopulationCouvrirComponent, {
+    width: '80%',
+    height: '80%',
+
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+
+  });
+}
+openModal2(): void {
+  const dialogRef = this.dialog.open(RessourcesComponent, {
+    width: '80%',
+    height: '80%',
+
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+
+  });
+}
+openModal3(): void {
+  const dialogRef = this.dialog.open(RessourcesHumaineComponent, {
+    width: '80%',
+    height: '80%',
+
+  });
+
+  dialogRef.afterClosed().subscribe((result) => {
+    
+  });
 }
 }

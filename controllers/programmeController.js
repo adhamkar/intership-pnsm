@@ -1,6 +1,6 @@
 
 const { Programme } = require("../models/programme");
-//const sequelize=require('sequelize');
+const sequelize=require('sequelize');
 
 const getAllProgrammes = async (req, res) => {
   try {
@@ -12,7 +12,6 @@ const getAllProgrammes = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 const createProgramme = async (req, res) => {
   try {
@@ -67,6 +66,26 @@ const getProgrammeById = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+const getlastprogrammeid = async (req, res) => {
+  try {
+    const lastInsertedRecord = await Programme.findOne({
+      order: [['programme_id', 'DESC']],
+    });
+    
+    if (lastInsertedRecord) {
+      res.json(lastInsertedRecord);
+    } else {
+      res.status(404).json({ message: 'No records found' });
+    }
+  } catch (error) {
+    console.error("Error getting last Programme ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
+
 
 const updateProgramme = async (req, res) => {
   try {
@@ -136,4 +155,5 @@ module.exports = {
   getProgrammeById,
   updateProgramme,
   deleteProgramme,
+  getlastprogrammeid,
 };

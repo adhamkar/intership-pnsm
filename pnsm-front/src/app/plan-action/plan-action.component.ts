@@ -17,4 +17,7 @@ export class PlanActionComponent implements OnInit{
   onclick(){
     this.router.navigate(['/modifierETtelecharger']);
   }
+  onclick1(){
+    this.router.navigate(['/rapport']);
+  }
 }

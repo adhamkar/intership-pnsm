@@ -1,0 +1,123 @@
+<style>
+/* CSS Styles */
+.centre {
+  text-align: center; /* Center-align the text */
+  font-weight: bold; /* Make the text bold */
+  margin: 10px 0; /* Add margin to separate elements */
+}
+
+span {
+  display: block; /* Display each span on a new line */
+  margin-bottom: 5px; /* Add space below each span */
+}
+
+p {
+  font-weight: bold; /* Make the text bold */
+  margin-top: 10px; /* Add space above the paragraph */
+}
+
+  table {
+    width: 70%; /* Set the table width to 100% */
+  }
+  .programme{
+    margin: 3rem;
+    padding-left: 3rem;
+
+
+  }
+
+  .centre{
+    display:flex;
+
+    justify-content:center
+  }
+  .containerRap{
+
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .pdf{
+    display: flex;
+    align-items:flex-end;
+    margin-right: 10rem;
+  }
+
+  th, td {
+    width: 30%;
+
+  }
+  .move1{
+
+    margin-left: 52rem;
+  }
+
+.image{
+  display: flex;
+ align-items: center;
+}
+.span1{
+    color: blue;
+    font: 1em sans-serif;
+    font-weight: bold;
+    margin-left: 16rem;
+    margin-top: 6rem;
+    font-size: bold;
+  }
+ .span2{
+  color: blue;
+  font: 1em sans-serif;
+    margin-top: 6rem;
+    font-weight: bold;
+    margin-left: 46rem;
+    font-size: bold;
+ }
+</style>
+<div class="containerRap" id="htmlContent">
+  <div class="image">
+    <span class="span1">Minister de la Santé</span>
+    <span class="span2">Royaume du Maroc</span>
+  </div>
+
+  <div *ngIf="lastInsertedRecord" class="programme">
+    <h2 class="centre">Plan d’action des unités médicales mobiles (UMM)</h2>
+    <h3 class="centre">Année : 2023</h3>
+    <span>Centre de santé code: {{ lastInsertedRecord.csr_id }}</span><br>
+    <span>Date de creation: {{ lastInsertedRecord.year }}</span><br>
+    <span>Date de modification: {{ lastInsertedRecord.updatedAt}}</span><br>
+    <p>Programme ID: {{ lastInsertedRecord.programme_id }}</p>
+  <p>1 - Programme prévisionnel des UMM</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Point de rassemblement</th>
+        <th scope="col"> Distance entre CS et le PDR</th>
+        <th scope="col"> Accessibilité au PDR</th>
+        <th scope="col"> Loaclites</th>
+        <th scope="col">t1</th>
+        <th scope="col">t2</th>
+        <th scope="col">t3</th>
+        <th scope="col">t4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{lastInsertedRecord.pdr}}</td>
+        <td>{{lastInsertedRecord.distance}}</td>
+        <td>{{lastInsertedRecord.accessibility}}</td>
+        <td>{{lastInsertedRecord.localite}}</td>
+        <td>{{lastInsertedRecord.t1}}</td>
+        <td>{{lastInsertedRecord.t2}}</td>
+        <td>{{lastInsertedRecord.t3}}</td>
+        <td>{{lastInsertedRecord.t4}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+</div>
+<div class="pdf">
+  <mat-icon class="move1" style="color: rgb(165, 42, 42); cursor: pointer;" (click)="downloadHTMLAsPDF()" >download</mat-icon>
+<span style="float:right;" class="move">PDF</span>
+</div>
+

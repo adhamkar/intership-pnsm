@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import * as jsPDF from 'jspdf';
+import{RessourcesHumaineComponent} from '../ressources-humaine/ressources-humaine.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ressources',
@@ -16,7 +18,7 @@ export class RessourcesComponent implements OnInit{
   tableData: any[] = []
   isDataSaved: boolean = false;
   myressoure:FormGroup;
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient){
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private router: Router,private http: HttpClient){
     this.myressoure=this.fb.group({
       year: ['', Validators.required],
       vehicule_id: ['', Validators.required],
@@ -82,10 +84,12 @@ export class RessourcesComponent implements OnInit{
   }
   onLogout(){
     localStorage.clear();
-    console.log('logout successful')
+    console.log('logout successful');
+    this.closeModal();
     this.router.navigate(['/home'])
   }
   changePwd(){
+    this.closeModal();
     this.router.navigate(['/modiermdp'])
   }
   downloadTableAsPDF(){
@@ -96,4 +100,18 @@ export class RessourcesComponent implements OnInit{
       }
     })
   }
+  openModal(): void {
+    const dialogRef = this.dialog.open(RessourcesHumaineComponent, {
+      width: '80%',
+      height: '80%',
+    });
+
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.closeModal();
+    });
+  }
+ closeModal():void{
+const close=this.dialog.closeAll()
+ }
 }

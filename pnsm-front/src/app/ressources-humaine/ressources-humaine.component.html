@@ -6,6 +6,7 @@
     <button class=" button1 btn1" (click)="onLogout()">
       logout
   </button>
+  <button type="button" class="btn-close close1" aria-label="Close" (click)="closeModal()"></button>
   </div>
 </header>
 
@@ -92,7 +93,7 @@
       </h5>
       <input placeholder="valeur" type="number" class="input2" formControlName="emOperationnelle" required>
       <div class="button-container">
-      <button  type="submit" [disabled]="myRh.invalid" class=" button1 btn1 " >Send</button>
+      <button *ngIf="!isDataSaved" type="submit" [disabled]="myRh.invalid" class=" button1 btn1 " >Send</button>
       <div class="success1" *ngIf="isDataSaved">
         <div class="check">
           <mat-icon>check</mat-icon>
@@ -237,12 +238,5 @@
 <br><br><br><br>
 
 <button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
-<br><br><br><br><br><br>
-<div class="footer" >
-  <div >
-  <div class="container3" >
-    <img src="../../assets/si7a.png" alt="Footer Image">
-  </div>
-</div>
-</div>
+
 

@@ -7,8 +7,11 @@ import{PopulationDataService} from './populationService.component'
 import { MatTableDataSource } from '@angular/material/table';
 import * as jsPDF from 'jspdf';
 import {  autoTable,UserOptions } from 'jspdf-autotable';
-//import { SharedDataComponent } from '../shared-data/shared-data.component';
+
 import { SharePopulationDataComponent } from '../share-population-data/share-population-data.component';
+import{ProgrammeRemplireComponent} from '../programme-remplire/programme-remplire.component';
+import { MatDialog  } from '@angular/material/dialog';
+
 interface TableDataRow {
   populationType: string;
   populationValue: number;
@@ -39,15 +42,20 @@ export class PopulationCouvrirComponent implements OnInit {
   importedData: any[] = [
 
   ];
-  @ViewChild('test',{static:false}) el!:ElementRef
+  @ViewChild('test',{static:false}) el!:ElementRef;
+  lastSavedData: any = null;
   isDataSaved: boolean = false;
+  isTableVisible:boolean = false;
   isVisible:boolean = false;
   populations:any;
   myForm: FormGroup;
   myprogramme:FormGroup;
   tableData: any[] = [];
+  buttonClicked = false;
+  updatedTableData: any[] = [];
 
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharePopulationDataComponent){
+
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharePopulationDataComponent){
     this.myForm = this.fb.group({
       population_rurale: ['', Validators.required],
       population_habitantMoins3km: ['', Validators.required],
@@ -96,10 +104,62 @@ export class PopulationCouvrirComponent implements OnInit {
       const formData = this.myForm.value
       console.log(formData);
       this.http.post('http://localhost:3000/populations', formData).subscribe(
-        (response) => {
+        (response:any) => {
           console.log('Population created:', response);
           this.isDataSaved = true;
+          this.isTableVisible=false;
+            this.lastSavedData = {
+              population_id: response.population_id,
+              ...formData
+            };
           this.tableData.push({
+            population_rurale: formData.population_rurale,
+            population_habitantMoins3km: formData.population_habitantMoins3km,
+            population_habitantEntre3km6km:formData.population_habitantEntre3km6km,
+
+            population_habitantEntre6km10km:formData.population_habitantEntre6km10km,
+            population_habitantPlus10km:formData.population_habitantPlus10km,
+
+            population_cible:formData.population_cible,
+            distanceMoyenneRouteProche:formData.distanceMoyenneRouteProche,
+            enfant_id:formData.enfant_id,
+
+            enfant_naissancesAttendues:formData.enfant_naissancesAttendues,
+            enfant_moins1ans:formData.enfant_moins1ans,
+            enfant_moins5ans:formData.enfant_moins5ans,
+
+            femme_id:formData.femme_id,
+            femme_far:formData.femme_far,
+            femme_fmar:formData.femme_fmar,
+
+            femme_femmeEnceinte:formData.femme_femmeEnceinte,
+            createdAt:formData.createdAt,
+            updatedAt:formData.updatedAt,
+
+          });
+          this.sharedData.setData(this.tableData);
+        },
+        (error) => {
+          console.error('Error creating population:', error);
+          console.log('Detailed error:', error.error);
+        }
+      );
+    } else {
+      console.log('Form is invalid. Please fill in all required fields.');
+    }
+  }
+  updateLastRecord(){
+    if(this.lastSavedData){
+      const formData=this.myForm.value;
+      this.lastSavedData={
+        ...this.lastSavedData,
+        ...formData
+      };
+      this.http.patch(`http://localhost:3000/populations/${this.lastSavedData.population_id}`,this.lastSavedData)
+      .subscribe(
+        (response)=>{
+          console.log('data updated',response);
+          this.updatedTableData.push({
             population_rurale: formData.population_rurale,
             population_habitantMoins3km: formData.population_habitantMoins3km,
             population_habitantEntre3km6km:formData.population_habitantEntre3km6km,
@@ -122,30 +182,36 @@ export class PopulationCouvrirComponent implements OnInit {
             femme_enceinte:formData.femme_enceinte,
             createdAt:formData.createdAt,
             updatedAt:formData.updatedAt,
-
           });
-          this.sharedData.setData(this.tableData);
-        },
-        (error) => {
-          console.error('Error creating population:', error);
-          console.log('Detailed error:', error.error);
+          console.log('Updated Table Data:', this.updatedTableData);
+          this.isDataSaved=true;
+          this.isTableVisible=true;
+        },(error)=>{
+          console.log('cannot update data',error);
         }
-      );
-    } else {
-      console.log('Form is invalid. Please fill in all required fields.');
+      )
+    }else{
+      console.log('No data available to update.');
     }
   }
-
   ngOnInit(): void {
   }
   onLogout(){
     localStorage.clear();
-    console.log('logout successful')
+    console.log('logout successful');
+    this.closeModal();
     this.router.navigate(['/home'])
   }
   changePwd(){
+    this.closeModal();
     this.router.navigate(['/modiermdp'])
   }
+
+  onClick() {
+    this.buttonClicked = true;
+  }
+
+
   /*
   downloadTableAsPDF() {
     const doc = new jsPDF.default(); // Initialize jsPDF as a constructor
@@ -351,5 +417,20 @@ if(data.hasOwnProperty('populationType')){
       console.log('Form is invalid. Please fill in all required fields.');
     }
   }
+
+  openModal(): void {
+    const dialogRef = this.dialog.open(ProgrammeRemplireComponent, {
+      width: '80%',
+      height: '80%',
+    });
+
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.closeModal();
+    });
+  }
+ closeModal():void{
+const close=this.dialog.closeAll()
+ }
 
 }

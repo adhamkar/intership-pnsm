@@ -107,7 +107,14 @@ img {
   margin-top: 10px;
   font-weight: 600;
   background-color: lightgreen;
+  display: inline-block;
+  margin-right: 10px;
 }
+.close{
+  display: flex;
+  align-items: center;
+}
+
 .pop{
   padding: 15px;
   font-weight: 600;

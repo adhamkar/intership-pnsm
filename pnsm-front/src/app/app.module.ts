@@ -38,7 +38,12 @@ import { SharedButtonServiceComponent } from './shared-button-service/shared-but
 import { SharedDataComponent } from './shared-data/shared-data.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { SharePopulationDataComponent } from './share-population-data/share-population-data.component';
-import {MatDialogModule } from '@angular/material/dialog'
+import {MatDialogModule } from '@angular/material/dialog';
+import { PdfProgrammeComponent } from './pdf-programme/pdf-programme.component';
+import { PasswordModalComponent } from './password-modal/password-modal.component';
+import { DeleteModalMsgComponent } from './delete-modal-msg/delete-modal-msg.component';
+import { CompteRenduComponent } from './compte-rendu/compte-rendu.component'
+
 
 
 @NgModule({
@@ -60,6 +65,10 @@ import {MatDialogModule } from '@angular/material/dialog'
     SharedDataComponent,
     RapportComponent,
     SharePopulationDataComponent,
+    PdfProgrammeComponent,
+    PasswordModalComponent,
+    DeleteModalMsgComponent,
+    CompteRenduComponent,
 
 
   ],
@@ -85,7 +94,8 @@ import {MatDialogModule } from '@angular/material/dialog'
     MatSidenavModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

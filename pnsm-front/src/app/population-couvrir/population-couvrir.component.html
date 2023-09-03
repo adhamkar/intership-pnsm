@@ -7,6 +7,7 @@
     <button class=" button1 btn1" (click)="onLogout()">
       logout
   </button>
+  <button type="button" class="btn-close close1" aria-label="Close" (click)="closeModal()"></button>
   </div>
 </header>
 
@@ -14,9 +15,14 @@
   <div class="card bg-grd p-2 fs-7 text-white fw-bold text-center">
     Plan d’action des unités médicales mobiles (UMM)
 </div>
-<h5 class="h5">
-  Détails du plan d'action
-</h5>
+<div class="close">
+  <h5 class="h5">
+    Détails du plan d'action
+  </h5>
+
+</div>
+
+
 <div class="toCenter">
 <form class="form-container" [formGroup]="myForm" (ngSubmit)="getPopulationData()">
   <div class="form" >
@@ -62,7 +68,8 @@
       <span>updatedAt</span>
       <input placeholder="valeur" type="date" class="input2" formControlName="updatedAt" required>
       <div class="button-container">
-      <button  type="submit" [disabled]="myForm.invalid" class=" button1 btn1 senda" >Send</button>
+
+      <button  *ngIf="!isDataSaved" type="submit" [disabled]="myForm.invalid " class=" button1 btn1 senda" >Send</button>
 
       <div class="success1" *ngIf="isDataSaved">
         <div class="check" >
@@ -73,17 +80,18 @@
         </span>
 
       </div>
-      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" routerLink="/programmeRemplire">
+      <button  class=" button1 btn1 keyboard" *ngIf="isDataSaved" (click)="openModal()">
         <mat-icon>keyboard_tab</mat-icon>
-
       </button>
-
+      <br><br><br>
+      <button  type="button"  (click)="updateLastRecord()" class=" button1 btn1 " *ngIf="isDataSaved">Update data</button>
       </div>
+
   </div>
 </form>
 </div>
 
-<div class="Tablecontainer " #test *ngIf="isDataSaved">
+<div class="Tablecontainer " #test *ngIf="!isTableVisible && isDataSaved">
   <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
     <thead>
       <tr>
@@ -163,161 +171,57 @@
     </tbody>
   </table>
 </div>
+<button type="button" *ngIf="!isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
-
-<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
-
-
-<!--
-<div class="tableau">
-  <h5 class="pop">
-    <mat-icon class="people">list</mat-icon>
-    Programme prévisionnel des UMM
-  </h5>
-  <h5 class="pop circle-icon">
-    <u>Information sur le programme :</u>
-  </h5>
-  <table class="custom-table">
-
+<div class="Tablecontainer " #test *ngIf="isTableVisible && isDataSaved">
+  <table *ngIf="updatedTableData.length > 0 " id="updated-data-table" class="table custom-table " >
+    <thead>
+      <tr>
+        <th>Population rurale</th>
+        <th>Les habitants de moins de 3km</th>
+        <th>Les habitants de moins de 3km</th>
+        <th>Les habitants entre 3 et 6km</th>
+        <th>Les habitants entre 6 et 10km</th>
+        <th>Les habitants de plus 10km</th>
+        <th>La population cible</th>
+        <th>Distance moyenne de la route la plus proche</th>
+        <th>Enfant id</th>
+        <th>Naissances Attendues</th>
+        <th>Les enfants moins 1ans</th>
+        <th>Les enfants moins 5ans</th>
+        <th>femme id</th>
+        <th>Far</th>
+        <th>Fmar</th>
+        <th>Femmes Enceintes</th>
+        <th>createdAt</th>
+        <th>updatedAt</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr>
-        <td>PDR à couvrir</td>
-        <input type="text" name="text" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>Distance entre le centre de santé et le PDR</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>Accessibilité au PDR</td>
-        <input type="text" name="text" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>Liste des localités</td>
-        <input type="text" name="text" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>T1</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>T2</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>T3</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td>T4</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
+      <tr *ngFor="let data of updatedTableData">
+        
+        <td>{{ data.population_rurale }}</td>
+        <td>{{ data.population_habitantMoins3km }}</td>
+        <td>{{ data.population_habitantEntre3km6km }}</td>
+        <td>{{ data.population_habitantEntre6km10km }}</td>
+        <td>{{ data.population_habitantPlus10km }}</td>
+        <td>{{ data.population_cible }}</td>
+        <td>{{ data.distanceMoyenneRouteProche }}</td>
+        <td>{{ data.distanceMoyenneRouteProche }}</td>
+        <td>{{ data.enfant_id }}</td>
+        <td>{{ data.enfant_naissancesAttendues }}</td>
+        <td>{{ data.enfant_moins1ans }}</td>
+        <td>{{ data.enfant_moins5ans }}</td>
+        <td>{{ data.femme_id }}</td>
+        <td>{{ data.femme_far }}</td>
+        <td>{{ data.femme_fmar }}</td>
+        <td>{{ data.femme_femmeEnceinte }}</td>
+        <td>{{ data.createdAt }}</td>
+        <td>{{ data.updatedAt }}</td>
       </tr>
     </tbody>
   </table>
 </div>
-<div class="tableau">
-  <h5 class="pop">
-    <mat-icon class="people">directions_car</mat-icon>
-    Situation des moyens de mobilité
-  </h5>
-  <h5 class="pop circle-icon">
-    <u>Information sur vehicule :</u>
-  </h5>
-  <table class="custom-table">
-    <tbody>
-      <tr>
-        <td><mat-label>Type</mat-label></td>
-        <mat-select formControlName="type" required placeholder="type">
-          <mat-option value="automobil">automobil</mat-option>
-          <mat-option value="camion">camion</mat-option>
-          <mat-option value="province">autre</mat-option>
-        </mat-select>
-      </tr>
-      <tr>
-        <td>Age</td>
-        <input type="number" name="number" class="input tani" placeholder="valeur.">
-      </tr>
-      <tr>
-        <td><mat-label>Appartenance</mat-label></td>
-        <mat-select formControlName="type" required placeholder="Appartenance">
-          <mat-option value="Minister de la sante">Minister de la sante</mat-option>
-          <mat-option value="Minister de la sante">Minister de la sante</mat-option>
-          <mat-option value="Minister de la sante">Minister de la sante</mat-option>
-        </mat-select>
-      </tr>
+<button type="button" *ngIf="isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
-    </tbody>
-  </table><br>
-  <h5 class="pop circle-icon">
-    <u>Budget :</u>
-  </h5>
-  <h5 class="pop" > Total kilometrage à parcourir :</h5>
-  <input type="number" autocomplete="off" name="number" class="input talet" placeholder="Total Km">
-  <h5 class="pop circle-icon">
-    <u>Besoin :</u>
-  </h5>
-  <h5 class="pop" > Besoin en unité santral mobile:</h5>
-  <input type="number" autocomplete="off" name="number" class="input talet" placeholder="Besoin">
-
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="pop">Observation</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</div>
-<div class="tableau">
-  <h5 class="pop">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person people" viewBox="0 0 16 16">
-      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-    </svg>
-      Ressources Humaines à Mobiliser
-  </h5>
-  <h5 class="pop circle-icon">
-    <u>Mode fixe :</u>
-  </h5>
-  <table class="custom-table">
-    <tbody>
-      <tr>
-        <td>Medecin</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre Medecin">
-      </tr>
-      <tr>
-        <td>Infirmière(er)</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre Infirmière(er)">
-      </tr>
-      <tr>
-        <td>Sage Femme</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre Sage Femme">
-      </tr>
-      <tr>
-        <td>Technicien</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre Technicien">
-      </tr>
-      <tr>
-        <td>Chauffeur</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre Chauffeur">
-      </tr>
-      <tr>
-        <td>Ressources humaines d'appuie</td>
-        <input type="number" name="number" class="input tani" placeholder="Nombre RH">
-      </tr>
-
-
-    </tbody>
-  </table>
-</div>
--->
-<!--
-<div class="tableau save">
-  <button  type="submit" class="btn btn-primary active" data-bs-toggle="button" autocomplete="off" aria-pressed="true" >Enregistrer</button>
-</div>
--->
-
-<br><br><br><br><br><br>
-<div class="footer" >
-  <div >
-  <div class="container3" >
-    <img src="../../assets/si7a.png" alt="Footer Image">
-  </div>
-</div>
-</div>
 

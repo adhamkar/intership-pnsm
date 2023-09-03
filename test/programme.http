@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
   "year": "2023-07-16",
-  "localite": "Example Locality",
-  "pdr": "Example PDR",
+  "localite": "region1",
+  "pdr": "EEEEEEEE PDR",
   "distance": 100,
-  "accessibility": "Example Accessibility",
+  "accessibility": "car",
   "t1": 1,
   "t2": 2,
   "t3": 3,
@@ -18,7 +18,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/programmes
 ###
-GET http://localhost:3000/programmes/1
+GET http://localhost:3000/programmes/last
 ###
 DELETE http://localhost:3000/programmes/1
 ###
