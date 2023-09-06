@@ -50,7 +50,7 @@ downloadHTMLAsPDF() {
     format: 'a4',
     ...margins
   });
-
+//hola
   const element = document.getElementById('htmlContent'); // Provide an ID to your HTML content container
 
   if (element) {
