@@ -47,43 +47,44 @@ openModal(): void {
   const dialogRef = this.dialog.open(ProgrammeRemplireComponent, {
     width: '80%',
     height: '80%',
+    // You can pass any necessary data to the modal using the `data` option
   });
 
   dialogRef.afterClosed().subscribe((result) => {
-
+    // Handle any actions after the modal is closed (if needed)
   });
 }
 openModal1(): void {
   const dialogRef = this.dialog.open(PopulationCouvrirComponent, {
     width: '80%',
     height: '80%',
-
+    // You can pass any necessary data to the modal using the `data` option
   });
 
   dialogRef.afterClosed().subscribe((result) => {
-
+    // Handle any actions after the modal is closed (if needed)
   });
 }
 openModal2(): void {
   const dialogRef = this.dialog.open(RessourcesComponent, {
     width: '80%',
     height: '80%',
-
+    // You can pass any necessary data to the modal using the `data` option
   });
 
   dialogRef.afterClosed().subscribe((result) => {
-
+    // Handle any actions after the modal is closed (if needed)
   });
 }
 openModal3(): void {
   const dialogRef = this.dialog.open(RessourcesHumaineComponent, {
     width: '80%',
     height: '80%',
-
+    // You can pass any necessary data to the modal using the `data` option
   });
 
   dialogRef.afterClosed().subscribe((result) => {
-    
+    // Handle any actions after the modal is closed (if needed)
   });
 }
 }

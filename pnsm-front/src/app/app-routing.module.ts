@@ -13,9 +13,6 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
 import { ModifierETtelechargerComponent } from './modifier-ettelecharger/modifier-ettelecharger.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RapportComponent } from './rapport/rapport.component';
-import{PdfProgrammeComponent} from './pdf-programme/pdf-programme.component';
-import { DeleteModalMsgComponent } from './delete-modal-msg/delete-modal-msg.component';
-import { CompteRenduComponent } from './compte-rendu/compte-rendu.component';
 const routes: Routes = [
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },

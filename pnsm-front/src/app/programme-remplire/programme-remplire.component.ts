@@ -46,7 +46,7 @@ export class ProgrammeRemplireComponent implements OnInit{
     })
   }
   ngOnInit(): void {
-
+   
   }
   getProgrammeData(){
     if(this.myprogramme.valid){
@@ -83,7 +83,6 @@ export class ProgrammeRemplireComponent implements OnInit{
       t3: formData.t3,
       t4: formData.t4,
             });
-
         },
         (error) => {
           console.error('Error creating population:', error);

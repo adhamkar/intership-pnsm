@@ -14,8 +14,16 @@ import { ProgrammeRemplireComponent } from '../programme-remplire/programme-remp
   styleUrls: ['./rapport.component.css']
 })
 export class RapportComponent implements OnInit{
+
   @ViewChild('test',{static:false}) el!:ElementRef;
   @ViewChild('myprogramme') updateData:NgForm | undefined;
+  @Input() lastdData: any;
+  isTableVisible: boolean = false;
+  isDataSaved: boolean = false;
+  shraeddata: any[]=[];
+  lastInsertedData: any;
+
+
 
   constructor(private dataService: TransferDataService,private http: HttpClient,private prg:ProgrammeRemplireComponent) {}
 
@@ -36,7 +44,25 @@ export class RapportComponent implements OnInit{
       }
     })
   }
-  
+
+
+
+
+  fetchProgramData(programmeId: string) {
+    this.http
+      .get(`http://localhost:3000/programmes/${programmeId}`)
+      .subscribe(
+        (data: any) => {
+          this.lastInsertedData = data;
+        },
+        (error) => {
+          console.log('error getting data', error);
+        }
+      );
+  }
+
+
 
 
 }
+
