@@ -100,7 +100,7 @@ getUserEmail(): Observable<string | null>{
   if (this.userId) {
     return this.http.get<any>(`/users/${this.userId}/email`).pipe(
       map((response) => {
-        return response.email as string; // Extract email from the response
+        return response.email as string; 
       }),
       catchError((error) => {
         console.error('Error getting user email:', error);

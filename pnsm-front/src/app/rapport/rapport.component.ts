@@ -44,10 +44,6 @@ export class RapportComponent implements OnInit{
       }
     })
   }
-
-
-
-
   fetchProgramData(programmeId: string) {
     this.http
       .get(`http://localhost:3000/programmes/${programmeId}`)

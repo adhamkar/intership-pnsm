@@ -8,7 +8,8 @@ import{ProgrammeRemplireComponent} from '../programme-remplire/programme-remplir
 import { MatDialog } from '@angular/material/dialog';
 import{PopulationCouvrirComponent} from '../population-couvrir/population-couvrir.component';
 import{RessourcesComponent} from '../ressources/ressources.component';
-import{RessourcesHumaineComponent} from '../ressources-humaine/ressources-humaine.component'
+import{RessourcesHumaineComponent} from '../ressources-humaine/ressources-humaine.component';
+import { PrecedentComponent } from '../precedent/precedent.component';
 @Component({
   selector: 'app-modifier-ettelecharger',
   templateUrl: './modifier-ettelecharger.component.html',
@@ -19,7 +20,15 @@ export class ModifierETtelechargerComponent implements OnInit {
   cliecked1:boolean=false;
   cliecked2:boolean=false;
   cliecked3:boolean=false;
-  constructor(private dialog: MatDialog,private sharedButtonService: SharedButtonServiceComponent,private sharedButtonService1: SharedButtonServiceComponent,private sharedButtonService2: SharedButtonServiceComponent,private sharedButtonService3: SharedButtonServiceComponent){}
+  clickedRow: boolean = false;
+  clickedRow1: boolean = false
+  clickedRow2: boolean = false;
+  clickedRow3: boolean = false;
+   one:boolean=false;
+   two:boolean=false;
+   three:boolean=false;
+   four:boolean=false;
+  constructor(private router:Router, private dialog: MatDialog,private sharedButtonService: SharedButtonServiceComponent,private sharedButtonService1: SharedButtonServiceComponent,private sharedButtonService2: SharedButtonServiceComponent,private sharedButtonService3: SharedButtonServiceComponent){}
 
   ngOnInit(): void {
     this.cliecked = this.sharedButtonService.getButtonClicked();
@@ -44,17 +53,30 @@ onclick3(){
 this.sharedButtonService3.setButtonClicked(true);
 }
 openModal(): void {
-  const dialogRef = this.dialog.open(ProgrammeRemplireComponent, {
-    width: '80%',
-    height: '80%',
-    // You can pass any necessary data to the modal using the `data` option
-  });
+  if(this.clickedRow){
+    this.clickedRow1=true;
+    setTimeout(() => {
+      this.two = true;
+    }, 1000);
+    const dialogRef = this.dialog.open(ProgrammeRemplireComponent, {
+      width: '80%',
+      height: '80%',
+      // You can pass any necessary data to the modal using the `data` option
+    });
 
-  dialogRef.afterClosed().subscribe((result) => {
-    // Handle any actions after the modal is closed (if needed)
-  });
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any actions after the modal is closed (if needed)
+    });
+  }else{
+    this.modal()
+  }
+
 }
 openModal1(): void {
+  this.clickedRow=true;
+  setTimeout(() => {
+    this.one = true;
+  }, 1000);
   const dialogRef = this.dialog.open(PopulationCouvrirComponent, {
     width: '80%',
     height: '80%',
@@ -66,9 +88,45 @@ openModal1(): void {
   });
 }
 openModal2(): void {
-  const dialogRef = this.dialog.open(RessourcesComponent, {
+  if(this.clickedRow1){
+    this.clickedRow2=true;
+    setTimeout(() => {
+      this.three = true;
+    }, 1000);
+    const dialogRef = this.dialog.open(RessourcesComponent, {
+      width: '80%',
+      height: '80%',
+      // You can pass any necessary data to the modal using the `data` option
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any actions after the modal is closed (if needed)
+    });
+  }
+
+}
+openModal3(): void {
+  if(this.clickedRow2){
+    this.clickedRow3=true;
+    setTimeout(() => {
+      this.four = true;
+    }, 1000);
+    const dialogRef = this.dialog.open(RessourcesHumaineComponent, {
+      width: '80%',
+      height: '80%',
+      // You can pass any necessary data to the modal using the `data` option
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any actions after the modal is closed (if needed)
+    });
+  }
+
+}
+modal(){
+  const dialogRef = this.dialog.open(PrecedentComponent, {
     width: '80%',
-    height: '80%',
+    height: '40%',
     // You can pass any necessary data to the modal using the `data` option
   });
 
@@ -76,15 +134,7 @@ openModal2(): void {
     // Handle any actions after the modal is closed (if needed)
   });
 }
-openModal3(): void {
-  const dialogRef = this.dialog.open(RessourcesHumaineComponent, {
-    width: '80%',
-    height: '80%',
-    // You can pass any necessary data to the modal using the `data` option
-  });
-
-  dialogRef.afterClosed().subscribe((result) => {
-    // Handle any actions after the modal is closed (if needed)
-  });
+ToCompteRendu(){
+this.router.navigate(['/compteRendu'])
 }
 }

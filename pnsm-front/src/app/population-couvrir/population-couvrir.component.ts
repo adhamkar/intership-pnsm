@@ -7,7 +7,8 @@ import{PopulationDataService} from './populationService.component'
 import { MatTableDataSource } from '@angular/material/table';
 import * as jsPDF from 'jspdf';
 import {  autoTable,UserOptions } from 'jspdf-autotable';
-
+import{ProgrammeRemplireComponent} from '../programme-remplire/programme-remplire.component';
+import { MatDialog,MatDialogRef  } from '@angular/material/dialog';
 import { SharePopulationDataComponent } from '../share-population-data/share-population-data.component';
 interface TableDataRow {
   populationType: string;
@@ -52,7 +53,7 @@ export class PopulationCouvrirComponent implements OnInit {
   updatedTableData: any[] = [];
 
 
-  constructor(private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharePopulationDataComponent){
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private router: Router,private http: HttpClient,private sharedData:SharePopulationDataComponent){
     this.myForm = this.fb.group({
       population_rurale: ['', Validators.required],
       population_habitantMoins3km: ['', Validators.required],

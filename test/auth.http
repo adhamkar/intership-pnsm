@@ -2,7 +2,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email":"gggshhght@hotmail.com",
+  "email":"adminuuu@hotmail.com",
   "password":"123456789",
   "type":"csr"
 

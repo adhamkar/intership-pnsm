@@ -38,7 +38,9 @@ import { SharedButtonServiceComponent } from './shared-button-service/shared-but
 import { SharedDataComponent } from './shared-data/shared-data.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { SharePopulationDataComponent } from './share-population-data/share-population-data.component';
-import {MatDialogModule } from '@angular/material/dialog'
+import {MatDialogModule } from '@angular/material/dialog';
+import { CompteRenduComponent } from './compte-rendu/compte-rendu.component';
+import { PrecedentComponent } from './precedent/precedent.component'
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import {MatDialogModule } from '@angular/material/dialog'
     SharedDataComponent,
     RapportComponent,
     SharePopulationDataComponent,
-
+    CompteRenduComponent,
+    PrecedentComponent,
 
   ],
   imports: [

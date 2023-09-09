@@ -1,3 +1,4 @@
+
 <div style="height: 55vh;">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
@@ -31,14 +32,14 @@
 
 </div>
 <br><br><br><br><br>
-<div class="Tablecontainer ">
+<div class="Tablecontainer "  >
   <div class="card bg-grd p-2 fs-7 text-white fw-bold text-center haut3">
     Platforme nationale de la santé mobile
   </div>
   <div class=" haut2">
   Votre Progrès
   </div>
-  <table class="table custom-table " >
+  <table class="table custom-table " style="width: 60%; margin-left: 17rem;">
     <thead>
       <tr>
         <th></th>
@@ -48,45 +49,52 @@
     </thead>
     <tbody>
       <tr>
-        <td>Population a couvrir </td>
+        <td style="text-align: left;font-weight: bold;padding: 1.2rem;">Population a couvrir </td>
         <td>
-          <button class="mybutton"  *ngIf="!cliecked" (click)="openModal1() ">Ajouter</button>
-          <span class="rempli" *ngIf="cliecked">Rempli</span>
+          <button class="mybutton"  *ngIf="!clickedRow" (click)="openModal1() ">Ajouter</button>
+          <span class="rempli" *ngIf="one">Rempli</span>
         </td>
 
-        <td><span class="espace" *ngIf="!cliecked">NaN</span>
-          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        <td><span class="espace" *ngIf="!one">NaN</span>
+          <span class="done" *ngIf="one">	<mat-icon>check_circle</mat-icon></span>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="text-align: left; font-weight: bold;padding: 1.2rem;">Programme previsionel des UMM</td>
+        <td><button class="mybutton"  *ngIf="!clickedRow1" (click)="openModal()">Ajouter</button>
+          <span class="rempli" *ngIf="two">Rempli</span>
+        </td>
+        <td><span class="espace" *ngIf="!two">NaN</span>
+          <span class="done" *ngIf="two">	<mat-icon>check_circle</mat-icon></span>
         </td>
       </tr>
       <tr>
-        <td>Programme previsionel des UMM</td>
-        <td><button class="mybutton"  *ngIf="!cliecked1" (click)="openModal()">Ajouter</button>
-          <span class="rempli" *ngIf="cliecked1">Rempli</span>
+        <td style="text-align: left; font-weight: bold;padding: 1.2rem;">Situation des moyen de mobilité</td>
+        <td><button class="mybutton"  *ngIf="!clickedRow2" (click)="openModal2()">Ajouter</button>
+          <span class="rempli" *ngIf="three">Rempli</span>
         </td>
-        <td><span class="espace" *ngIf="!cliecked">NaN</span>
-          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
-        </td>
-      </tr>
-      <tr>
-        <td>Situation des moyen de mobilité</td>
-        <td><button class="mybutton"  *ngIf="!cliecked2" (click)="openModal2()">Ajouter</button>
-          <span class="rempli" *ngIf="cliecked2">Rempli</span>
-        </td>
-        <td><span class="espace" *ngIf="!cliecked">NaN</span>
-          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+        <td><span class="espace" *ngIf="!three">NaN</span>
+          <span class="done" *ngIf="three">	<mat-icon>check_circle</mat-icon></span>
         </td>
       </tr>
       <tr>
-        <td>Ressources humaines à mobiliser</td>
-        <td><button class="mybutton"  *ngIf="!cliecked3" (click)="openModal3()">Ajouter</button>
-          <span class="rempli" *ngIf="cliecked3">Rempli</span>
+        <td style="text-align: left;font-weight: bold ;padding: 1.2rem;">Ressources humaines à mobiliser</td>
+        <td><button class="mybutton"  *ngIf="!clickedRow3" (click)="openModal3()">Ajouter</button>
+          <span class="rempli" *ngIf="four">Rempli</span>
         </td>
         <td>
-          <span class="espace" *ngIf="!cliecked">NaN</span>
-          <span class="done" *ngIf="cliecked">	<mat-icon>check_circle</mat-icon></span>
+          <span class="espace" *ngIf="!four">NaN</span>
+          <span class="done" *ngIf="four">	<mat-icon>check_circle</mat-icon></span>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+<div style="display: flex; justify-content: center; align-items: center; padding: 1rem;">
+  <button class="mybutton "  *ngIf="clickedRow3 && clickedRow2 &&clickedRow1 && clickedRow" (click)="ToCompteRendu()">
+    Mon rapport
+  </button>
+</div>
+
 <br><br><br><br><br><br><br><br>
