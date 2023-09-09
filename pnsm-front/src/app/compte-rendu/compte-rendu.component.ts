@@ -45,9 +45,9 @@ downloadHTMLAsPDF() {
   };
 
   const doc = new jsPDF({
-    orientation: 'p',
+    orientation: 'l',
     unit: 'pt',
-    format: 'a4',
+    format: 'a3',
     ...margins
   });
 //hola
@@ -65,6 +65,9 @@ downloadHTMLAsPDF() {
   } else {
     console.error('HTML content not found.');
   }
+}
+ToHome(){
+this.router.navigate(['/home'])
 }
 
 }

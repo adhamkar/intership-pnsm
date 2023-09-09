@@ -1,16 +1,123 @@
 
-  <div class="modal-dialog" style="width: 40%; padding: 6rem; margin: auto; ">
-    <div class="modal-content" style=" border-radius: 10px; border: 2px solid red; ">
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rounded and Shadowed Alerts - Bootdey.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
 
-      <!-- Modal body -->
-      <div class="modal-body"style="margin: 1rem; color: red">
-        Veuillez remplire d'abord le formulaire precedent
-      </div>
+  .alert.alert-shadowed {
+      -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  }
 
-      <!-- Modal footer -->
-      <div class="modal-footer" style="margin: 1rem;">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
+  .alert.radius-bordered {
+      -webkit-border-radius: 3px;
+      -webkit-background-clip: padding-box;
+      -moz-border-radius: 3px;
+      -moz-background-clip: padding;
+      border-radius: 3px;
+      background-clip: padding-box;
+  }
 
+  .alert {
+      margin-bottom: 20px;
+      margin-top: 0;
+      color: #fff;
+      border-width: 0;
+      border-left-width: 5px;
+      padding: 10px;
+      border-radius: 0;
+  }
+
+  .alert.alert-warning {
+      border-color: #ffce55;
+      color: #555;
+      background: #fff1a8;
+  }
+
+  .alert.alert-success {
+      border-color: #8cc474;
+      background: #a0d468;
+  }
+
+
+  .alert.alert-info {
+      border-color: #11a9cc;
+      background: #57b5e3;
+  }
+
+  .alert.alert-danger {
+      border-color: #df5138;
+      background: #e46f61;
+  }
+
+  .label-success.graded, .badge-success.graded {
+      background: linear-gradient(to right,#53a93f,#b0e0a4)!important;
+  }
+
+  .label-darkorange.graded, .badge-darkorange.graded {
+      background: linear-gradient(to right,#ed4e2a,#f5a998)!important;
+  }
+
+  .label-darkorange, .badge-darkorange {
+      background-color: #ed4e2a;
+      background-image: none!important;
+  }
+
+  .label-sky.graded, .badge-sky.graded {
+      background: linear-gradient(to right,#11a9cc,#c4e6f6)!important;
+  }
+
+  .label-sky, .badge-sky {
+      background-color: #11a9cc;
+      background-image: none!important;
+  }
+      </style>
+</head>
+<body style="display: flex; justify-content: center;
+align-items: center; padding: 20rem;">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <div class="alert alert-warning fade in radius-bordered alert-shadowed"  *ngIf="showWarning">
+      <button class="close" (click)="hideAlert('warning')">
+        ×
+      </button>
+      <span class="badge badge-success graded">0</span>
+      <strong>Warning</strong> Your monthly traffic is reaching limit.
     </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+-->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+  <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+</svg>
+
+
+
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    An example warning alert with an icon
   </div>
+</div>
+

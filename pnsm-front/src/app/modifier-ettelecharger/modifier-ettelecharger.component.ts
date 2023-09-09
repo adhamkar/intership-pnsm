@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit ,ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,12 +10,14 @@ import{PopulationCouvrirComponent} from '../population-couvrir/population-couvri
 import{RessourcesComponent} from '../ressources/ressources.component';
 import{RessourcesHumaineComponent} from '../ressources-humaine/ressources-humaine.component';
 import { PrecedentComponent } from '../precedent/precedent.component';
+
 @Component({
   selector: 'app-modifier-ettelecharger',
   templateUrl: './modifier-ettelecharger.component.html',
   styleUrls: ['./modifier-ettelecharger.component.css']
 })
 export class ModifierETtelechargerComponent implements OnInit {
+  @ViewChild('dynamicContent', { static: true }) dynamicContent: ElementRef | undefined;
   cliecked:boolean=false;
   cliecked1:boolean=false;
   cliecked2:boolean=false;
@@ -28,6 +30,7 @@ export class ModifierETtelechargerComponent implements OnInit {
    two:boolean=false;
    three:boolean=false;
    four:boolean=false;
+  renderer: any;
   constructor(private router:Router, private dialog: MatDialog,private sharedButtonService: SharedButtonServiceComponent,private sharedButtonService1: SharedButtonServiceComponent,private sharedButtonService2: SharedButtonServiceComponent,private sharedButtonService3: SharedButtonServiceComponent){}
 
   ngOnInit(): void {
@@ -67,11 +70,35 @@ openModal(): void {
     dialogRef.afterClosed().subscribe((result) => {
       // Handle any actions after the modal is closed (if needed)
     });
-  }else{
-    this.modal()
+  }
+  else{
+
+    const alertHTML = this.generateAlertHTML();
+    const element = document.getElementById('dynamicContent');
+    if (element) {
+      element.innerHTML = alertHTML;
+      setTimeout(() => {
+        element.innerHTML = '';
+      }, 2000);
+    }
+
+
   }
 
 }
+generateAlertHTML(): string {
+  return `
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+        <use xlink:href="#exclamation-triangle-fill"/>
+      </svg>
+      <div>
+        Veuillez Remplir d'abord le forum precedent
+      </div>
+    </div>
+  `;
+}
+
 openModal1(): void {
   this.clickedRow=true;
   setTimeout(() => {
@@ -102,6 +129,18 @@ openModal2(): void {
     dialogRef.afterClosed().subscribe((result) => {
       // Handle any actions after the modal is closed (if needed)
     });
+  }else{
+
+    const alertHTML = this.generateAlertHTML();
+    const element = document.getElementById('dynamicContent');
+    if (element) {
+      element.innerHTML = alertHTML;
+      setTimeout(() => {
+        element.innerHTML = '';
+      }, 2000);
+    }
+
+
   }
 
 }
@@ -120,13 +159,25 @@ openModal3(): void {
     dialogRef.afterClosed().subscribe((result) => {
       // Handle any actions after the modal is closed (if needed)
     });
+  }else{
+
+    const alertHTML = this.generateAlertHTML();
+    const element = document.getElementById('dynamicContent');
+    if (element) {
+      element.innerHTML = alertHTML;
+      setTimeout(() => {
+        element.innerHTML = '';
+      }, 2000);
+    }
+
+
   }
 
 }
 modal(){
   const dialogRef = this.dialog.open(PrecedentComponent, {
-    width: '80%',
-    height: '40%',
+
+
     // You can pass any necessary data to the modal using the `data` option
   });
 
