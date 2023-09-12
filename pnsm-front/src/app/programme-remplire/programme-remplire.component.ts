@@ -46,7 +46,7 @@ export class ProgrammeRemplireComponent implements OnInit{
     })
   }
   ngOnInit(): void {
-   
+
   }
   getProgrammeData(){
     if(this.myprogramme.valid){
@@ -105,15 +105,7 @@ export class ProgrammeRemplireComponent implements OnInit{
       .subscribe(
           (response)=>{
             console.log('data updated',response);
-            /*
-                   const updatedIndex = this.tableData
-                   .findIndex(item => item.programme_id === this.lastSavedData.programme_id);
-                    if (updatedIndex !== -1) {
-                      this.tableData[updatedIndex] = {
-                        ...this.tableData[updatedIndex],
-                        ...this.lastSavedData
-                      };
-                    }*/
+         
                     this.updatedTableData.push({
                       programme_id:formData.programme_id,
                       pdr: formData.pdr,
@@ -150,13 +142,15 @@ export class ProgrammeRemplireComponent implements OnInit{
           console.log('data deleted',response);
           this.isDataSaved=false;
           this.isTableVisible=false;
-          this.openDeleteModalMsg();
+          //this.openDeleteModalMsg();
+          this.callIT();
           this.myprogramme.reset();
         },
         (error)=>{
           console.log('error deleting data',error);
         }
       )
+
     }else{
           console.log('No data to delete')
     }
@@ -214,6 +208,29 @@ deleteMsg.afterClosed().subscribe((result) => {
 });
  }
 
+callIT(){
+  const alertHTML = this.generateAlertHTML();
+  const element = document.getElementById('dynamicContent');
+  if (element) {
+    element.innerHTML = alertHTML;
+    setTimeout(() => {
+      element.innerHTML = '';
+    }, 2000);
+  }
+}
+
+ generateAlertHTML(): string {
+  return `
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+        <use xlink:href="#exclamation-triangle-fill"/>
+      </svg>
+      <div>
+        Veuillez Remplir d'abord le forum precedent
+      </div>
+    </div>
+  `;
+}
 
 
 

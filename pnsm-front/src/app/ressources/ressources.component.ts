@@ -13,6 +13,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./ressources.component.css']
 })
 export class RessourcesComponent implements OnInit{
+
+  updatedTableData: any[] = [];
+  isTableVisible:boolean=false;
+  lastSavedData: any = null;
   hide: boolean = false;
   @ViewChild('test',{static:false}) el!:ElementRef;
   tableData: any[] = []
@@ -41,9 +45,13 @@ export class RessourcesComponent implements OnInit{
       const formData=this.myressoure.value
       console.log(formData);
       this.http.post('http://localhost:3000/ressources', formData).subscribe(
-        (response)=>{
+        (response:any)=>{
           console.log('ressource created:', response);
             this.isDataSaved = true;
+            this.lastSavedData = {
+              ressource_id: response.ressource_id,
+              ...formData
+            };
             this.tableData.push({
               year: formData.year,
               vehicule_id: formData.vehicule_id,
@@ -59,7 +67,7 @@ export class RessourcesComponent implements OnInit{
               csr_id: formData.csr_id,
 
                     });
-            this.myressoure.reset();
+
         },
         (error) => {
           console.error('Error creating ressource:', error);
@@ -69,6 +77,90 @@ export class RessourcesComponent implements OnInit{
     }else{
       console.log('Form is invalid. Please fill in all required fields.');
     }
+  }
+  
+  updateLastRecord(){
+    if(this.lastSavedData){
+      const formData=this.myressoure.value;
+      this.lastSavedData={
+        ...this.lastSavedData,
+        ...formData
+      };
+      this.http.patch(`http://localhost:3000/ressources/${this.lastSavedData.ressource_id}`,this.lastSavedData)
+      .subscribe(
+          (response)=>{
+            console.log('data updated',response);
+
+                    this.updatedTableData.push({
+                      year: formData.year,
+                      vehicule_id: formData.vehicule_id,
+                      vehicule_type: formData.vehicule_type,
+
+                      vehicule_age: formData.vehicule_age,
+                      budget_id: formData.budget_id,
+
+                      budget_KmsParcourus:formData.budget_KmsParcourus ,
+
+                      besoinUsm: formData.besoinUsm,
+                      observation: formData.observation,
+                      csr_id: formData.csr_id,
+                            });
+                            console.log('Updated Table Data:', this.updatedTableData);
+          this.isDataSaved=true;
+          this.isTableVisible=true;
+          },
+          (error)=>{
+            console.log('cannot update data',error);
+          }
+);
+    }else{
+      console.log('No data available to update.');
+    }
+  }
+
+  DeleteLastData(){
+    if(this.lastSavedData){
+      this.http.delete(`http://localhost:3000/ressources/${this.lastSavedData.ressource_id}`)
+      .subscribe(
+        (response)=>{
+          console.log('data deleted',response);
+          this.isDataSaved=false;
+          this.isTableVisible=false;
+          //this.openDeleteModalMsg();
+          this.callIT();
+          this.myressoure.reset();
+        },
+        (error)=>{
+          console.log('error deleting data',error);
+        }
+      )
+
+    }else{
+          console.log('No data to delete')
+    }
+  }
+  callIT(){
+    const alertHTML = this.generateAlertHTML();
+    const element = document.getElementById('dynamicContent');
+    if (element) {
+      element.innerHTML = alertHTML;
+      setTimeout(() => {
+        element.innerHTML = '';
+      }, 2000);
+    }
+  }
+
+   generateAlertHTML(): string {
+    return `
+      <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+          <use xlink:href="#exclamation-triangle-fill"/>
+        </svg>
+        <div>
+          Veuillez Remplir d'abord le forum precedent
+        </div>
+      </div>
+    `;
   }
   editRessourcesData(){
     if(this.myressoure.valid){
@@ -93,7 +185,7 @@ export class RessourcesComponent implements OnInit{
     this.router.navigate(['/modiermdp'])
   }
   downloadTableAsPDF(){
-    let pdf=new jsPDF.default("l","pt","a4",true);
+    let pdf=new jsPDF.default("l","pt","a3",true);
     pdf.html(this.el.nativeElement,{
       callback: (pdf:any)=>{
         pdf.save("table.pdf")

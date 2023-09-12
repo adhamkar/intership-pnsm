@@ -71,12 +71,20 @@
         <mat-icon>keyboard_tab</mat-icon>
       </button>
       </div>
+      <button  type="button"  (click)="updateLastRecord()" class=" button1 btn1 " *ngIf="isDataSaved">Update data</button>
+
+      <button type="button" *ngIf="isDataSaved" (click)="DeleteLastData()" class=" button1 btn1 ">
+        <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+        </svg>
+      </button>
   </div>
 </form>
 </div>
 <br>
 
-<div class="Tablecontainer "  *ngIf="isDataSaved" #test>
+<div class="Tablecontainer "  *ngIf="!isTableVisible && isDataSaved" #test>
   <table *ngIf="tableData.length > 0 " id="data-table" class="table custom-table " >
     <thead>
       <tr>
@@ -127,6 +135,37 @@
   </table>
 </div>
 
-<button type="button" *ngIf="isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+<button type="button" *ngIf="!isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
+
+<div class="Tablecontainer" *ngIf="isTableVisible && isDataSaved"  #test>
+  <table *ngIf="updatedTableData.length > 0 " id="updated-data-table" class="table custom-table " >
+    <thead>
+      <tr>
+        <th>Année</th>
+        <th>Vehicule id</th>
+        <th>Type Vehicule</th>
+        <th>Budget id</th>
+        <th>Budget des Kms Parcourus</th>
+        <th>Besoins des Usm</th>
+        <th>Observation 1</th>
+        <th>Centre de santé id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of updatedTableData">
+        <td>{{ data.year }}</td>
+        <td>{{ data.vehicule_id }}</td>
+        <td>{{ data.vehicule_type }}</td>
+        <td>{{ data.budget_id }}</td>
+        <td>{{ data.budget_KmsParcourus }}</td>
+        <td>{{ data.besoinUsm }}</td>
+        <td>{{ data.observation }}</td>
+        <td>{{ data.csr_id }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button type="button" *ngIf="isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
 

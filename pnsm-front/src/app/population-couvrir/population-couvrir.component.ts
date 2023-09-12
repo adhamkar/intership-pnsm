@@ -192,6 +192,30 @@ export class PopulationCouvrirComponent implements OnInit {
       console.log('No data available to update.');
     }
   }
+  DeleteLastData(){
+    if(this.lastSavedData){
+      const formData=this.myForm.value;
+      this.lastSavedData={
+        ...this.lastSavedData,
+        ...formData
+      };
+      this.http.delete(`http://localhost:3000/populations/${this.lastSavedData.population_id}`)
+      .subscribe(
+        (response)=>{
+          console.log('data deleted',response);
+          this.isDataSaved=false;
+          this.isTableVisible=false;
+         // this.openDeleteModalMsg();
+          this.myForm.reset();
+        },
+        (error)=>{
+          console.log('error deleting data',error);
+        }
+      )
+    }else{
+          console.log('No data to delete')
+    }
+  }
   ngOnInit(): void {
   }
   onLogout(){
@@ -430,5 +454,6 @@ if(data.hasOwnProperty('populationType')){
  closeModal():void{
 const close=this.dialog.closeAll()
  }
+
 
 }

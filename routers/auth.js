@@ -37,6 +37,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Authentication failed' });
   }
 });
+
 router.patch('/pssw',[check('newPassword').trim().isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
 ],async(req,res)=>{
   
