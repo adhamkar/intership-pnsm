@@ -64,6 +64,22 @@ const createPopulation = async (req, res) => {
   }
 };
 
+const getlastRecord= async (req, res) => {
+  try {
+    const lastInsertedRecord = await Population.findOne({
+      order: [['population_id', 'DESC']],
+    });
+    
+    if (lastInsertedRecord) {
+      res.json(lastInsertedRecord);
+    } else {
+      res.status(404).json({ message: 'No records found' });
+    }
+  } catch (error) {
+    console.error("Error getting last Programme ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 const getPopulationById = async (req, res) => {
   try {
     const { population_id } = req.params;
@@ -163,4 +179,5 @@ module.exports = {
   getPopulationById,
   updatePopulation,
   deletePopulation,
+  getlastRecord
 };

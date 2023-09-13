@@ -9,8 +9,10 @@ const {
   getPopulationById,
   updatePopulation,
   deletePopulation,
+  getlastRecord,
 } = require("../controllers/populationController");
 
+router.get('/last', getlastRecord);
 router.get("/", getAllPopulations);
 router.post("/", createPopulation);
 router.get("/:population_id", getPopulationById);

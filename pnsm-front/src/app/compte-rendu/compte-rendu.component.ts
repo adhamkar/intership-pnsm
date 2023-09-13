@@ -11,6 +11,7 @@ import 'jspdf-autotable'
 })
 export class CompteRenduComponent implements OnInit{
   lastInsertedRecord: any;
+  lastpopulation :any;
   @ViewChild('test',{static:false}) el!:ElementRef;
   @ViewChild('myprogramme') updateData:NgForm | undefined;
   constructor(private router: Router,private http: HttpClient){}
@@ -20,6 +21,16 @@ this.http.get('http://localhost:3000/programmes/last').subscribe(
   (response:any)=>{
     this.lastInsertedRecord=response
     console.log('programme displayed:', response);
+  },
+  (error)=>{
+    console.error('Error displaying last record:', error);
+    console.log('Detailed error:', error.error);
+  }
+)
+this.http.get('http://localhost:3000/populations/last').subscribe(
+  (response:any)=>{
+    this.lastpopulation=response
+    console.log('population displayed:', response);
   },
   (error)=>{
     console.error('Error displaying last record:', error);

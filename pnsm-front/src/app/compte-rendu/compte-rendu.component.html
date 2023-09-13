@@ -15,6 +15,9 @@
 .text-secondary-d1 {
     color: #728299!important;
 }
+@page{
+  size: A3;
+}
 .page-header {
     margin: 0 0 1rem;
     padding-bottom: 1rem;
@@ -178,23 +181,8 @@ margin-top: 3rem;
   margin-right: 10px;
 
 }
-@page{
-  size: A4;
-  margin: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
+
 </head>
 <body >
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -267,34 +255,127 @@ Export
 
 <div class="mt-4" style="width: 90%; margin-left: 3.5rem;">
   <p style=" font-weight: bold;">1-Programme Previsionnel</p>
-<div class="row text-600 text-white bgc-default-tp1 py-25">
-<div class="d-none d-sm-block col-2">PDR à couvrir</div>
-<div class="d-none d-sm-block col-3">Distance entre cs et PDR</div>
-<div class="d-none d-sm-block col-2"> Accessibilité PDR</div>
-<div class="col-1">T1</div>
-<div class="col-1">T2</div>
-<div class="col-1">T3</div>
-<div class="col-1">T4</div>
-</div>
-<div class="row text-95 text-secondary-d3" style="border: 1px solid #1e6cc0;">
-<div class="row mb-2 mb-sm-0 py-25">
-<div class="d-none d-sm-block col-2"> {{lastInsertedRecord.pdr}}</div>
-<div class="d-none d-sm-block col-3"> {{lastInsertedRecord.distance}}</div>
-<div class="d-none d-sm-block col-2"> {{lastInsertedRecord.accessibility}}</div>
-<div class="col-1"> {{lastInsertedRecord.t1}}</div>
-<div class="col-1"> {{lastInsertedRecord.t2}}</div>
-<div class="col-1"> {{lastInsertedRecord.t3}}</div>
-<div class="col-1"> {{lastInsertedRecord.t4}}</div>
-</div>
-</div>
+
+<table border="1">
+
+  <tbody>
+    <tr>
+      <td>PDR à couvrir</td>
+      <td>{{lastInsertedRecord.pdr}}</td>
+    </tr>
+    <tr>
+      <td>Distance entre le centre de santé et le PDR</td>
+      <td>{{lastInsertedRecord.distance}}</td>
+    </tr>
+    <tr>
+      <td>Accessibilité au PDR</td>
+      <td>{{lastInsertedRecord.accessibility}}</td>
+    </tr>
+    <tr>
+      <td>Liste des localités</td>
+      <td>{{lastInsertedRecord.localite}}</td>
+    </tr>
+    <tr>
+      <td>Trimestre 1</td>
+      <td>{{lastInsertedRecord.t1}}</td>
+    </tr>
+    <tr>
+      <td>Trimestre 2</td>
+      <td>{{lastInsertedRecord.t2}}</td>
+    </tr>
+    <tr>
+      <td>Trimestre 3</td>
+      <td>{{lastInsertedRecord.t3}}</td>
+    </tr>
+    <tr>
+      <td>Trimestre 4</td>
+      <td>{{lastInsertedRecord.t4}}</td>
+    </tr>
+
+  </tbody>
+</table>
 <div class="row border-b-2 brc-default-l2"></div>
-
-
+<br>
 
 <hr/>
+
+<p style=" font-weight: bold;">2-Population à couvrir par l'équipe mobile</p>
+<table border="1">
+
+  <tbody>
+    <tr>
+      <td>Population Rurale</td>
+      <td>{{lastpopulation.population_rurale}}</td>
+    </tr>
+    <tr>
+      <td>Population cible de l'équipe mobile</td>
+      <td>{{lastpopulation.population_habitantMoins3km}}</td>
+    </tr>
+    <tr>
+      <td>Population habitant à moins de 3km</td>
+      <td>{{lastpopulation.population_habitantEntre3km6km}}</td>
+    </tr>
+    <tr>
+      <td>Population habitant entre 3km et 6km</td>
+      <td>{{lastpopulation.population_habitantEntre6km10km}}</td>
+    </tr>
+    <tr>
+      <td>Population habitant entre 6km et 10km</td>
+      <td>{{lastpopulation.population_habitantPlus10km}}</td>
+    </tr>
+    <tr>
+      <td>Population habitant à plus de 10km</td>
+      <td>{{lastpopulation.population_cible}}</td>
+    </tr>
+    <tr>
+      <td>Distance moyenne entre le centre de santé et la route goudronnée la plus proche (km) </td>
+      <td>{{lastpopulation.distanceMoyenneRouteProche}}</td>
+    </tr>
+    <tr>
+      <td>Enfant Id</td>
+      <td>{{lastpopulation.enfant_id}}</td>
+    </tr>
+    <tr>
+      <td>Naissances attendues</td>
+      <td>{{lastpopulation.enfant_naissancesAttendues}}</td>
+    </tr>
+    <tr>
+      <td>Enfants moins de 1ans</td>
+      <td>{{lastpopulation.enfant_moins1ans}}</td>
+    </tr>
+    <tr>
+      <td>Enfants moins de 5ans</td>
+      <td>{{lastpopulation.enfant_moins5ans}}</td>
+    </tr>
+    <tr>
+      <td>Femme Id</td>
+      <td>{{lastpopulation.femme_id}}</td>
+    </tr>
+    <tr>
+      <td>Nombre de FAR</td>
+      <td>{{lastpopulation.femme_far}}</td>
+    </tr>
+    <tr>
+      <td>Nombre de FMAR</td>
+      <td>{{lastpopulation.femme_fmar}}</td>
+    </tr>
+    <tr>
+      <td>Femmes enceintes </td>
+      <td>{{lastpopulation.femme_femmeEnceinte}}</td>
+    </tr>
+    <tr>
+      <td>Date de Creation</td>
+      <td>{{lastpopulation.createdAt}}</td>
+    </tr>
+    <tr>
+      <td>Modification</td>
+      <td>{{lastpopulation.updatedAt}}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
 <div>
 <span class="text-secondary-d1 text-105">Thank you for your business</span>
-
 </div>
 </div>
 
