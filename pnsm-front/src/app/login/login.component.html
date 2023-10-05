@@ -1,5 +1,6 @@
 <p></p>
-<div class="photo">
+
+  <div class="photo">
   <br>
   <br>
   <br>
@@ -7,10 +8,10 @@
 
   <div class="container">
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
+
         <h1 class="display-4">Login</h1>
         <p class="lead">Plateforme national de la sante mobile.</p>
-      </div>
+
     </div> <br>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="forum">
 
@@ -47,3 +48,40 @@
 </div>
 
 
+
+
+
+<style>
+
+.gradient-custom-2 {
+
+background: #114094;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, #114094, #1d252d, #35a0e7);
+background: linear-gradient(to right, #144cad, #496787, #246996);
+
+
+}
+
+section{
+  padding: 5rem !important;
+}
+
+@media (min-width: 768px) {
+.gradient-form {
+height: 100vh !important;
+}
+}
+@media (min-width: 769px) {
+.gradient-custom-2 {
+border-top-right-radius: .3rem;
+border-bottom-right-radius: .3rem;
+}
+}
+</style>
+
+
+
+
+<br><br>

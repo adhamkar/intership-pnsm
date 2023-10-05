@@ -48,6 +48,7 @@
       <input placeholder="valeur"  type="number" class="input2" formControlName="fixe_chauffeur" required>
       <span>Appuie</span>
       <input placeholder="valeur" type="number" class="input2" formControlName="fixe_appuie" required>
+      <span><mat-checkbox formControlName="fixe_technicien" required>Technicien</mat-checkbox></span><br>
       <h5 class="pop circle-icon">
         <u>Mode mobile :</u>
       </h5>
@@ -316,3 +317,8 @@
 </div>
 <button type="button" *ngIf="isTableVisible && isDataSaved" (click)="downloadTableAsPDF()" class="button1 btn1">Download PDF</button>
 
+<style>
+  .ok{
+    margin-left: 18rem;
+  }
+</style>

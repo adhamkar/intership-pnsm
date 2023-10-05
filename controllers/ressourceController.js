@@ -48,6 +48,23 @@ const createRessource = async (req, res) => {
   }
 };
 
+const getlastRessoureid = async (req, res) => {
+  try {
+    const lastInsertedRecord = await Ressource.findOne({
+      order: [['ressource_id', 'DESC']],
+    });
+    
+    if (lastInsertedRecord) {
+      res.json(lastInsertedRecord);
+    } else {
+      res.status(404).json({ message: 'No records found' });
+    }
+  } catch (error) {
+    console.error("Error getting last record:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 const getRessourceById = async (req, res) => {
   try {
     const { ressource_id } = req.params;
@@ -136,4 +153,5 @@ module.exports = {
   getRessourceById,
   updateRessource,
   deleteRessource,
+  getlastRessoureid
 };

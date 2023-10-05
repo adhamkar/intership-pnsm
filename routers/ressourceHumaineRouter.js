@@ -8,8 +8,10 @@ const {
   getRessourceHumaineById,
   updateRessourceHumaine,
   deleteRessourceHumaine,
+  getlastRHid,
 } = require("../controllers/ressourceHumaineController");
 
+router.get('/last', getlastRHid);
 router.get("/", getAllRessourceHumaines);
 router.post("/", createRessourceHumaine);
 router.get("/:ressourceHumaine_id", getRessourceHumaineById);

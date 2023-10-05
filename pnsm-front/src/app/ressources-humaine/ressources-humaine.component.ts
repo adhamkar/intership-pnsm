@@ -29,8 +29,9 @@ export class RessourcesHumaineComponent implements OnInit{
       fixe_infermier: ['', Validators.required],
       fixe_sageFemme: ['', Validators.required],
       fixe_chauffeur: ['', Validators.required],
-
+      fixe_technicien: ['', Validators.required],
       fixe_appuie: ['', Validators.required],
+
       mobile_id: ['', Validators.required],
       mobile_medecin: ['', Validators.required],
       mobile_infermier: ['', Validators.required],
@@ -73,12 +74,12 @@ export class RessourcesHumaineComponent implements OnInit{
 
               fixe_id:formData.fixe_id,
               fixe_medecin:formData.fixe_medecin,
-
               fixe_infermier:formData.fixe_infermier,
               fixe_sageFemme:formData.fixe_sageFemme,
+              fixe_technicien:formData.fixe_technicien,
               fixe_chauffeur:formData.fixe_chauffeur,
-
               fixe_appuie:formData.fixe_appuie,
+
               mobile_id:formData.mobile_id,
               mobile_medecin:formData.mobile_medecin,
 
@@ -132,9 +133,10 @@ export class RessourcesHumaineComponent implements OnInit{
 
                       fixe_infermier:formData.fixe_infermier,
                       fixe_sageFemme:formData.fixe_sageFemme,
+                      fixe_technicien:formData.fixe_technicien,
                       fixe_chauffeur:formData.fixe_chauffeur,
-
                       fixe_appuie:formData.fixe_appuie,
+
                       mobile_id:formData.mobile_id,
                       mobile_medecin:formData.mobile_medecin,
 

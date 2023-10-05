@@ -56,6 +56,10 @@ const RessourceHumaine = sequelize.define(
       type: DataTypes.TINYINT,
       allowNull: false,
     },
+    fixe_technicien: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     //mobile
     mobile_id: {
       type: DataTypes.INTEGER,

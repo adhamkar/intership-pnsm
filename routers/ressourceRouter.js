@@ -9,8 +9,10 @@ const {
   getRessourceById,
   updateRessource,
   deleteRessource,
+  getlastRessoureid,
 } = require("../controllers/ressourceController");
 
+router.get('/last', getlastRessoureid);
 router.get("/", getAllRessources);
 router.post("/", createRessource);
 router.get("/:ressource_id", getRessourceById);

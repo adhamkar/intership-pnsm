@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.userType = params['userType'] || null;
+      
     });
 
 

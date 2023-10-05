@@ -7,10 +7,14 @@
 <title>company invoice - Bootdey.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style type="text/css">
     	body{
     margin-top:20px;
     color: #484b51;
+}
+.textAligne{
+padding-right: 2rem;
 }
 .text-secondary-d1 {
     color: #728299!important;
@@ -181,12 +185,62 @@ margin-top: 3rem;
   margin-right: 10px;
 
 }
-    </style>
+
+#table-example-1 {
+  border: solid thin;
+  border-collapse: collapse;
+  width: 100%;
+}
+#table-example-1 caption {
+  padding-bottom: 0.5em;
+}
+#table-example-1 th,
+#table-example-1 td,
+#table-example-1 tr {
+  border: solid thin;
+  padding: 0.5rem;
+  width: 15%; /* Adjust the width as needed */
+
+    text-align: center;
+}
+#table-example-1 td {
+  white-space: nowrap;
+}
+#table-example-1 th {
+  font-weight: normal;
+  background-color: white;
+}
+#table-example-1 td {
+  border-style: none solid;
+  vertical-align: top;
+  background-color: white;
+}
+#table-example-1 th[colspan="2"] {
+
+  width: auto;
+  vertical-align: middle;
+  text-align: center;
+  }
+
+#table-example-1 tbody td:first-child::after {
+  content: leader(". ");
+}
+
+body {
+  padding: 1rem;
+}
+.theTh{
+  background-color: lightgray;
+}
+
+</style>
 
 </head>
 <body >
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div  class="page-content container">
+
+<button (click)="generatemyPDF()" id="download-button"> pdf</button>
 
 <div class="page-header text-blue-d2">
 <h1 class="page-title text-secondary-d1">
@@ -256,39 +310,39 @@ Export
 <div class="mt-4" style="width: 90%; margin-left: 3.5rem;">
   <p style=" font-weight: bold;">1-Programme Previsionnel</p>
 
-<table border="1">
+<table id="table-example-1" class="tab1">
 
-  <tbody>
-    <tr>
-      <td>PDR à couvrir</td>
-      <td>{{lastInsertedRecord.pdr}}</td>
+  <tbody >
+    <tr  >
+      <td style="text-align: left; width: 80%;" >PDR à couvrir</td>
+      <td style="width: 20%;">{{lastInsertedRecord.pdr}}</td>
     </tr>
     <tr>
-      <td>Distance entre le centre de santé et le PDR</td>
+      <td style="text-align: left;">Distance entre le centre de santé et le PDR</td>
       <td>{{lastInsertedRecord.distance}}</td>
     </tr>
     <tr>
-      <td>Accessibilité au PDR</td>
+      <td style="text-align: left;">Accessibilité au PDR</td>
       <td>{{lastInsertedRecord.accessibility}}</td>
     </tr>
     <tr>
-      <td>Liste des localités</td>
+      <td style="text-align: left;">Liste des localités</td>
       <td>{{lastInsertedRecord.localite}}</td>
     </tr>
     <tr>
-      <td>Trimestre 1</td>
+      <td style="text-align: left;">Trimestre 1</td>
       <td>{{lastInsertedRecord.t1}}</td>
     </tr>
     <tr>
-      <td>Trimestre 2</td>
+      <td style="text-align: left;">Trimestre 2</td>
       <td>{{lastInsertedRecord.t2}}</td>
     </tr>
     <tr>
-      <td>Trimestre 3</td>
+      <td style="text-align: left;">Trimestre 3</td>
       <td>{{lastInsertedRecord.t3}}</td>
     </tr>
     <tr>
-      <td>Trimestre 4</td>
+      <td style="text-align: left;">Trimestre 4</td>
       <td>{{lastInsertedRecord.t4}}</td>
     </tr>
 
@@ -300,83 +354,157 @@ Export
 <hr/>
 
 <p style=" font-weight: bold;">2-Population à couvrir par l'équipe mobile</p>
-<table border="1">
+<table id="table-example-1"  *ngIf="lastpopulation">
 
-  <tbody>
-    <tr>
-      <td>Population Rurale</td>
-      <td>{{lastpopulation.population_rurale}}</td>
+  <tbody >
+    <tr >
+      <td style="text-align: left; width: 80%;" >Population Rurale</td>
+      <td style="width: 20%;">{{lastpopulation.population_rurale}}</td>
     </tr>
     <tr>
-      <td>Population cible de l'équipe mobile</td>
+      <td style="text-align: left;">Population cible de l'équipe mobile</td>
       <td>{{lastpopulation.population_habitantMoins3km}}</td>
     </tr>
     <tr>
-      <td>Population habitant à moins de 3km</td>
-      <td>{{lastpopulation.population_habitantEntre3km6km}}</td>
+      <td style="text-align: left;">Population habitant à moins de 3km</td>
+      <td >{{lastpopulation.population_habitantEntre3km6km}}</td>
     </tr>
     <tr>
-      <td>Population habitant entre 3km et 6km</td>
+      <td style="text-align: left;">Population habitant entre 3km et 6km</td>
       <td>{{lastpopulation.population_habitantEntre6km10km}}</td>
     </tr>
     <tr>
-      <td>Population habitant entre 6km et 10km</td>
+      <td style="text-align: left;">Population habitant entre 6km et 10km</td>
       <td>{{lastpopulation.population_habitantPlus10km}}</td>
     </tr>
     <tr>
-      <td>Population habitant à plus de 10km</td>
-      <td>{{lastpopulation.population_cible}}</td>
-    </tr>
-    <tr>
-      <td>Distance moyenne entre le centre de santé et la route goudronnée la plus proche (km) </td>
+      <td style="text-align: left;">Distance moyenne entre le centre de santé et la route goudronnée la plus proche (km) </td>
       <td>{{lastpopulation.distanceMoyenneRouteProche}}</td>
     </tr>
     <tr>
-      <td>Enfant Id</td>
+      <td style="text-align: left;">Enfant Id</td>
       <td>{{lastpopulation.enfant_id}}</td>
     </tr>
     <tr>
-      <td>Naissances attendues</td>
+      <td style="text-align: left;">Naissances attendues</td>
       <td>{{lastpopulation.enfant_naissancesAttendues}}</td>
     </tr>
     <tr>
-      <td>Enfants moins de 1ans</td>
+      <td style="text-align: left;">Enfants moins de 1ans</td>
       <td>{{lastpopulation.enfant_moins1ans}}</td>
     </tr>
     <tr>
-      <td>Enfants moins de 5ans</td>
+      <td style="text-align: left;">Enfants moins de 5ans</td>
       <td>{{lastpopulation.enfant_moins5ans}}</td>
     </tr>
     <tr>
-      <td>Femme Id</td>
+      <td style="text-align: left;">Femme Id</td>
       <td>{{lastpopulation.femme_id}}</td>
     </tr>
     <tr>
-      <td>Nombre de FAR</td>
+      <td style="text-align: left;">Nombre de FAR</td>
       <td>{{lastpopulation.femme_far}}</td>
     </tr>
     <tr>
-      <td>Nombre de FMAR</td>
+      <td style="text-align: left;">Nombre de FMAR</td>
       <td>{{lastpopulation.femme_fmar}}</td>
     </tr>
     <tr>
-      <td>Femmes enceintes </td>
+      <td style="text-align: left;">Femmes enceintes </td>
       <td>{{lastpopulation.femme_femmeEnceinte}}</td>
     </tr>
     <tr>
-      <td>Date de Creation</td>
+      <td style="text-align: left;">Date de Creation</td>
       <td>{{lastpopulation.createdAt}}</td>
     </tr>
     <tr>
-      <td>Modification</td>
+      <td style="text-align: left;">Modification</td>
       <td>{{lastpopulation.updatedAt}}</td>
     </tr>
   </tbody>
 </table>
 <hr>
+
+<p style=" font-weight: bold;">3-Situation des moyens de mobilité</p>
+<table id="table-example-1" *ngIf="lastressource">
+
+  <thead>
+    <tr>
+    <th colspan="2" class="theTh">Informations sur le véhicule</th>
+    <th rowspan="2" class="theTh">Kilométrage annuel total à parcourir</th>
+    <th rowspan="2" class="theTh">Besoin en carburant (MAD)</th>
+    <th rowspan="2" class="theTh">Besoins en Unités Sanitaires Mobiles (USM)</th>
+
+   </tr>
+
+  </thead>
+  <tbody>
+
+    <tr>
+    <th>{{lastressource.vehicule_type}}</th>
+    <th>{{lastressource.vehicule_age}}</th>
+    <td>{{lastressource.budget_KmsParcourus}}</td>
+    <td>{{lastressource.budget_besoinCarburant}}</td>
+    <td>{{lastressource.besoinUsm}}</td>
+
+
+   </tr>
+
+
+  <tr ><th colspan="6" class="theTh">Observation</th></tr>
+  <tr>
+    <td colspan="6">
+      <span>
+        {{lastressource.observation}}
+      </span>
+    </td>
+  </tr>
+  </tbody>
+
+</table>
+<br>
+<p style=" font-weight: bold;">4-Ressources humaines</p>
+    <table id="table-example-1" *ngIf="lastRH">
+            <tbody>
+            <tr>
+              <th></th>
+              <th>Medecin</th>
+              <th>Infirmière(er)</th>
+              <th>Sage Femme</th>
+              <th>Technicien</th>
+              <th>Chauffeur</th>
+              <th>Ressources humaines d'appuie</th>
+            </tr>
+            <tr>
+              <th class="text-start">Mode Fixe</th>
+              <td colspan="1">{{lastRH.fixe_medecin}}</td>
+              <td colspan="1">{{lastRH.fixe_infermier}}</td>
+              <td colspan="1">{{lastRH.fixe_sageFemme}}</td>
+              <td colspan="1">{{lastRH.fixe_technicien}}</td>
+              <td colspan="1">{{lastRH.fixe_chauffeur}}</td>
+              <td colspan="1">{{lastRH.fixe_appuie}}</td>
+            </tr>
+
+            <tr>
+              <th class="text-start">Mode Mobile</th>
+              <td>{{lastRH.mobile_medecin}}</td>
+              <td>{{lastRH.mobile_infermier}}</td>
+              <td>{{lastRH.mobile_sageFemme}}</td>
+              <td>{{lastRH.mobile_technicien}}</td>
+              <td>{{lastRH.mobile_chauffeur}}</td>
+              <td>{{lastRH.mobile_appuie}}</td>
+            </tr>
+            <tr>
+              <th colspan="5">Nombre d’équipes mobile opérationnelle </th>
+              <td colspan="2" >{{lastRH.mobile_medecin}}</td>
+            </tr>
+            </tbody>
+    </table>
+
+
 <div>
-<span class="text-secondary-d1 text-105">Thank you for your business</span>
-</div>
+  <span class="text-secondary-d1 text-105">Thank you for your business</span>
+  </div>
 </div>
 
 </div>

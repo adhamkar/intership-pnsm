@@ -19,6 +19,7 @@ const createRessourceHumaine = async (req, res) => {
       fixe_medecin,
       fixe_infermier,
       fixe_sageFemme,
+      fixe_technicien,
       fixe_chauffeur,
       fixe_appuie,
       mobile_id,
@@ -50,6 +51,7 @@ const createRessourceHumaine = async (req, res) => {
       fixe_medecin,
       fixe_infermier,
       fixe_sageFemme,
+      fixe_technicien,
       fixe_chauffeur,
       fixe_appuie,
       mobile_id,
@@ -81,6 +83,23 @@ const createRessourceHumaine = async (req, res) => {
   }
 };
 
+const getlastRHid = async (req, res) => {
+  try {
+    const lastInsertedRecord = await RessourceHumaine.findOne({
+      order: [['ressourceHumaine_id', 'DESC']],
+    });
+    
+    if (lastInsertedRecord) {
+      res.json(lastInsertedRecord);
+    } else {
+      res.status(404).json({ message: 'No records found' });
+    }
+  } catch (error) {
+    console.error("Error getting last record:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 const getRessourceHumaineById = async (req, res) => {
   try {
     const { ressourceHumaine_id } = req.params;
@@ -106,6 +125,7 @@ const updateRessourceHumaine = async (req, res) => {
       fixe_medecin,
       fixe_infermier,
       fixe_sageFemme,
+      fixe_technicien,
       fixe_chauffeur,
       fixe_appuie,
       mobile_id,
@@ -141,6 +161,7 @@ const updateRessourceHumaine = async (req, res) => {
       r.fixe_medecin = fixe_medecin || r.fixe_medecin;
       r.fixe_infermier = fixe_infermier || r.fixe_infermier;
       r.fixe_sageFemme = fixe_sageFemme || r.fixe_sageFemme;
+      r.fixe_technicien = fixe_technicien || r.fixe_technicien;
       r.fixe_chauffeur = fixe_chauffeur || r.fixe_chauffeur;
       r.fixe_appuie = fixe_appuie || r.fixe_appuie;
       r.mobile_id = mobile_id || r.mobile_id;
@@ -213,4 +234,5 @@ module.exports = {
   getRessourceHumaineById,
   updateRessourceHumaine,
   deleteRessourceHumaine,
+  getlastRHid,
 };

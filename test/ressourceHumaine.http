@@ -8,6 +8,7 @@ Content-Type: application/json
   "fixe_medecin": 3,
   "fixe_infermier": 4,
   "fixe_sageFemme": 3,
+  "fixe_technicien": true,
   "fixe_chauffeur": 5,
   "fixe_appuie": 5,
   "mobile_id": 33,
@@ -35,6 +36,8 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:3000/ressourceHumaines
+###
+GET http://localhost:3000/ressourceHumaines/last
 ###
 GET http://localhost:3000/ressourceHumaines/2
 ###
