@@ -239,8 +239,9 @@ body {
 <body >
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div  class="page-content container">
-
-<button (click)="generatemyPDF()" id="download-button"> pdf</button>
+<!--
+  <button (click)="generatemyPDF()" id="download-button"> pdf</button>
+-->
 
 <div class="page-header text-blue-d2">
 <h1 class="page-title text-secondary-d1">
@@ -251,11 +252,14 @@ Rapport
 <div class="action-buttons">
 <div class=" row-1 toalg">
   <div class="button-container">
-<a class="btn bg-white btn-light mx-1px text-95 " style="margin-top: 1rem;" data-title="PDF" (click)="downloadHTMLAsPDF()">
+    <button (click)="generatemyPDF()" id="download-button" class="btn btn-outline-light">
+<a class="btn bg-white btn-light mx-1px text-95 " style="margin-top: 1rem;" data-title="PDF" >
 
 <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
 Export
 </a>
+</button>
+
 <a (click)="ToHome()" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0 " style="margin-top: 4rem;">Page d'acceuille</a>
 </div>
 </div>

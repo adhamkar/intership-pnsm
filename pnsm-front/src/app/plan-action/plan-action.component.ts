@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./plan-action.component.css']
 })
 export class PlanActionComponent implements OnInit{
+  cliecked:boolean=false;
+  
   constructor(private router:Router){
 
   }
@@ -17,7 +19,22 @@ export class PlanActionComponent implements OnInit{
   onclick(){
     this.router.navigate(['/modifierETtelecharger']);
   }
+  goToLink(url: string){
+    window.open(url, "_blank");
+}
   onclick1(){
-    this.router.navigate(['/rapport']);
+    this.router.navigate(['/compteRendu']);
+  }
+  generateAlertHTML(): string {
+    return `
+      <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+          <use xlink:href="#exclamation-triangle-fill"/>
+        </svg>
+        <div>
+          Veuillez Remplir d'abord le forum precedent
+        </div>
+      </div>
+    `;
   }
 }

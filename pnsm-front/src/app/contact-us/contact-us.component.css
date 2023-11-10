@@ -9,6 +9,8 @@ header {
   color: #fff;
   text-align: center;
   padding: 1rem;
+  border: solid 3px #114094;
+  border-radius: 5px;
 }
 header h1 {
   margin: 0;
