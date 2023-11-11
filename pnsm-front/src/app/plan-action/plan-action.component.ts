@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PlanActionComponent implements OnInit{
   cliecked:boolean=false;
-  
+
   constructor(private router:Router){
 
   }
@@ -20,10 +20,23 @@ export class PlanActionComponent implements OnInit{
     this.router.navigate(['/modifierETtelecharger']);
   }
   goToLink(url: string){
+    this.cliecked=true;
     window.open(url, "_blank");
 }
+
+
   onclick1(){
-    this.router.navigate(['/compteRendu']);
+    if(this.cliecked==false){
+      const alertHTML = this.generateAlertHTML();
+      const element = document.getElementById('dynamicContent');
+      if (element) {
+        element.innerHTML = alertHTML;
+        setTimeout(() => {
+          element.innerHTML = '';
+        }, 2000);
+      }
+    }
+    else this.router.navigate(['/compteRendu']);
   }
   generateAlertHTML(): string {
     return `
@@ -32,7 +45,7 @@ export class PlanActionComponent implements OnInit{
           <use xlink:href="#exclamation-triangle-fill"/>
         </svg>
         <div>
-          Veuillez Remplir d'abord le forum precedent
+          Veuillez Remplir d'abord le plan d'action
         </div>
       </div>
     `;
